@@ -28,10 +28,6 @@ local filetype = {
     icons_enabled = true,
 }
 
-local spaces = function()
-    return 'spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
-end
-
 lualine.setup {
     options = {
         globalstatus = true,
@@ -46,7 +42,7 @@ lualine.setup {
         lualine_a = { 'mode' },
         lualine_b = { 'branch' },
         lualine_c = { 'filename', 'filesize', diff },
-        lualine_x = { diagnostics, spaces, 'encoding', filetype, 'fileformat' },
+        lualine_x = { diagnostics, 'encoding', filetype, 'fileformat' },
         lualine_y = { 'location' },
         lualine_z = { 'progress' },
     },
