@@ -1,6 +1,3 @@
-vim.opt.list = true
-vim.opt.listchars:append 'space:⋅'
-
 local status_ok, indent_blankline = pcall(require, 'indent_blankline')
 if not status_ok then
     return
