@@ -50,7 +50,7 @@ keymap('n', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
 keymap('n', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
 
 -- Others
-keymap('n', '<C-n>', '<set invrelativenumber<CR>', no_opt)
+keymap('n', '<C-n>', ':set invrelativenumber<CR>', no_opt)
 keymap('n', '<leader>h', '<Esc>:nohlsearch<CR><Esc>', opts)
 
 -- Plugins
