@@ -88,10 +88,10 @@ local function contains(list, x)
     return false
 end
 
-local tbl_doc_format = { 'clangd', 'tsserver' }
+local tbl_doc_no_format = { 'clangd', 'tsserver' }
 
 M.on_attach = function(client, bufnr)
-    if contains(tbl_doc_format, client.name) then
+    if contains(tbl_doc_no_format, client.name) then
         client.resolved_capabilities.document_formatting = false
     end
     lsp_keymaps(bufnr)
