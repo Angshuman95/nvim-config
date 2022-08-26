@@ -79,10 +79,19 @@ local function lsp_keymaps(bufnr)
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])
 end
 
+local function contains(list, x)
+    for _, v in pairs(list) do
+        if v == x then
+            return true
+        end
+    end
+    return false
+end
+
+local tbl_doc_format = { 'clangd', 'tsserver' }
+
 M.on_attach = function(client, bufnr)
-    -- vim.notify(client.name .. ' starting...')
-    -- TODO: refactor this into a method that checks if string in list
-    if client.name == 'tsserver' then
+    if contains(tbl_doc_format, client.name) then
         client.resolved_capabilities.document_formatting = false
     end
     lsp_keymaps(bufnr)
