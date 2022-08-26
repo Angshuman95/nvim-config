@@ -10,6 +10,7 @@ local servers = {
     'clangd',
     'emmet_ls',
     'jsonls',
+    'omnisharp',
     'sumneko_lua',
     'tsserver'
 }
