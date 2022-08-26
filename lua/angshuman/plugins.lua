@@ -52,6 +52,7 @@ return packer.startup(function(use)
     use('kylechui/nvim-surround')
     use('christoomey/vim-tmux-navigator')
     use('lukas-reineke/indent-blankline.nvim')
+    use('norcalli/nvim-colorizer.lua')
 
     use('navarasu/onedark.nvim')
 
