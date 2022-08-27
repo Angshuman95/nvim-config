@@ -43,6 +43,7 @@ return packer.startup(function(use)
     use('nvim-lua/plenary.nvim')
 
     use('windwp/nvim-autopairs')
+    use('windwp/nvim-ts-autotag')
     use('nvim-lualine/lualine.nvim')
     use('numToStr/Comment.nvim')
     use('JoosepAlviste/nvim-ts-context-commentstring')

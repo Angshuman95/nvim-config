@@ -54,6 +54,7 @@ keymap('n', '<C-n>', ':set invrelativenumber<CR>', no_opt)
 keymap('n', '<leader>h', '<Esc>:nohlsearch<CR><Esc>', opts)
 
 -- Plugins
+-- Telescope
 keymap('n', '<leader>f', ':Telescope find_files<CR>', no_opt)
 keymap('n', '<leader>b', ':Telescope buffers<CR>', no_opt)
 keymap('n', '<leader>sd', ':lua require"telescope.builtin".diagnostics{ bufnr=0 }<CR>', no_opt)
@@ -63,8 +64,8 @@ keymap('n', '<leader>sr', ':Telescope oldfiles<CR>', no_opt)
 keymap('n', '<leader>st', ':Telescope live_grep<CR>', no_opt)
 keymap('n', '<leader>ss', ':Telescope lsp_document_symbols<CR>', no_opt)
 keymap('n', '<leader>sS', ':Telescope lsp_dynamic_workspace_symbols<CR>', no_opt)
-keymap('n', '<leader>e', ':NvimTreeToggle<CR>', no_opt)
-keymap('n', '<leader>lf', ':lua vim.lsp.buf.formatting_sync()<CR>', opt_noremap)
+
+-- Git and Gitsigns
 keymap('n', '<leader>gg', ':lua _LAZYGIT_TOGGLE()<CR>', opt_noremap)
 keymap('n', '<leader>gj', ':Gitsigns next_hunk<CR>', opt_noremap)
 keymap('n', '<leader>gk', ':Gitsigns prev_hunk<CR>', opt_noremap)
@@ -73,6 +74,11 @@ keymap('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', opt_noremap)
 keymap('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', opt_noremap)
 keymap('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', opt_noremap)
 keymap('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>', opt_noremap)
+
+-- Others
+keymap('n', '<leader>e', ':NvimTreeToggle<CR>', no_opt)
+keymap('n', '<leader>lf', ':lua vim.lsp.buf.formatting_sync()<CR>', opt_noremap)
+keymap('n', '<leader>ps', ':PackerSync<CR>', opt_noremap)
 
 -- Insert --
 -- Press jk fast to exit insert mode
