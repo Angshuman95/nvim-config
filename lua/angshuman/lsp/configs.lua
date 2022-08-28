@@ -9,8 +9,10 @@ local servers = {
     'angularls',
     'clangd',
     'emmet_ls',
+    'jdtls',
     'jsonls',
     'omnisharp',
+    'pyright',
     'sumneko_lua',
     'tsserver'
 }
