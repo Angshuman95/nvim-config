@@ -88,7 +88,7 @@ local function contains(list, x)
     return false
 end
 
-local tbl_doc_no_format = { 'clangd', 'tsserver' }
+local tbl_doc_no_format = { 'clangd', 'html', 'tsserver' }
 
 M.on_attach = function(client, bufnr)
     if contains(tbl_doc_no_format, client.name) then

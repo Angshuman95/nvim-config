@@ -8,9 +8,11 @@ local lspconfig = require('lspconfig')
 local servers = {
     'angularls',
     'clangd',
+    'cssls',
     'emmet_ls',
     'jdtls',
     'jsonls',
+    'html',
     'omnisharp',
     'pyright',
     'sumneko_lua',
