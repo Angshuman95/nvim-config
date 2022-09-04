@@ -83,7 +83,5 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-vim.opt.listchars:append 'space:⋅'
-
 -- colorColumn
 vim.cmd [[let &colorcolumn="80,".join(range(120,999),",")]]
