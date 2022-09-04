@@ -6,7 +6,7 @@ end
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
--- local diagnostics = null_ls.builtins.diagnostics
+local diagnostics = null_ls.builtins.diagnostics
 
 local function contains(list, x)
     for _, v in pairs(list) do
@@ -30,7 +30,9 @@ null_ls.setup({
         formatting.clang_format,
         formatting.astyle,
         formatting.prettier.with({ extra_args = { '--no-semi', '--single-quote', '--jsx-single-quote' } }),
-        formatting.black.with({ extra_args = { '--fast' } })
+        formatting.black.with({ extra_args = { '--fast' } }),
+        diagnostics.cppcheck,
+        diagnostics.eslint
         --[[ formatting.stylua, ]]
         --[[ diagnostics.flake8 ]]
     }
