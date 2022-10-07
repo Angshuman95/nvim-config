@@ -77,7 +77,7 @@ keymap('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>', opt_noremap
 
 -- Others
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', no_opt)
-keymap('n', '<leader>lf', ':lua vim.lsp.buf.formatting_sync()<CR>', opt_noremap)
+keymap('n', '<leader>lf', ':lua vim.lsp.buf.format()<CR>', opt_noremap)
 keymap('n', '<leader>ps', ':PackerSync<CR>', opt_noremap)
 
 -- Insert --
