@@ -23,7 +23,7 @@ null_ls.setup({
     debug = false,
     on_attach = function(client, _)
         if contains(tbl_doc_no_format, vim.bo.filetype) then
-            client.server_capabilities.document_formatting = false
+            client.server_capabilities.documentFormattingProvider = false
         end
     end,
     sources = {

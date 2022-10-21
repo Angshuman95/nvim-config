@@ -93,7 +93,7 @@ local tbl_doc_no_format = { 'clangd', 'html', 'tsserver' }
 
 M.on_attach = function(client, bufnr)
     if contains(tbl_doc_no_format, client.name) then
-        client.server_capabilities.document_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
     end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
