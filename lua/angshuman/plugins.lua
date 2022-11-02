@@ -67,14 +67,17 @@ return packer.startup(function(use)
     use('L3MON4D3/LuaSnip')
     use('rafamadriz/friendly-snippets')
 
+    use('williamboman/mason.nvim')
+    use('williamboman/mason-lspconfig.nvim')
     use('neovim/nvim-lspconfig')
-    use('williamboman/nvim-lsp-installer')
     use('jose-elias-alvarez/null-ls.nvim')
 
     use('nvim-telescope/telescope.nvim')
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+        run = function()
+            require('nvim-treesitter.install').update({ with_sync = true })
+        end,
     }
 
     use('p00f/nvim-ts-rainbow')
