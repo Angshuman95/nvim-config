@@ -54,6 +54,7 @@ return packer.startup(function(use)
     use('christoomey/vim-tmux-navigator')
     use('lukas-reineke/indent-blankline.nvim')
     use('norcalli/nvim-colorizer.lua')
+    use('ggandor/leap.nvim')
 
     use('navarasu/onedark.nvim')
 
@@ -73,12 +74,7 @@ return packer.startup(function(use)
     use('jose-elias-alvarez/null-ls.nvim')
 
     use('nvim-telescope/telescope.nvim')
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function()
-            require('nvim-treesitter.install').update({ with_sync = true })
-        end,
-    }
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
     use('p00f/nvim-ts-rainbow')
 
