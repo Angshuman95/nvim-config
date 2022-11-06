@@ -31,7 +31,7 @@ null_ls.setup({
         formatting.astyle,
         formatting.prettier.with({ extra_args = { '--no-semi', '--single-quote', '--jsx-single-quote' } }),
         formatting.black.with({ extra_args = { '--fast' } }),
-        diagnostics.cppcheck,
+        diagnostics.cpplint,
         diagnostics.eslint
         --[[ formatting.stylua, ]]
         --[[ diagnostics.flake8 ]]
