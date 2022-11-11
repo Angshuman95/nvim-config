@@ -22,7 +22,7 @@ local tbl_doc_no_format = { 'cs' }
 local prettier_opt
 if vim.loop.os_uname().sysname == 'Windows_NT' then
     prettier_opt = {
-        command = vim.loop.os_homedir() .. 'AppData/Roaming/npm/prettier.cmd',
+        command = vim.loop.os_homedir() .. '/AppData/Roaming/npm/prettier.cmd',
         extra_args = { '--single-quote', '--jsx-single-quote' }
     }
 else
