@@ -19,18 +19,6 @@ end
 
 local tbl_doc_no_format = { 'cs' }
 
-local prettier_opt
-if vim.loop.os_uname().sysname == 'Windows_NT' then
-    prettier_opt = {
-        command = vim.loop.os_homedir() .. '/AppData/Roaming/npm/prettier.cmd',
-        extra_args = { '--single-quote', '--jsx-single-quote' }
-    }
-else
-    prettier_opt = {
-        extra_args = { '--single-quote', '--jsx-single-quote' }
-    }
-end
-
 null_ls.setup({
     debug = false,
     on_attach = function(client, _)
@@ -41,10 +29,10 @@ null_ls.setup({
     sources = {
         formatting.clang_format,
         formatting.astyle,
-        formatting.prettier.with(prettier_opt),
+        formatting.prettierd.with({ extra_args = { '--single-quote', '--jsx-single-quote' } }),
         formatting.black.with({ extra_args = { '--fast' } }),
         diagnostics.cpplint,
-        diagnostics.eslint
+        diagnostics.eslint_d
         --[[ formatting.stylua, ]]
         --[[ diagnostics.flake8 ]]
     }
