@@ -1,13 +1,24 @@
-local home = os.getenv('HOME')
+local home = vim.loop.os_homedir()
 
 local cache_dir = home .. '/.cache/nvim/'
+
+local shell, os_name
+os_name = vim.loop.os_uname().sysname
+
+if os_name == 'Windows_NT' then
+    shell = 'pwsh.exe'
+    vim.cmd [[set guifont=FiraCode\ NF:h11]]
+else
+    shell = 'fish'
+    vim.cmd [[set guifont=Fira\ Code:h10]]
+end
 
 local options = {
     syntax = 'on',
     background = 'dark',
     termguicolors = true,
     confirm = true,
-    shell = 'fish',
+    shell = shell,
     mouse = 'a',
     hidden = true,
     tabstop = 4,
@@ -85,3 +96,8 @@ end
 
 -- colorColumn
 vim.cmd [[let &colorcolumn="80,".join(range(120,999),",")]]
+
+-- Neovide Settings
+vim.cmd [[let g:neovide_transparency = 0.90]]
+vim.cmd [[let g:neovide_floating_blur_amount_x = 2.0]]
+vim.cmd [[let g:neovide_floating_blur_amount_y = 2.0]]
