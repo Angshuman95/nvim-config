@@ -79,6 +79,12 @@ return packer.startup(function(use)
     use('p00f/nvim-ts-rainbow')
 
     use('lewis6991/gitsigns.nvim')
+    use { 'TimUntersberger/neogit',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'sindrets/diffview.nvim'
+        }
+    }
 
     use('mfussenegger/nvim-dap')
     use('theHamsta/nvim-dap-virtual-text')

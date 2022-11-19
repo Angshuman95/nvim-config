@@ -65,11 +65,12 @@ keymap('n', '<leader>st', ':Telescope live_grep<CR>', no_opt)
 keymap('n', '<leader>ss', ':Telescope lsp_document_symbols<CR>', no_opt)
 keymap('n', '<leader>sS', ':Telescope lsp_dynamic_workspace_symbols<CR>', no_opt)
 
--- Git and Gitsigns
-keymap('n', '<leader>gg', ':lua _LAZYGIT_TOGGLE()<CR>', opt_noremap)
+-- Git, Gitsigns, Neogit and DiffView
+keymap('n', '<leader>gg', ':Neogit<CR>', opt_noremap)
 keymap('n', '<leader>gj', ':Gitsigns next_hunk<CR>', opt_noremap)
 keymap('n', '<leader>gk', ':Gitsigns prev_hunk<CR>', opt_noremap)
-keymap('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', opt_noremap)
+keymap('n', '<leader>gd', ':DiffviewOpen<CR>', opt_noremap)
+keymap('n', '<leader>gc', ':DiffviewClose<CR>', opt_noremap)
 keymap('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', opt_noremap)
 keymap('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', opt_noremap)
 keymap('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', opt_noremap)
