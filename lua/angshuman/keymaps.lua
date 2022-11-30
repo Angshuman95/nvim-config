@@ -49,6 +49,9 @@ keymap('n', '<S-h>', ':bprevious<CR>', opts)
 keymap('n', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
 keymap('n', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
 
+-- Go To end of line
+keymap('n', '-', 'g_', opts)
+
 -- Others
 keymap('n', '<C-n>', ':set invrelativenumber<CR>', no_opt)
 keymap('n', '<leader>h', '<Esc>:nohlsearch<CR><Esc>', opts)
@@ -98,6 +101,9 @@ keymap('v', '>', '>gv', opts)
 keymap('v', '<A-j>', ':m .+1<CR>==', opts)
 keymap('v', '<A-k>', ':m .-2<CR>==', opts)
 keymap('v', 'p', '"_dP', opts)
+
+-- Go To end of line
+keymap('v', '-', 'g_', opts)
 
 -- Plugins
 keymap('v', '<leader>lf', ':lua vim.lsp.buf.range_formatting()<CR>', opt_noremap)
