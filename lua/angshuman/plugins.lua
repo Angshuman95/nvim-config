@@ -2,15 +2,10 @@ local fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local is_bootstrap = false
 if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system({
-        'git',
-        'clone',
-        '--depth',
-        '1',
-        'https://github.com/wbthomason/packer.nvim',
-        install_path
-    })
+    is_bootstrap = true;
+    fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
     print('Installing packer. Close and open Neovim')
     vim.cmd([[packadd packer.nvim]])
 end
@@ -74,24 +69,24 @@ return packer.startup(function(use)
     use('jose-elias-alvarez/null-ls.nvim')
 
     use('nvim-telescope/telescope.nvim')
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            pcall(require('nvim-treesitter.install').update{ with_sync = true })
+        end,
+    }
 
     use('p00f/nvim-ts-rainbow')
 
     use('lewis6991/gitsigns.nvim')
-    use { 'TimUntersberger/neogit',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'sindrets/diffview.nvim'
-        }
-    }
+    use('tpope/vim-fugitive')
 
     use('mfussenegger/nvim-dap')
     use('theHamsta/nvim-dap-virtual-text')
     use('rcarriga/nvim-dap-ui')
 
     -- At the end
-    if PACKER_BOOTSTRAP then
+    if is_bootstrap then
         require('packer').sync()
     end
 end)
