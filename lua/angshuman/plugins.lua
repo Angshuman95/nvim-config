@@ -67,6 +67,7 @@ return packer.startup(function(use)
     use('williamboman/mason-lspconfig.nvim')
     use('neovim/nvim-lspconfig')
     use('jose-elias-alvarez/null-ls.nvim')
+    use('kevinhwang91/nvim-bqf')
 
     use('nvim-telescope/telescope.nvim')
     use {
