@@ -21,7 +21,7 @@ local servers = {
     'html',
     'omnisharp',
     'pyright',
-    'sumneko_lua',
+    'lua_ls',
     'tsserver'
 }
 

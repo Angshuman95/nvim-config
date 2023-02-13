@@ -85,6 +85,7 @@ return packer.startup(function(use)
 
     use('lewis6991/gitsigns.nvim')
     use('tpope/vim-fugitive')
+    use('sindrets/diffview.nvim')
 
     use('mfussenegger/nvim-dap')
     use('theHamsta/nvim-dap-virtual-text')
