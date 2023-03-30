@@ -50,6 +50,15 @@ return packer.startup(function(use)
     use('lukas-reineke/indent-blankline.nvim')
     use('norcalli/nvim-colorizer.lua')
     use('ggandor/leap.nvim')
+    use({
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
+        after = "nvim-web-devicons", -- keep this if you're using NvChad
+    })
 
     use('navarasu/onedark.nvim')
 
