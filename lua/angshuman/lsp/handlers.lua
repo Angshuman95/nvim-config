@@ -4,9 +4,9 @@ local M = {}
 M.setup = function()
     local signs = {
         { name = 'DiagnosticSignError', text = '' },
-        { name = 'DiagnosticSignWarn', text = '' },
-        { name = 'DiagnosticSignHint', text = '' },
-        { name = 'DiagnosticSignInfo', text = '' },
+        { name = 'DiagnosticSignWarn',  text = '' },
+        { name = 'DiagnosticSignHint',  text = '' },
+        { name = 'DiagnosticSignInfo',  text = '' },
     }
 
     for _, sign in ipairs(signs) do
@@ -97,6 +97,8 @@ M.on_attach = function(client, bufnr)
     end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
+    --[[ Don't use semantic highlighting introduced in nvim 0.9 if colorscheme doesn't support ]]
+    --[[ client.server_capabilities.semanticTokensProvider = nil ]]
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
