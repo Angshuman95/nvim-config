@@ -3,4 +3,14 @@ if not status_ok then
     return
 end
 
+local tokyonight_ok, _ = pcall(require, 'tokyonight')
+
+if tokyonight_ok then
+    barbecue.setup {
+        theme = 'tokyonight'
+    }
+
+    return
+end
+
 barbecue.setup()

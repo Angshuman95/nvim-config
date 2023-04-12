@@ -60,7 +60,8 @@ return packer.startup(function(use)
         after = "nvim-web-devicons", -- keep this if you're using NvChad
     })
 
-    use('navarasu/onedark.nvim')
+    --[[ use('navarasu/onedark.nvim') ]]
+    use('folke/tokyonight.nvim')
 
     use('hrsh7th/nvim-cmp')
     use('hrsh7th/cmp-buffer')
