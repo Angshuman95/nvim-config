@@ -33,7 +33,7 @@ return lazy.setup({
     'nvim-tree/nvim-tree.lua',
     'akinsho/toggleterm.nvim',
     'kylechui/nvim-surround',
-    'christoomey/vim-tmux-navigator',
+    'numToStr/Navigator.nvim',
     'lukas-reineke/indent-blankline.nvim',
     'norcalli/nvim-colorizer.lua',
     'ggandor/leap.nvim',
