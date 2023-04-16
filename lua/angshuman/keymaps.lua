@@ -6,11 +6,6 @@ local no_opt = {}
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
---Remap space as leader key
-keymap('', '<Space>', '<Nop>', opts)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 -- Modes
 --   normal_mode = 'n',
 --   insert_mode = 'i',
@@ -81,7 +76,7 @@ keymap('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>', opt_noremap
 -- Others
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', no_opt)
 keymap('n', '<leader>lf', ':lua vim.lsp.buf.format()<CR>', opt_noremap)
-keymap('n', '<leader>ps', ':PackerSync<CR>', opt_noremap)
+keymap('n', '<leader>ps', ':Lazy sync<CR>', opt_noremap)
 
 -- Insert --
 -- Press jk fast to exit insert mode
