@@ -28,7 +28,8 @@ local options = {
     viewoptions = 'folds,cursor,curdir,slash,unix',
     sessionoptions = 'curdir,help,tabpages,winsize',
     wildignorecase = true,
-    wildignore = '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**',
+    wildignore =
+    '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**',
     backup = true,
     writebackup = true,
     undofile = true,
@@ -98,6 +99,8 @@ end
 vim.cmd [[let &colorcolumn="80,".join(range(120,999),",")]]
 
 -- Neovide Settings
-vim.cmd [[let g:neovide_transparency = 0.90]]
-vim.cmd [[let g:neovide_floating_blur_amount_x = 2.0]]
-vim.cmd [[let g:neovide_floating_blur_amount_y = 2.0]]
+if vim.g.neovide then
+    vim.cmd [[let g:neovide_transparency = 0.90]]
+    vim.cmd [[let g:neovide_floating_blur_amount_x = 2.0]]
+    vim.cmd [[let g:neovide_floating_blur_amount_y = 2.0]]
+end
