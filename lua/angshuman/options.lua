@@ -10,7 +10,7 @@ if os_name == 'Windows_NT' then
     vim.cmd [[set guifont=FiraCode\ NF:h11]]
 elseif os_name == 'Darwin' then
     shell = 'zsh'
-    vim.cmd [[set guifont=FiraCode\ Nerd\ Font:h11]]
+    vim.cmd [[set guifont=FiraCode\ Nerd\ Font:h15]]
 else
     shell = 'fish'
     vim.cmd [[set guifont=Fira\ Code:h10]]
