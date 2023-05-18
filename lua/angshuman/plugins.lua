@@ -47,8 +47,8 @@ return lazy.setup({
     },
     'luukvbaal/statuscol.nvim',
 
-    --[[ 'navarasu/onedark.nvim', ]]
-    'folke/tokyonight.nvim',
+    'navarasu/onedark.nvim',
+    --[[ 'folke/tokyonight.nvim', ]]
 
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-buffer',
@@ -85,7 +85,7 @@ return lazy.setup({
 
     {
         'nvim-neorg/neorg',
-        build = ":Neorg sync-parsers",
-        dependencies = { { "nvim-lua/plenary.nvim" } },
+        build = ':Neorg sync-parsers',
+        dependencies = 'nvim-lua/plenary.nvim',
     }
 })

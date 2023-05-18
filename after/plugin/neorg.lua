@@ -1,20 +1,27 @@
-local status_ok, neorg = pcall(require, "neorg")
+local status_ok, neorg = pcall(require, 'neorg')
 if not status_ok then
     return
 end
 
 neorg.setup({
     load = {
-        ["core.defaults"] = {}, -- Loads default behaviour
-        ["core.concealer"] = {}, -- Adds pretty icons to your documents
-        ["core.dirman"] = { -- Manages Neorg workspaces
+        ['core.defaults'] = {}, -- Loads default behaviour
+        ['core.concealer'] = {}, -- Adds pretty icons to your documents
+        ['core.dirman'] = { -- Manages Neorg workspaces
             config = {
                 workspaces = {
-                    main = "~/Documents/personal-notes",
+                    main = '~/Documents/personal-notes',
                 },
-                default_workspace = "main",
+                default_workspace = 'main',
             },
         },
+        ['core.completion'] = {
+            config = {
+                engine = 'nvim-cmp',
+                name = '[Neorg]'
+            }
+        },
+        ['core.integrations.nvim-cmp'] = {}
     },
 })
 

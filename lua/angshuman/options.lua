@@ -82,7 +82,6 @@ local options = {
     equalalways = true,
     laststatus = 2,
     display = 'lastline',
-    foldmethod = 'manual',
     showbreak = ' ↳  ',
     wrap = true,
     listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←',

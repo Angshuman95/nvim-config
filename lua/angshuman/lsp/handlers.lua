@@ -91,18 +91,12 @@ end
 
 local tbl_doc_no_format = { 'clangd', 'html', 'tsserver' }
 
-local onedark_ok, _ = pcall(require, 'onedark')
-
 M.on_attach = function(client, bufnr)
     if contains(tbl_doc_no_format, client.name) then
         client.server_capabilities.documentFormattingProvider = false
     end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
-    --[[ Don't use semantic highlighting introduced in nvim 0.9 if colorscheme doesn't support ]]
-    if onedark_ok then
-        client.server_capabilities.semanticTokensProvider = nil
-    end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
