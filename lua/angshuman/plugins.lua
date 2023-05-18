@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -45,6 +45,7 @@ return lazy.setup({
             'nvim-tree/nvim-web-devicons',
         },
     },
+    'luukvbaal/statuscol.nvim',
 
     --[[ 'navarasu/onedark.nvim', ]]
     'folke/tokyonight.nvim',
@@ -81,4 +82,10 @@ return lazy.setup({
     'mfussenegger/nvim-dap',
     'theHamsta/nvim-dap-virtual-text',
     'rcarriga/nvim-dap-ui',
+
+    {
+        'nvim-neorg/neorg',
+        build = ":Neorg sync-parsers",
+        dependencies = { { "nvim-lua/plenary.nvim" } },
+    }
 })
