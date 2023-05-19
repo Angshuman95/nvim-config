@@ -5,9 +5,9 @@ end
 
 neorg.setup({
     load = {
-        ['core.defaults'] = {}, -- Loads default behaviour
+        ['core.defaults'] = {},  -- Loads default behaviour
         ['core.concealer'] = {}, -- Adds pretty icons to your documents
-        ['core.dirman'] = { -- Manages Neorg workspaces
+        ['core.dirman'] = {      -- Manages Neorg workspaces
             config = {
                 workspaces = {
                     main = '~/Documents/personal-notes',
@@ -21,7 +21,8 @@ neorg.setup({
                 name = '[Neorg]'
             }
         },
-        ['core.integrations.nvim-cmp'] = {}
+        ['core.integrations.nvim-cmp'] = {},
+        ['core.export'] = {},
     },
 })
 
