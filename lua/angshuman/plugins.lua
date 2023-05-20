@@ -24,6 +24,7 @@ end
 return lazy.setup({
     'nvim-lua/plenary.nvim',
 
+    'max397574/better-escape.nvim',
     'windwp/nvim-autopairs',
     'windwp/nvim-ts-autotag',
     'nvim-lualine/lualine.nvim',

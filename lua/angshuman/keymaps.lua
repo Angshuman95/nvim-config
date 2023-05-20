@@ -80,7 +80,8 @@ keymap('n', '<leader>ps', ':Lazy sync<CR>', opt_noremap)
 
 -- Insert --
 -- Press jk fast to exit insert mode
-keymap('i', 'jk', '<ESC>', opts)
+-- Using better Escape
+--[[ keymap('i', 'jk', '<ESC>', opts) ]]
 
 -- Visual --
 -- Clipboard
