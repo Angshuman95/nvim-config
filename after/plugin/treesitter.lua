@@ -3,25 +3,34 @@ if not status_ok then
     return
 end
 
+local ts_rainbow_config = {}
+local ts_rainbow_ok, ts_rainbow = pcall(require, 'ts-rainbow')
+if ts_rainbow_ok then
+    ts_rainbow_config = {
+        enable = true,
+        -- disable = { 'jsx', 'cpp' },
+        -- Which query to use for finding delimiters
+        query = {
+            'rainbow-parens',
+            html = 'rainbow-tags'
+        },
+        -- Highlight the entire buffer all at once
+        strategy = ts_rainbow.strategy.global,
+    }
+end
+
 configs.setup({
     ensure_installed = 'all', -- one of 'all' or a list of languages
-    ignore_install = { '' }, -- List of parsers to ignore installing
+    ignore_install = { '' },  -- List of parsers to ignore installing
     highlight = {
-        enable = true, -- false will disable the whole extension
-        disable = { '' }, -- list of language that will be disabled
+        enable = true,        -- false will disable the whole extension
+        disable = { '' },     -- list of language that will be disabled
     },
     autopairs = {
         enable = true,
     },
     indent = { enable = true, disable = { '', '' } },
-    rainbow = {
-        enable = true,
-        -- disable = { 'jsx', 'cpp' },
-        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-        max_file_lines = nil, -- Do not enable for files with more than n lines, int
-        -- colors = {}, -- table of hex strings
-        -- termcolors = {} -- table of colour name strings
-    },
+    rainbow = ts_rainbow_config,
     context_commentstring = {
         enable = true,
         enable_autocmd = true

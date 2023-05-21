@@ -48,6 +48,7 @@ return lazy.setup({
     },
     'luukvbaal/statuscol.nvim',
     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
+    { 'stevearc/oil.nvim',     dependencies = 'nvim-tree/nvim-web-devicons' },
 
     'navarasu/onedark.nvim',
     --[[ 'folke/tokyonight.nvim', ]]
@@ -67,7 +68,7 @@ return lazy.setup({
     'neovim/nvim-lspconfig',
     'jose-elias-alvarez/null-ls.nvim',
     'kevinhwang91/nvim-bqf',
-    { 'folke/trouble.nvim',    dependencies = 'nvim-tree/nvim-web-devicons' },
+    { 'folke/trouble.nvim',     dependencies = 'nvim-tree/nvim-web-devicons' },
 
     'nvim-telescope/telescope.nvim',
     {
@@ -76,7 +77,7 @@ return lazy.setup({
         dependencies = 'nvim-treesitter/nvim-treesitter-textobjects'
     },
 
-    'p00f/nvim-ts-rainbow',
+    'HiPhish/nvim-ts-rainbow2',
 
     'lewis6991/gitsigns.nvim',
     'tpope/vim-fugitive',
