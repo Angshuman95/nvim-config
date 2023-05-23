@@ -50,8 +50,8 @@ return lazy.setup({
     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
     { 'stevearc/oil.nvim',     dependencies = 'nvim-tree/nvim-web-devicons' },
 
-    --[[ 'navarasu/onedark.nvim', ]]
-    --[[ 'folke/tokyonight.nvim', ]]
+    'navarasu/onedark.nvim',
+    'folke/tokyonight.nvim',
     { "catppuccin/nvim", name = "catppuccin" },
 
     'hrsh7th/nvim-cmp',

@@ -1,7 +1,9 @@
+local colorscheme = "catppuccin"
+
 --[[ Tokyonight ]]
 local tokyonight_ok, tokyonight = pcall(require, 'tokyonight')
 
-if tokyonight_ok then
+if tokyonight_ok and colorscheme == 'tokyonight' then
     tokyonight.setup({
         -- your configuration comes here
         -- or leave it empty to use the default settings
@@ -46,7 +48,7 @@ end
 --[[ Onedark ]]
 local onedark_ok, onedark = pcall(require, 'onedark')
 
-if onedark_ok then
+if onedark_ok and colorscheme == 'onedark' then
     onedark.setup {
         -- Main options --
         style = 'warmer',             -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
@@ -95,7 +97,7 @@ end
 --[[ Catppuccin ]]
 local catppuccin_ok, catppuccin = pcall(require, 'catppuccin')
 
-if catppuccin_ok then
+if catppuccin_ok and colorscheme == 'catppuccin' then
     catppuccin.setup({
         flavour = 'mocha', -- latte, frappe, macchiato, mocha
         background = {
