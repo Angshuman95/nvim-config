@@ -20,6 +20,7 @@ dapui.setup()
 require('angshuman.debuggers.coreclr')
 require('angshuman.debuggers.lldb')
 require('angshuman.debuggers.node2')
+require('angshuman.debuggers.python')
 
 vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '', texthl = '', linehl = '', numhl = '' })
