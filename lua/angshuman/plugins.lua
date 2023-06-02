@@ -52,7 +52,7 @@ return lazy.setup({
 
     'navarasu/onedark.nvim',
     'folke/tokyonight.nvim',
-    { "catppuccin/nvim", name = "catppuccin" },
+    { "catppuccin/nvim",    name = "catppuccin" },
 
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-buffer',
@@ -69,7 +69,7 @@ return lazy.setup({
     'neovim/nvim-lspconfig',
     'jose-elias-alvarez/null-ls.nvim',
     'kevinhwang91/nvim-bqf',
-    { 'folke/trouble.nvim',     dependencies = 'nvim-tree/nvim-web-devicons' },
+    { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
 
     'nvim-telescope/telescope.nvim',
     {
@@ -91,6 +91,6 @@ return lazy.setup({
     {
         'nvim-neorg/neorg',
         build = ':Neorg sync-parsers',
-        dependencies = 'nvim-lua/plenary.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' }
     }
 })
