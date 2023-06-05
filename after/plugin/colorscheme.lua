@@ -141,6 +141,10 @@ if catppuccin_ok and colorscheme == 'catppuccin' then
             mini = false
             -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
+        indent_blankline = {
+            enabled = true,
+            colored_indent_levels = false,
+        },
     })
 
     -- setup must be called before loading
