@@ -36,7 +36,6 @@ null_ls.setup({
         formatting.isort,
         formatting.black.with({ extra_args = { '--fast' } }),
         formatting.rustfmt,
-        --[[ formatting.lua_format, ]]
         formatting.stylua,
 
         diagnostics.cpplint,
