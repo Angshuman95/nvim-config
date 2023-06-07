@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-nvim_tree.setup {
+nvim_tree.setup({
     update_focused_file = {
         enable = true,
         update_root = false,
@@ -56,4 +56,4 @@ nvim_tree.setup {
         ignore = true,
         timeout = 400,
     },
-}
+})

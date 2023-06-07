@@ -64,7 +64,11 @@ return lazy.setup({
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
 
-    'williamboman/mason.nvim',
+    {
+        'williamboman/mason.nvim',
+        build = ":MasonUpdate"
+    },
+
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
     'jose-elias-alvarez/null-ls.nvim',

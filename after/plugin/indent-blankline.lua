@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-indent_blankline.setup {
+indent_blankline.setup({
     show_trailing_blankline_indent = false,
     show_first_indent_level = true,
     use_treesitter = true,
@@ -13,6 +13,6 @@ indent_blankline.setup {
         'help',
         'packer',
         'NvimTree',
-        'lazy'
-    }
-}
+        'lazy',
+    },
+})

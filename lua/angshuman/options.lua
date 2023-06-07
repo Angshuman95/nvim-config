@@ -7,13 +7,13 @@ os_name = vim.loop.os_uname().sysname
 
 if os_name == 'Windows_NT' then
     shell = 'pwsh.exe'
-    vim.cmd [[set guifont=FiraCode\ NF:h11]]
+    vim.cmd([[set guifont=FiraCode\ NF:h11]])
 elseif os_name == 'Darwin' then
     shell = 'zsh'
-    vim.cmd [[set guifont=FiraCode\ Nerd\ Font:h15]]
+    vim.cmd([[set guifont=FiraCode\ Nerd\ Font:h15]])
 else
     shell = 'fish'
-    vim.cmd [[set guifont=Fira\ Code:h10]]
+    vim.cmd([[set guifont=Fira\ Code:h10]])
 end
 
 local options = {
@@ -98,7 +98,7 @@ for k, v in pairs(options) do
 end
 
 -- colorColumn
-vim.cmd [[let &colorcolumn="80,".join(range(120,999),",")]]
+vim.cmd([[let &colorcolumn="80,".join(range(120,999),",")]])
 
 -- Neovide Settings
 if vim.g.neovide then

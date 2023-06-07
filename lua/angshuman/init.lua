@@ -1,6 +1,6 @@
-require 'angshuman.options'
-require 'angshuman.plugins'
-require 'angshuman.keymaps'
-require 'angshuman.autogroups'
-require 'angshuman.lsp'
-require 'angshuman.debuggers'
+require('angshuman.options')
+require('angshuman.plugins')
+require('angshuman.keymaps')
+require('angshuman.autogroups')
+require('angshuman.lsp')
+require('angshuman.debuggers')

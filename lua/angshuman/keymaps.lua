@@ -55,13 +55,23 @@ keymap('n', '<leader>h', '<Esc>:nohlsearch<CR><Esc>', opts)
 -- Telescope
 keymap('n', '<leader>f', ':Telescope find_files<CR>', no_opt)
 keymap('n', '<leader>b', ':Telescope buffers<CR>', no_opt)
-keymap('n', '<leader>sd', ':lua require"telescope.builtin".diagnostics{ bufnr=0 }<CR>', no_opt)
+keymap(
+    'n',
+    '<leader>sd',
+    ':lua require"telescope.builtin".diagnostics{ bufnr=0 }<CR>',
+    no_opt
+)
 keymap('n', '<leader>sD', ':Telescope diagnostics<CR>', no_opt)
 keymap('n', '<leader>sf', ':Telescope current_buffer_fuzzy_find<CR>', no_opt)
 keymap('n', '<leader>sr', ':Telescope oldfiles<CR>', no_opt)
 keymap('n', '<leader>st', ':Telescope live_grep<CR>', no_opt)
 keymap('n', '<leader>ss', ':Telescope lsp_document_symbols<CR>', no_opt)
-keymap('n', '<leader>sS', ':Telescope lsp_dynamic_workspace_symbols<CR>', no_opt)
+keymap(
+    'n',
+    '<leader>sS',
+    ':Telescope lsp_dynamic_workspace_symbols<CR>',
+    no_opt
+)
 
 -- Git and Gitsigns
 keymap('n', '<leader>gg', ':Git<CR>', opt_noremap)
@@ -71,7 +81,12 @@ keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', opt_noremap)
 keymap('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', opt_noremap)
 keymap('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', opt_noremap)
 keymap('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', opt_noremap)
-keymap('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>', opt_noremap)
+keymap(
+    'n',
+    '<leader>gb',
+    ':Gitsigns toggle_current_line_blame<CR>',
+    opt_noremap
+)
 
 -- Others
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', no_opt)
@@ -101,7 +116,12 @@ keymap('v', 'p', '"_dP', opts)
 keymap('v', '-', 'g_', opts)
 
 -- Plugins
-keymap('v', '<leader>lf', ':lua vim.lsp.buf.range_formatting()<CR>', opt_noremap)
+keymap(
+    'v',
+    '<leader>lf',
+    ':lua vim.lsp.buf.range_formatting()<CR>',
+    opt_noremap
+)
 
 -- Visual Block --
 -- Move text up and down

@@ -19,10 +19,11 @@ local servers = {
     'jdtls',
     'jsonls',
     'html',
+    'lua_ls',
     'omnisharp',
     'pyright',
-    'lua_ls',
-    'tsserver'
+    'rust_analyzer',
+    'tsserver',
 }
 
 mason.setup()
@@ -37,7 +38,8 @@ for _, server in pairs(servers) do
         capabilities = require('angshuman.lsp.handlers').capabilities,
     }
 
-    local has_custom_opts, server_custom_opts = pcall(require, 'angshuman.lsp.settings.' .. server)
+    local has_custom_opts, server_custom_opts =
+        pcall(require, 'angshuman.lsp.settings.' .. server)
     if has_custom_opts then
         opts = vim.tbl_deep_extend('force', opts, server_custom_opts)
     end

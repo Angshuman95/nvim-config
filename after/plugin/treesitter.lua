@@ -12,7 +12,7 @@ if ts_rainbow_ok then
         -- Which query to use for finding delimiters
         query = {
             'rainbow-parens',
-            html = 'rainbow-tags'
+            html = 'rainbow-tags',
         },
         -- Highlight the entire buffer all at once
         strategy = ts_rainbow.strategy.global,
@@ -33,7 +33,7 @@ configs.setup({
     rainbow = ts_rainbow_config,
     context_commentstring = {
         enable = true,
-        enable_autocmd = true
+        enable_autocmd = true,
     },
     incremental_selection = {
         enable = true,

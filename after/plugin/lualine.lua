@@ -28,7 +28,7 @@ local filetype = {
     icons_enabled = true,
 }
 
-lualine.setup {
+lualine.setup({
     options = {
         globalstatus = true,
         icons_enabled = true,
@@ -46,4 +46,4 @@ lualine.setup {
         lualine_y = { 'location' },
         lualine_z = { 'progress' },
     },
-}
+})

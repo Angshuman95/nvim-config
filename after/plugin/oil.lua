@@ -3,30 +3,30 @@ if not status_ok then
     return
 end
 
-oil.setup {
+oil.setup({
     -- Id is automatically added at the beginning, and name at the end
     -- See :help oil-columns
     columns = {
-        "icon",
-        "permissions",
-        "size",
-        "mtime",
+        'icon',
+        'permissions',
+        'size',
+        'mtime',
     },
     -- Buffer-local options to use for oil buffers
     buf_options = {
         buflisted = false,
-        bufhidden = "hide",
+        bufhidden = 'hide',
     },
     -- Window-local options to use for oil buffers
     win_options = {
         wrap = false,
-        signcolumn = "no",
+        signcolumn = 'no',
         cursorcolumn = false,
-        foldcolumn = "0",
+        foldcolumn = '0',
         spell = false,
         list = false,
         conceallevel = 3,
-        concealcursor = "n",
+        concealcursor = 'n',
     },
     -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`
     default_file_explorer = false,
@@ -37,7 +37,7 @@ oil.setup {
     -- Deleted files will be removed with the trash_command (below).
     delete_to_trash = false,
     -- Change this to customize the command used when deleting to trash
-    trash_command = "trash-put",
+    trash_command = 'trash-put',
     -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
     prompt_save_on_select_new_entry = true,
     -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
@@ -47,19 +47,19 @@ oil.setup {
     -- Set to `false` to remove a keymap
     -- See :help oil-actions for a list of all available actions
     keymaps = {
-        ["g?"] = "actions.show_help",
-        ["<CR>"] = "actions.select",
-        ["<C-v>"] = "actions.select_vsplit",
-        ["<C-x>"] = "actions.select_split",
-        ["<C-t>"] = "actions.select_tab",
-        ["<C-p>"] = "actions.preview",
-        ["<C-c>"] = "actions.close",
-        ["<C-l>"] = "actions.refresh",
-        ["-"] = "actions.parent",
-        ["_"] = "actions.open_cwd",
-        ["`"] = "actions.cd",
-        ["~"] = "actions.tcd",
-        ["g."] = "actions.toggle_hidden",
+        ['g?'] = 'actions.show_help',
+        ['<CR>'] = 'actions.select',
+        ['<C-v>'] = 'actions.select_vsplit',
+        ['<C-x>'] = 'actions.select_split',
+        ['<C-t>'] = 'actions.select_tab',
+        ['<C-p>'] = 'actions.preview',
+        ['<C-c>'] = 'actions.close',
+        ['<C-l>'] = 'actions.refresh',
+        ['-'] = 'actions.parent',
+        ['_'] = 'actions.open_cwd',
+        ['`'] = 'actions.cd',
+        ['~'] = 'actions.tcd',
+        ['g.'] = 'actions.toggle_hidden',
     },
     -- Set to false to disable all of the above keymaps
     use_default_keymaps = true,
@@ -68,7 +68,7 @@ oil.setup {
         show_hidden = false,
         -- This function defines what is considered a "hidden" file
         is_hidden_file = function(name, bufnr)
-            return vim.startswith(name, ".")
+            return vim.startswith(name, '.')
         end,
         -- This function defines what will never be shown, even when `show_hidden` is set
         is_always_hidden = function(name, bufnr)
@@ -81,7 +81,7 @@ oil.setup {
         padding = 2,
         max_width = 0,
         max_height = 0,
-        border = "rounded",
+        border = 'rounded',
         win_options = {
             winblend = 10,
         },
@@ -104,7 +104,7 @@ oil.setup {
         min_height = { 5, 0.1 },
         -- optionally define an integer/float for the exact height of the preview window
         height = nil,
-        border = "rounded",
+        border = 'rounded',
         win_options = {
             winblend = 0,
         },
@@ -117,12 +117,12 @@ oil.setup {
         max_height = { 10, 0.9 },
         min_height = { 5, 0.1 },
         height = nil,
-        border = "rounded",
-        minimized_border = "none",
+        border = 'rounded',
+        minimized_border = 'none',
         win_options = {
             winblend = 0,
         },
     },
-}
+})
 
-vim.keymap.set("n", "\\", oil.open, { desc = "Open parent directory" })
+vim.keymap.set('n', '\\', oil.open, { desc = 'Open parent directory' })

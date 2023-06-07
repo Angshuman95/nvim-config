@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-Navigator.setup  {
+Navigator.setup({
     -- Save modified buffer(s) when moving to mux
     -- nil - Don't save (default)
     -- 'current' - Only save the current modified buffer
@@ -16,8 +16,8 @@ Navigator.setup  {
     -- Multiplexer to use
     -- 'auto' - Chooses mux based on priority (default)
     -- table - Custom mux to use
-    mux = 'auto'
-}
+    mux = 'auto',
+})
 
 local opts = { noremap = true, silent = true }
 
@@ -25,8 +25,8 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 -- Normal Mode
-keymap({'n', 't'}, '<C-h>', ':NavigatorLeft<cr>', opts)
-keymap({'n', 't'}, '<C-j>', ':NavigatorDown<cr>', opts)
-keymap({'n', 't'}, '<C-k>', ':NavigatorUp<cr>', opts)
-keymap({'n', 't'}, '<C-l>', ':NavigatorRight<cr>', opts)
-keymap({'n', 't'}, '<C-p>', ':NavigatorPrevious<cr>', opts)
+keymap({ 'n', 't' }, '<C-h>', ':NavigatorLeft<cr>', opts)
+keymap({ 'n', 't' }, '<C-j>', ':NavigatorDown<cr>', opts)
+keymap({ 'n', 't' }, '<C-k>', ':NavigatorUp<cr>', opts)
+keymap({ 'n', 't' }, '<C-l>', ':NavigatorRight<cr>', opts)
+keymap({ 'n', 't' }, '<C-p>', ':NavigatorPrevious<cr>', opts)

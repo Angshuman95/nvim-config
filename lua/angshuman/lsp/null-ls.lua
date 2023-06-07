@@ -30,16 +30,20 @@ null_ls.setup({
     sources = {
         formatting.clang_format,
         formatting.astyle,
-        formatting.prettier.with({ extra_args = { '--single-quote', '--jsx-single-quote' } }),
-        formatting.black.with({ extra_args = { '--fast' } }),
+        formatting.prettier.with({
+            extra_args = { '--single-quote', '--jsx-single-quote' },
+        }),
         formatting.isort,
-        --[[ formatting.stylua, ]]
+        formatting.black.with({ extra_args = { '--fast' } }),
+        formatting.rustfmt,
+        --[[ formatting.lua_format, ]]
+        formatting.stylua,
 
         diagnostics.cpplint,
         --[[ diagnostics.eslint ]]
         diagnostics.flake8,
-        diagnostics.write_good.with { filetypes = { "markdown", "text" } },
+        diagnostics.write_good.with({ filetypes = { 'markdown', 'text' } }),
 
         code_actions.gitsigns,
-    }
+    },
 })

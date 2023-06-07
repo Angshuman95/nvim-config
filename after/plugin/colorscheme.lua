@@ -1,4 +1,4 @@
-local colorscheme = "catppuccin"
+local colorscheme = 'catppuccin'
 
 --[[ Tokyonight ]]
 local tokyonight_ok, tokyonight = pcall(require, 'tokyonight')
@@ -30,17 +30,15 @@ if tokyonight_ok and colorscheme == 'tokyonight' then
         --- You can override specific color groups to use other groups or a hex color
         --- function will be called with a ColorScheme table
         ---@param colors ColorScheme
-        on_colors = function(colors)
-        end,
+        on_colors = function(colors) end,
         --- You can override specific highlights to use other groups or a hex color
         --- function will be called with a Highlights and ColorScheme table
         ---@param highlights Highlights
         ---@param colors ColorScheme
-        on_highlights = function(highlights, colors)
-        end,
+        on_highlights = function(highlights, colors) end,
     })
 
-    vim.cmd [[colorscheme tokyonight]]
+    vim.cmd([[colorscheme tokyonight]])
 
     return
 end
@@ -49,7 +47,7 @@ end
 local onedark_ok, onedark = pcall(require, 'onedark')
 
 if onedark_ok and colorscheme == 'onedark' then
-    onedark.setup {
+    onedark.setup({
         -- Main options --
         style = 'warmer',             -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         transparent = true,           -- Show/hide background
@@ -58,8 +56,16 @@ if onedark_ok and colorscheme == 'onedark' then
         cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
         -- toggle theme style ---
-        toggle_style_key = nil,                                                              -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-        toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light' }, -- List of styles to toggle between
+        toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+        toggle_style_list = {
+            'dark',
+            'darker',
+            'cool',
+            'deep',
+            'warm',
+            'warmer',
+            'light',
+        }, -- List of styles to toggle between
 
         -- Change code style ---
         -- Options are italic, bold, underline, none
@@ -69,7 +75,7 @@ if onedark_ok and colorscheme == 'onedark' then
             keywords = 'italic',
             functions = 'none',
             strings = 'none',
-            variables = 'none'
+            variables = 'none',
         },
 
         -- Lualine options --
@@ -87,7 +93,7 @@ if onedark_ok and colorscheme == 'onedark' then
             undercurl = true,  -- use undercurl instead of underline for diagnostics
             background = true, -- use background color for virtual text
         },
-    }
+    })
 
     onedark.load()
 
@@ -138,7 +144,7 @@ if catppuccin_ok and colorscheme == 'catppuccin' then
             nvimtree = true,
             telescope = true,
             notify = false,
-            mini = false
+            mini = false,
             -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
         indent_blankline = {
@@ -148,5 +154,5 @@ if catppuccin_ok and colorscheme == 'catppuccin' then
     })
 
     -- setup must be called before loading
-    vim.cmd.colorscheme 'catppuccin'
+    vim.cmd.colorscheme('catppuccin')
 end
