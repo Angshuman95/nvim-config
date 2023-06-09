@@ -12,7 +12,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 --Remap space as leader key
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+    '',
+    '<Space>',
+    '<Nop>',
+    { noremap = true, silent = true }
+)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -48,11 +53,11 @@ return lazy.setup({
     },
     'luukvbaal/statuscol.nvim',
     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
-    { 'stevearc/oil.nvim',     dependencies = 'nvim-tree/nvim-web-devicons' },
+    { 'stevearc/oil.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
 
     'navarasu/onedark.nvim',
     'folke/tokyonight.nvim',
-    { "catppuccin/nvim",    name = "catppuccin" },
+    { 'catppuccin/nvim', name = 'catppuccin' },
 
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-buffer',
@@ -66,7 +71,7 @@ return lazy.setup({
 
     {
         'williamboman/mason.nvim',
-        build = ":MasonUpdate"
+        build = ':MasonUpdate',
     },
 
     'williamboman/mason-lspconfig.nvim',
@@ -79,7 +84,7 @@ return lazy.setup({
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
-        dependencies = 'nvim-treesitter/nvim-treesitter-textobjects'
+        dependencies = 'nvim-treesitter/nvim-treesitter-textobjects',
     },
 
     'HiPhish/nvim-ts-rainbow2',
@@ -95,6 +100,6 @@ return lazy.setup({
     {
         'nvim-neorg/neorg',
         build = ':Neorg sync-parsers',
-        dependencies = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' }
-    }
+        dependencies = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' },
+    },
 })
