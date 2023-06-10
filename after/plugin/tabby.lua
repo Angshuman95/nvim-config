@@ -11,7 +11,7 @@ if catppuccin_ok then
     mocha = catppuccin_palettes.get_palette('mocha')
     theme = {
         fill = { fg = mocha.subtext0, bg = mocha.base, style = 'italic' },
-        head = { fg = mocha.text, bg = mocha.mantle },
+        head = { fg = mocha.crust, bg = mocha.pink },
         current_tab = { fg = mocha.crust, bg = mocha.mauve },
         tab = { fg = mocha.subtext1, bg = mocha.mantle },
         win = { fg = mocha.subtext1, bg = mocha.mantle },
@@ -28,10 +28,13 @@ else
     }
 end
 
+local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+
 tabby_tabline.set(function(line)
     return {
         {
-            { '  ', hl = theme.head },
+            line.sep('', theme.head, theme.fill),
+            { cwd, hl = theme.head },
             line.sep('', theme.head, theme.fill),
         },
         line.tabs().foreach(function(tab)
