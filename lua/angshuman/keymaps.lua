@@ -30,11 +30,23 @@ keymap('n', 'mdd', '"+dd', opt_noremap)
 keymap('n', 'zp', '"+p', no_opt)
 keymap('n', 'zP', '"+P', no_opt)
 
+-- Tabs
+keymap('n', '<leader>ta', ':$tabnew<CR>', opt_noremap)
+keymap('n', '<leader>t5', ':tabnew %<CR>', opt_noremap)
+keymap('n', '<leader>tc', ':tabclose<CR>', opt_noremap)
+keymap('n', '<leader>to', ':tabonly<CR>', opt_noremap)
+keymap('n', '<leader>tn', ':tabn<CR>', opt_noremap)
+keymap('n', '<leader>tp', ':tabp<CR>', opt_noremap)
+-- move current tab to previous position
+keymap('n', '<leader>tmp', ':-tabmove<CR>', opt_noremap)
+-- move current tab to next position
+keymap('n', '<leader>tmn', ':+tabmove<CR>', opt_noremap)
+
 -- Resize with arrows
-keymap('n', '<C-Up>', ':resize -2<CR>', opts)
-keymap('n', '<C-Down>', ':resize +2<CR>', opts)
-keymap('n', '<C-Left>', ':vertical resize -2<CR>', opts)
-keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts)
+keymap('n', '<C-A-k>', ':resize -2<CR>', opts)
+keymap('n', '<C-A-j>', ':resize +2<CR>', opts)
+keymap('n', '<C-A-h>', ':vertical resize -2<CR>', opts)
+keymap('n', '<C-A-l>', ':vertical resize +2<CR>', opts)
 
 -- Navigate buffers
 keymap('n', '<S-l>', ':bnext<CR>', opts)

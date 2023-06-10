@@ -81,6 +81,8 @@ return lazy.setup({
     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
 
     'nvim-telescope/telescope.nvim',
+    'nanozuki/tabby.nvim',
+    'LukasPietzschmann/telescope-tabs',
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
