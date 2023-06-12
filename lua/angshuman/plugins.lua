@@ -104,4 +104,5 @@ return lazy.setup({
         build = ':Neorg sync-parsers',
         dependencies = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' },
     },
+    'dhruvasagar/vim-table-mode',
 })
