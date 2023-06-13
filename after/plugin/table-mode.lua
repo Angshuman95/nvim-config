@@ -13,3 +13,5 @@ inoreabbrev <expr> __
           \ <SID>isAtStartOfLine('__') ?
           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 ]])
+
+vim.g.table_mode_corner_corner = '+'
