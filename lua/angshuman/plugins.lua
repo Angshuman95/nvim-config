@@ -34,6 +34,7 @@ return lazy.setup({
     'windwp/nvim-ts-autotag',
     'nvim-lualine/lualine.nvim',
     'numToStr/Comment.nvim',
+    'terrortylor/nvim-comment',
     'JoosepAlviste/nvim-ts-context-commentstring',
     'nvim-tree/nvim-web-devicons',
     'nvim-tree/nvim-tree.lua',

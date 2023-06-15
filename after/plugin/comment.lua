@@ -22,3 +22,13 @@ comment.setup({
         })
     end,
 })
+
+local nvc_status_ok, nvim_comment = pcall(require, 'nvim_comment')
+if not nvc_status_ok then
+    return
+end
+
+nvim_comment.setup()
+
+vim.keymap.set('n', '<leader>/', ':CommentToggle<CR>')
+vim.keymap.set('v', '<leader>/', ':CommentToggle<CR>')
