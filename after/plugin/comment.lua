@@ -47,5 +47,5 @@ nvim_comment.setup({
     hook = nil,
 })
 
-vim.keymap.set('n', '<leader>/', ':CommentToggle<CR>')
+vim.keymap.set('n', '<leader>//', ':CommentToggle<CR>')
 vim.keymap.set('v', '<leader>/', ':CommentToggle<CR>')
