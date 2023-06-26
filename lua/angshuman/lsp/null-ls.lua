@@ -18,18 +18,25 @@ local function contains(list, x)
     return false
 end
 
-local tbl_doc_no_format = { 'cs' }
+--[[ local tbl_doc_no_format = { 'cs' } ]]
 
 null_ls.setup({
     debug = false,
-    on_attach = function(client, _)
-        if contains(tbl_doc_no_format, vim.bo.filetype) then
-            client.server_capabilities.documentFormattingProvider = false
-        end
-    end,
+    --[[ on_attach = function(client, _) ]]
+    --[[     if contains(tbl_doc_no_format, vim.bo.filetype) then ]]
+    --[[         client.server_capabilities.documentFormattingProvider = false ]]
+    --[[     end ]]
+    --[[ end, ]]
     sources = {
-        formatting.clang_format,
-        formatting.astyle,
+        formatting.clang_format.with({
+            filetypes = {
+                'c',
+                'cpp',
+                'cuda',
+                'proto',
+            },
+        }),
+        formatting.csharpier,
         formatting.prettier.with({
             extra_args = { '--single-quote', '--jsx-single-quote' },
         }),
@@ -39,7 +46,7 @@ null_ls.setup({
         formatting.stylua,
 
         diagnostics.cpplint,
-        --[[ diagnostics.eslint ]]
+        diagnostics.eslint,
         diagnostics.flake8,
         diagnostics.write_good.with({ filetypes = { 'markdown', 'text' } }),
 
