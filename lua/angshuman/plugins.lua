@@ -43,7 +43,8 @@ return lazy.setup({
     'numToStr/Navigator.nvim',
     'lukas-reineke/indent-blankline.nvim',
     'norcalli/nvim-colorizer.lua',
-    'ggandor/leap.nvim',
+    { 'ggandor/leap.nvim',     dependencies = 'tpope/vim-repeat' },
+    'ggandor/flit.nvim',
     {
         'utilyre/barbecue.nvim',
         version = '*',
@@ -54,12 +55,12 @@ return lazy.setup({
     },
     'luukvbaal/statuscol.nvim',
     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
-    { 'stevearc/oil.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
+    { 'stevearc/oil.nvim',     dependencies = 'nvim-tree/nvim-web-devicons' },
     'mbbill/undotree',
 
     'navarasu/onedark.nvim',
     'folke/tokyonight.nvim',
-    { 'catppuccin/nvim', name = 'catppuccin' },
+    { 'catppuccin/nvim',    name = 'catppuccin' },
 
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-buffer',
