@@ -28,7 +28,7 @@ vim.fn.sign_define(
 )
 vim.fn.sign_define(
     'DapStopped',
-    { text = '', texthl = '', linehl = '', numhl = '' }
+    { text = '', texthl = '', linehl = '', numhl = '' }
 )
 vim.fn.sign_define(
     'DapBreakpointRejected',
