@@ -22,7 +22,7 @@ dap.configurations.cpp = {
             )
         end,
         cwd = '${workspaceFolder}',
-        stopOnEntry = true,
+        stopOnEntry = false,
         args = {},
 
         -- 💀
