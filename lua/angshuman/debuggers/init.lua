@@ -22,9 +22,18 @@ require('angshuman.debuggers.lldb')
 require('angshuman.debuggers.node2')
 require('angshuman.debuggers.python')
 
-vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '', texthl = '', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define(
+    'DapBreakpoint',
+    { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' }
+)
+vim.fn.sign_define(
+    'DapStopped',
+    { text = '', texthl = '', linehl = '', numhl = '' }
+)
+vim.fn.sign_define(
+    'DapBreakpointRejected',
+    { text = '', texthl = '', linehl = '', numhl = '' }
+)
 
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -41,7 +50,12 @@ keymap('n', '<leader>du', '<cmd>lua require"dapui".toggle()<cr>', opts)
 keymap('n', '<leader>dn', '<cmd>lua require"dap".run_to_cursor()<cr>', opts)
 keymap('n', '<leader>dR', '<cmd>lua require"dap".clear_breakpoints()<cr>', opts)
 keymap('n', '<leader>da', '<cmd>lua require"debugHelper".attach()<cr>', opts)
-keymap('n', '<leader>dA', '<cmd>lua require"debugHelper".attachToRemote()<cr>', opts)
+keymap(
+    'n',
+    '<leader>dA',
+    '<cmd>lua require"debugHelper".attachToRemote()<cr>',
+    opts
+)
 keymap('n', '<leader>di', '<cmd>lua require"dap.ui.widgets".hover()<cr>', opts)
 
 dap.listeners.after.event_initialized['dapui_config'] = function()

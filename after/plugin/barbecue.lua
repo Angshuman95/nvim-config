@@ -7,7 +7,7 @@ local tokyonight_ok, _ = pcall(require, 'tokyonight')
 
 if tokyonight_ok then
     barbecue.setup({
-        theme = 'tokyonight',
+        theme = 'catppuccin-mocha',
     })
 
     return

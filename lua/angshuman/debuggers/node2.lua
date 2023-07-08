@@ -29,5 +29,5 @@ dap.configurations.javascript = {
         type = 'node2',
         request = 'attach',
         processId = require('dap.utils').pick_process,
-    }
+    },
 }
