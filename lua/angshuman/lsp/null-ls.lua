@@ -7,7 +7,6 @@ end
 local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
 
 local function contains(list, x)
     for _, v in pairs(list) do
@@ -49,7 +48,5 @@ null_ls.setup({
         diagnostics.eslint,
         diagnostics.flake8,
         diagnostics.write_good.with({ filetypes = { 'markdown', 'text' } }),
-
-        code_actions.gitsigns,
     },
 })
