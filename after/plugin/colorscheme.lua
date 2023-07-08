@@ -151,7 +151,7 @@ if catppuccin_ok and colorscheme == 'catppuccin' then
         },
         indent_blankline = {
             enabled = true,
-            colored_indent_levels = false,
+            colored_indent_levels = true,
         },
     })
 
