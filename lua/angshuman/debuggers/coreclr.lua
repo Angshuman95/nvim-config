@@ -3,6 +3,7 @@ if not dap_status_ok then
     return
 end
 
+-- netcoredbg for Darwin M1 compiled on Jul 9, 2023
 dap.adapters.coreclr = {
     type = 'executable',
     command = 'netcoredbg',
