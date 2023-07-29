@@ -32,10 +32,8 @@ function CodeRunner()
     local ft = vim.bo.filetype
 
     if ft == 'python' then
-        print('Hello')
         vim.api.nvim_set_keymap('n', '<leader>c', ':!clear; python3 %<CR>', {})
     elseif ft == 'cpp' then
-        print('Hello')
         vim.api.nvim_set_keymap(
             'n',
             '<leader>c',
