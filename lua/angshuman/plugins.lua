@@ -43,7 +43,7 @@ return lazy.setup({
     'numToStr/Navigator.nvim',
     'lukas-reineke/indent-blankline.nvim',
     'norcalli/nvim-colorizer.lua',
-    { 'ggandor/leap.nvim',     dependencies = 'tpope/vim-repeat' },
+    { 'ggandor/leap.nvim', dependencies = 'tpope/vim-repeat' },
     'ggandor/flit.nvim',
     {
         'utilyre/barbecue.nvim',
@@ -55,12 +55,12 @@ return lazy.setup({
     },
     'luukvbaal/statuscol.nvim',
     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
-    { 'stevearc/oil.nvim',     dependencies = 'nvim-tree/nvim-web-devicons' },
+    { 'stevearc/oil.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
     'mbbill/undotree',
 
     'navarasu/onedark.nvim',
     'folke/tokyonight.nvim',
-    { 'catppuccin/nvim',    name = 'catppuccin' },
+    { 'catppuccin/nvim', name = 'catppuccin' },
 
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-buffer',
@@ -106,6 +106,9 @@ return lazy.setup({
     {
         'nvim-neorg/neorg',
         build = ':Neorg sync-parsers',
+        -- Issue with commit 5706f - neorg telescope was not updated to handle
+        -- this change
+        commit = 'e76f0cb6b3ae5e990052343ebb73a5c8d8cac783',
         dependencies = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' },
     },
     'dhruvasagar/vim-table-mode',
