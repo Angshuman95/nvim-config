@@ -30,7 +30,7 @@ neorg.setup({
 -- For quick reference about neorg
 --[[ https://github.com/nvim-neorg/neorg/blob/main/doc/neorg.norg ]]
 
-local neorg_callbacks = require('neorg.callbacks')
+local neorg_callbacks = require('neorg.core.callbacks')
 
 neorg_callbacks.on_event(
     'core.keybinds.events.enable_keybinds',

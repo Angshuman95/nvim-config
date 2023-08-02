@@ -106,10 +106,10 @@ return lazy.setup({
     {
         'nvim-neorg/neorg',
         build = ':Neorg sync-parsers',
-        -- Issue with commit 5706f - neorg telescope was not updated to handle
-        -- this change
-        commit = 'e76f0cb6b3ae5e990052343ebb73a5c8d8cac783',
-        dependencies = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' },
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-neorg/neorg-telescope',
+        },
     },
     'dhruvasagar/vim-table-mode',
 })
