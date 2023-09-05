@@ -5,9 +5,9 @@ end
 
 neorg.setup({
     load = {
-        ['core.defaults'] = {},  -- Loads default behaviour
+        ['core.defaults'] = {}, -- Loads default behaviour
         ['core.concealer'] = {}, -- Adds pretty icons to your documents
-        ['core.dirman'] = {      -- Manages Neorg workspaces
+        ['core.dirman'] = { -- Manages Neorg workspaces
             config = {
                 workspaces = {
                     main = '~/Documents/personal-notes',
@@ -38,7 +38,7 @@ neorg_callbacks.on_event(
         -- Map all the below keybinds only when the "norg" mode is active
         keybinds.map_event_to_mode('norg', {
             n = { -- Bind keys in normal mode
-                { '<leader>f',  'core.integrations.telescope.find_norg_files' },
+                { '<leader>f', 'core.integrations.telescope.find_norg_files' },
                 { '<leader>fl', 'core.integrations.telescope.find_linkable' },
                 { '<leader>fh', 'core.integrations.telescope.search_headings' },
                 { '<leader>il', 'core.integrations.telescope.insert_link' },
