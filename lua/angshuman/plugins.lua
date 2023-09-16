@@ -82,6 +82,7 @@ return lazy.setup({
     'jose-elias-alvarez/null-ls.nvim',
     'kevinhwang91/nvim-bqf',
     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
+    'github/copilot.vim',
 
     'nvim-telescope/telescope.nvim',
     'nanozuki/tabby.nvim',
