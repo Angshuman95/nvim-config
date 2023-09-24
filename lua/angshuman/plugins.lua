@@ -57,6 +57,8 @@ return lazy.setup({
     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
     { 'stevearc/oil.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
     'mbbill/undotree',
+    'chentoast/marks.nvim',
+    'folke/todo-comments.nvim',
 
     'navarasu/onedark.nvim',
     'folke/tokyonight.nvim',

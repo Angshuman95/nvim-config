@@ -78,6 +78,7 @@ keymap('n', '<leader>sf', ':Telescope current_buffer_fuzzy_find<CR>', no_opt)
 keymap('n', '<leader>sr', ':Telescope oldfiles<CR>', no_opt)
 keymap('n', '<leader>st', ':Telescope live_grep<CR>', no_opt)
 keymap('n', '<leader>ss', ':Telescope lsp_document_symbols<CR>', no_opt)
+keymap('n', '<leader>sm', ':Telescope marks<CR>', no_opt)
 keymap(
     'n',
     '<leader>sS',
