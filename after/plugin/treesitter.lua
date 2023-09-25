@@ -3,19 +3,26 @@ if not status_ok then
     return
 end
 
-local ts_rainbow_config = {}
-local ts_rainbow_ok, ts_rainbow = pcall(require, 'ts-rainbow')
-if ts_rainbow_ok then
-    ts_rainbow_config = {
-        enable = true,
-        -- disable = { 'jsx', 'cpp' },
-        -- Which query to use for finding delimiters
-        query = {
-            'rainbow-parens',
-            html = 'rainbow-tags',
+local rainbow_delim_ok, rainbow_delim = pcall(require, 'rainbow-delimiters')
+if rainbow_delim_ok then
+    vim.g.rainbow_delim = {
+        strategy = {
+            [''] = rainbow_delim.strategy['global'],
+            vim = rainbow_delim.strategy['local'],
         },
-        -- Highlight the entire buffer all at once
-        strategy = ts_rainbow.strategy.global,
+        query = {
+            [''] = 'rainbow-delimiters',
+            lua = 'rainbow-blocks',
+        },
+        highlight = {
+            'RainbowDelimiterRed',
+            'RainbowDelimiterYellow',
+            'RainbowDelimiterBlue',
+            'RainbowDelimiterOrange',
+            'RainbowDelimiterGreen',
+            'RainbowDelimiterViolet',
+            'RainbowDelimiterCyan',
+        },
     }
 end
 
@@ -30,7 +37,6 @@ configs.setup({
         enable = true,
     },
     indent = { enable = true, disable = { '', '' } },
-    rainbow = ts_rainbow_config,
     context_commentstring = {
         enable = true,
         enable_autocmd = true,

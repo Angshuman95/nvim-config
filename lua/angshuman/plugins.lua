@@ -93,7 +93,7 @@ return lazy.setup({
     },
     'nvim-treesitter/nvim-treesitter-context',
 
-    'HiPhish/nvim-ts-rainbow2',
+    'hiphish/rainbow-delimiters.nvim',
 
     'lewis6991/gitsigns.nvim',
     'tpope/vim-fugitive',
