@@ -78,7 +78,7 @@ return lazy.setup({
 
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     'kevinhwang91/nvim-bqf',
     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
     'github/copilot.vim',
