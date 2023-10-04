@@ -21,6 +21,7 @@ local servers = {
     'html',
     'lua_ls',
     'omnisharp',
+    'powershell_es',
     'pyright',
     'rust_analyzer',
     'tsserver',
