@@ -81,12 +81,6 @@ return lazy.setup({
     'nvimtools/none-ls.nvim',
     'kevinhwang91/nvim-bqf',
     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
-    {
-        'j-hui/fidget.nvim',
-        tag = 'legacy',
-        event = 'LspAttach',
-        opts = {},
-    },
     'github/copilot.vim',
 
     'nvim-telescope/telescope.nvim',
