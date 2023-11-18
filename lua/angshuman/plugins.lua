@@ -59,6 +59,7 @@ return lazy.setup({
     'mbbill/undotree',
     'chentoast/marks.nvim',
     'folke/todo-comments.nvim',
+    'nvim-pack/nvim-spectre',
 
     'navarasu/onedark.nvim',
     'folke/tokyonight.nvim',
