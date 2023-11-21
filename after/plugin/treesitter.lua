@@ -37,10 +37,6 @@ configs.setup({
         enable = true,
     },
     indent = { enable = true, disable = { '', '' } },
-    context_commentstring = {
-        enable = true,
-        enable_autocmd = true,
-    },
     incremental_selection = {
         enable = true,
         keymaps = {
