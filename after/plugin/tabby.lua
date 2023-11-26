@@ -28,13 +28,13 @@ else
     }
 end
 
-local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+-- local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
 
 tabby_tabline.set(function(line)
     return {
         {
             line.sep('', theme.head, theme.fill),
-            { cwd, hl = theme.head },
+            { '  ' , hl = theme.head },
             line.sep('', theme.head, theme.fill),
         },
         line.tabs().foreach(function(tab)
