@@ -49,8 +49,9 @@ keymap('n', '<C-A-h>', ':vertical resize -2<CR>', opts)
 keymap('n', '<C-A-l>', ':vertical resize +2<CR>', opts)
 
 -- Navigate buffers
-keymap('n', '<S-l>', ':bnext<CR>', opts)
-keymap('n', '<S-h>', ':bprevious<CR>', opts)
+keymap('n', '<leader>n', ':bnext<CR>', opts)
+keymap('n', '<leader>p', ':bprevious<CR>', opts)
+keymap('n', '<leader>d', ':bdelete<CR>', opts)
 
 -- Move text up and down
 keymap('n', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
@@ -104,7 +105,7 @@ keymap(
 -- Others
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', no_opt)
 keymap('n', '<leader>lf', ':lua vim.lsp.buf.format()<CR>', opt_noremap)
-keymap('n', '<leader>ps', ':Lazy sync<CR>', opt_noremap)
+keymap('n', '<leader>ls', ':Lazy sync<CR>', opt_noremap)
 
 -- Insert --
 -- Press jk fast to exit insert mode
