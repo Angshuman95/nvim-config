@@ -144,7 +144,9 @@ if catppuccin_ok and colorscheme == 'catppuccin' then
             cmp = true,
             gitsigns = true,
             nvimtree = true,
-            telescope = true,
+            telescope = {
+                enabled = true,
+            },
             leap = true,
             lsp_trouble = true,
             treesitter = true,

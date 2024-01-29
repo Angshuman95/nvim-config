@@ -7,6 +7,7 @@ telescope.setup({
     defaults = {
         prompt_prefix = ' ',
         selection_caret = ' ',
+        winblend = 0,
         path_display = { 'truncate' },
         layout_config = { prompt_position = 'top' },
         sorting_strategy = 'ascending',

@@ -99,6 +99,7 @@ return lazy.setup({
     'lewis6991/gitsigns.nvim',
     'tpope/vim-fugitive',
     { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
+    'rest-nvim/rest.nvim',
 
     'mfussenegger/nvim-dap',
     'theHamsta/nvim-dap-virtual-text',
