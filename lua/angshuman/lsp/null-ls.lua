@@ -40,6 +40,8 @@ null_ls.setup({
             extra_args = { '--single-quote', '--jsx-single-quote' },
         }),
         formatting.stylua,
+        formatting.isort,
+        formatting.black.with({ extra_args = { '--fast' } }),
 
         diagnostics.cppcheck,
         diagnostics.pylint,
