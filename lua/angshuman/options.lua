@@ -97,7 +97,8 @@ for k, v in pairs(options) do
 end
 
 -- colorColumn
-vim.cmd([[let &colorcolumn="80,".join(range(120,999),",")]])
+-- Handled by smartcolumn
+-- vim.cmd([[let &colorcolumn="80,".join(range(120,999),",")]])
 
 -- Neovide Settings
 if vim.g.neovide then

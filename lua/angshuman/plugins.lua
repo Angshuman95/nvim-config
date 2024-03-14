@@ -60,6 +60,7 @@ return lazy.setup({
     'chentoast/marks.nvim',
     'folke/todo-comments.nvim',
     'nvim-pack/nvim-spectre',
+    { 'm4xshen/smartcolumn.nvim' },
 
     'navarasu/onedark.nvim',
     'folke/tokyonight.nvim',
@@ -83,6 +84,11 @@ return lazy.setup({
     'kevinhwang91/nvim-bqf',
     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
     'github/copilot.vim',
+    {
+        'dgagn/diagflow.nvim',
+        event = 'LspAttach',
+        opts = {},
+    },
 
     'nvim-telescope/telescope.nvim',
     'nanozuki/tabby.nvim',
