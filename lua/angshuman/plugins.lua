@@ -105,22 +105,28 @@ return lazy.setup({
     'lewis6991/gitsigns.nvim',
     'tpope/vim-fugitive',
     { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
-    {
-        'rest-nvim/rest.nvim',
-        commit = '91badd46c60df6bd9800c809056af2d80d33da4c',
-    },
 
     'mfussenegger/nvim-dap',
     'theHamsta/nvim-dap-virtual-text',
     'rcarriga/nvim-dap-ui',
 
     {
+        'vhyrro/luarocks.nvim',
+        priority = 1000, -- We'd like this plugin to load first out of the rest
+        config = true, -- This automatically runs setup
+    },
+    {
+        'rest-nvim/rest.nvim',
+        ft = 'http',
+        dependencies = { 'vhyrro/luarocks.nvim' },
+    },
+    {
         'nvim-neorg/neorg',
-        build = ':Neorg sync-parsers',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-neorg/neorg-telescope',
-        },
+            'vhyrro/luarocks.nvim',
+        }
     },
     'dhruvasagar/vim-table-mode',
 })
