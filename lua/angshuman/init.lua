@@ -1,6 +1,7 @@
 require('angshuman.options')
-require('angshuman.plugins')
 require('angshuman.keymaps')
+require('angshuman.lazy')
 require('angshuman.autocmds')
 require('angshuman.lsp')
 require('angshuman.debuggers')
+require('angshuman.colorscheme')
