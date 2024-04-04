@@ -34,23 +34,7 @@ vim.keymap.set(
 )
 
 return lazy.setup('plugins')
---
---     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
---
---     'hrsh7th/nvim-cmp',
---     'hrsh7th/cmp-buffer',
---     'hrsh7th/cmp-path',
---     'saadparwaiz1/cmp_luasnip',
---     'hrsh7th/cmp-nvim-lsp',
---     'hrsh7th/cmp-nvim-lua',
---
---     'L3MON4D3/LuaSnip',
---     'rafamadriz/friendly-snippets',
---
---     'williamboman/mason.nvim',
---
---     'williamboman/mason-lspconfig.nvim',
---     'neovim/nvim-lspconfig',
+
 --     'nvimtools/none-ls.nvim',
 --     'kevinhwang91/nvim-bqf',
 --     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
@@ -60,9 +44,7 @@ return lazy.setup('plugins')
 --         opts = {},
 --     },
 --
---
 --     'mfussenegger/nvim-dap',
 --     'theHamsta/nvim-dap-virtual-text',
 --     'rcarriga/nvim-dap-ui',
---
 -- })

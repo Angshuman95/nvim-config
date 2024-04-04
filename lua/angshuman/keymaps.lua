@@ -64,10 +64,6 @@ map('n', '-', 'g_', opts)
 map('n', '<C-n>', ':set invrelativenumber<CR>', no_opt)
 map('n', '<leader>h', '<Esc>:nohlsearch<CR><Esc>', opts)
 
--- Plugins
--- Others
-map('n', '<leader>lf', ':lua vim.lsp.buf.format()<CR>', opt_noremap)
-
 -- Insert --
 -- Press jk fast to exit insert mode
 -- Using better Escape
@@ -89,9 +85,6 @@ map('v', 'p', '"_dP', opts)
 
 -- Go To end of line
 map('v', '-', 'g_', opts)
-
--- Plugins
-map('v', '<leader>lf', ':lua vim.lsp.buf.range_formatting()<CR>', opt_noremap)
 
 -- Visual Block --
 -- Move text up and down
