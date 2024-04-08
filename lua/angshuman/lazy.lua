@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 --Remap space as leader key
-vim.api.nvim_set_keymap(
+vim.keymap.set(
     '',
     '<Space>',
     '<Nop>',
@@ -21,11 +21,6 @@ vim.api.nvim_set_keymap(
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local status_ok, lazy = pcall(require, 'lazy')
-if not status_ok then
-    return
-end
-
 vim.keymap.set(
     'n',
     '<leader>ls',
@@ -33,4 +28,4 @@ vim.keymap.set(
     { noremap = true, silent = true }
 )
 
-return lazy.setup('plugins')
+return require('lazy').setup('plugins')

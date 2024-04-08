@@ -1,8 +1,9 @@
 return {
     'nvim-neorg/neorg',
     dependencies = {
-        'nvim-neorg/neorg-telescope',
-        'vhyrro/luarocks.nvim',
+        { 'nvim-lua/plenary.nvim' },
+        { 'nvim-neorg/neorg-telescope' },
+        { 'vhyrro/luarocks.nvim' },
     },
     cmd = 'Neorg',
     config = function()
@@ -38,10 +39,6 @@ return {
                 -- Map all the below keybinds only when the "norg" mode is active
                 keybinds.map_event_to_mode('norg', {
                     n = { -- Bind keys in normal mode
-                        {
-                            '<leader>f',
-                            'core.integrations.telescope.find_norg_files',
-                        },
                         {
                             '<leader>fl',
                             'core.integrations.telescope.find_linkable',
