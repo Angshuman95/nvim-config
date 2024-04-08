@@ -30,12 +30,5 @@ return {
             use_default_keymaps = false,
         })
     end,
-    keys = {
-        {
-            'n',
-            '\\',
-            ':Oil<CR>',
-            { noremap = true, silent = true, desc = 'Open parent directory' },
-        },
-    },
+    keys = { { '\\', ':Oil<CR>' } },
 }

@@ -9,23 +9,6 @@ local function add_custom_lsp_settings(server_name, opts)
 end
 
 return {
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-        lazy = true,
-        config = false,
-        init = function()
-            -- Disable automatic setup, we are doing it manually
-            vim.g.lsp_zero_extend_cmp = 0
-            vim.g.lsp_zero_extend_lspconfig = 0
-        end,
-    },
-    {
-        'williamboman/mason.nvim',
-        cmd = 'Mason',
-        config = true,
-    },
-
     -- Autocompletion
     {
         'hrsh7th/cmp-buffer',
@@ -65,14 +48,10 @@ return {
         },
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
-            local lsp_zero = require('lsp-zero')
-            lsp_zero.extend_cmp()
-
             local cmp = require('cmp')
             local luasnip = require('luasnip')
 
             cmp.setup({
-                formatting = lsp_zero.cmp_format({ details = true }),
                 mapping = {
                     ['<C-k>'] = cmp.mapping.select_prev_item(),
                     ['<C-j>'] = cmp.mapping.select_next_item(),
@@ -142,6 +121,11 @@ return {
 
     -- LSP
     {
+        'williamboman/mason.nvim',
+        config = true,
+        cmd = 'Mason',
+    },
+    {
         'neovim/nvim-lspconfig',
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
         event = { 'BufReadPre', 'BufNewFile' },
@@ -150,63 +134,101 @@ return {
             { 'williamboman/mason-lspconfig.nvim' },
         },
         config = function()
-            -- This is where all the LSP shenanigans will live
-            local lsp_zero = require('lsp-zero')
-            lsp_zero.extend_lspconfig()
+            vim.api.nvim_create_autocmd('LspAttach', {
+                desc = 'LSP actions',
+                callback = function(event)
+                    local map = vim.keymap.set
+                    local opts =
+                        { buffer = event.buf, silent = true, noremap = true }
+                    map(
+                        'n',
+                        'gD',
+                        '<cmd>lua vim.lsp.buf.declaration()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        'gd',
+                        '<cmd>lua vim.lsp.buf.definition()<CR>',
+                        opts
+                    )
+                    map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+                    map(
+                        'n',
+                        '<leader>k',
+                        '<cmd>lua vim.diagnostic.open_float()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        'gi',
+                        '<cmd>lua vim.lsp.buf.implementation()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        'gk',
+                        '<cmd>lua vim.lsp.buf.signature_help()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        '<leader>rn',
+                        '<cmd>lua vim.lsp.buf.rename()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        'gr',
+                        '<cmd>lua vim.lsp.buf.references()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        '<leader>ca',
+                        '<cmd>lua vim.lsp.buf.code_action()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        '[d',
+                        '<cmd>lua vim.diagnostic.goto_prev()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        ']d',
+                        '<cmd>lua vim.diagnostic.goto_next()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        '<leader>q',
+                        '<cmd>lua vim.diagnostic.setloclist()<CR>',
+                        opts
+                    )
+                    map(
+                        'v',
+                        '<leader>lf',
+                        ':lua vim.lsp.buf.range_formatting()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        '<leader>lf',
+                        ':lua vim.lsp.buf.format()<CR>',
+                        opts
+                    )
+                end,
+            })
+            local lsp_capabilities =
+                require('cmp_nvim_lsp').default_capabilities()
 
-            lsp_zero.on_attach(function(_, bufnr)
-                local map = vim.keymap.set
-                local opts = { buffer = bufnr, silent = true, noremap = true }
-                map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-                map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-                map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-                map(
-                    'n',
-                    '<leader>k',
-                    '<cmd>lua vim.diagnostic.open_float()<CR>',
-                    opts
-                )
-                map(
-                    'n',
-                    'gi',
-                    '<cmd>lua vim.lsp.buf.implementation()<CR>',
-                    opts
-                )
-                map(
-                    'n',
-                    'gk',
-                    '<cmd>lua vim.lsp.buf.signature_help()<CR>',
-                    opts
-                )
-                map(
-                    'n',
-                    '<leader>rn',
-                    '<cmd>lua vim.lsp.buf.rename()<CR>',
-                    opts
-                )
-                map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-                map(
-                    'n',
-                    '<leader>ca',
-                    '<cmd>lua vim.lsp.buf.code_action()<CR>',
-                    opts
-                )
-                map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-                map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-                map(
-                    'n',
-                    '<leader>q',
-                    '<cmd>lua vim.diagnostic.setloclist()<CR>',
-                    opts
-                )
-                map(
-                    'v',
-                    '<leader>lf',
-                    ':lua vim.lsp.buf.range_formatting()<CR>',
-                    opts
-                )
-                map('n', '<leader>lf', ':lua vim.lsp.buf.format()<CR>', opts)
-            end)
+            local default_setup = function(server)
+                require('lspconfig')[server].setup({
+                    capabilities = lsp_capabilities,
+                })
+            end
 
             require('mason-lspconfig').setup({
                 ensure_installed = {
@@ -226,7 +248,7 @@ return {
                     'tsserver',
                 },
                 handlers = {
-                    lsp_zero.default_setup,
+                    default_setup,
                     clangd = function()
                         local opts = add_custom_lsp_settings('clangd', {})
                         require('lspconfig').clangd.setup(opts)
@@ -258,7 +280,6 @@ return {
         event = 'QuickFixCmdPost',
     },
     {
-
         'dgagn/diagflow.nvim',
         event = 'LspAttach',
         config = true,

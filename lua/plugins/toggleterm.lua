@@ -1,7 +1,7 @@
 return {
     'akinsho/toggleterm.nvim',
     version = '*',
-    event = 'VeryLazy',
+    keys = { '<c-\\>' },
     config = function()
         require('toggleterm').setup({
             size = 20,

@@ -15,4 +15,5 @@ return {
         keymap({ 'n', 't' }, '<C-k>', ':NavigatorUp<cr>', opts)
         keymap({ 'n', 't' }, '<C-l>', ':NavigatorRight<cr>', opts)
     end,
+    event = 'VimEnter',
 }

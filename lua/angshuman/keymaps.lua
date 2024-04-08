@@ -61,8 +61,8 @@ map('n', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
 map('n', '-', 'g_', opts)
 
 -- Others
-map('n', '<C-n>', ':set invrelativenumber<CR>', no_opt)
-map('n', '<leader>h', '<Esc>:nohlsearch<CR><Esc>', opts)
+map('n', '<C-n>', ':set invrelativenumber<CR>', opts)
+map('n', '<Esc><Esc>', ':nohlsearch<CR>', opts)
 
 -- Insert --
 -- Press jk fast to exit insert mode
