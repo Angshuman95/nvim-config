@@ -34,17 +34,3 @@ vim.keymap.set(
 )
 
 return lazy.setup('plugins')
-
---     'nvimtools/none-ls.nvim',
---     'kevinhwang91/nvim-bqf',
---     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
---     {
---         'dgagn/diagflow.nvim',
---         event = 'LspAttach',
---         opts = {},
---     },
---
---     'mfussenegger/nvim-dap',
---     'theHamsta/nvim-dap-virtual-text',
---     'rcarriga/nvim-dap-ui',
--- })

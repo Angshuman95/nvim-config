@@ -3,11 +3,14 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
         require('spectre').setup()
-        vim.keymap.set(
+    end,
+    cmd = 'Spectre',
+    keys = {
+        {
             'n',
             '<Leader>S',
             '<cmd>Spectre<CR>',
-            { noremap = true, silent = true }
-        )
-    end,
+            { noremap = true, silent = true },
+        },
+    },
 }

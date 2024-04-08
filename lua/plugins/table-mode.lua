@@ -1,6 +1,6 @@
 return {
     'dhruvasagar/vim-table-mode',
-    event = 'VeryLazy',
+    cmd = { 'TableModeEnable', 'TableModeToggle' },
     config = function()
         vim.cmd([[
             function! s:isAtStartOfLine(mapping)

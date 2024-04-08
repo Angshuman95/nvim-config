@@ -5,4 +5,5 @@ return {
             mapping = { 'jk' },
         })
     end,
+    cmd = 'InsertEnter'
 }

@@ -4,6 +4,7 @@ return {
         'nvim-neorg/neorg-telescope',
         'vhyrro/luarocks.nvim',
     },
+    cmd = 'Neorg',
     config = function()
         require('neorg').setup({
             load = {

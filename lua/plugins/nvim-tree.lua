@@ -57,12 +57,14 @@ return {
                 timeout = 400,
             },
         })
-
-        vim.keymap.set(
+    end,
+    cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
+    keys = {
+        {
             'n',
             '<leader>e',
-            ':NvimTreeToggle<CR>',
-            { noremap = true, silent = true }
-        )
-    end,
+            '<cmd>NvimTreeToggle<CR>',
+            { noremap = true, silent = true },
+        },
+    },
 }

@@ -5,6 +5,7 @@ return {
         config = function()
             require('leap').add_default_mappings()
         end,
+        event = { 'BufReadPre', 'BufNewFile' }
     },
     {
         'ggandor/flit.nvim',
@@ -15,5 +16,6 @@ return {
                 multiline = true,
             })
         end,
+        event = { 'BufReadPre', 'BufNewFile' }
     },
 }

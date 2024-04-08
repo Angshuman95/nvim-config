@@ -8,6 +8,8 @@ return {
             map('n', '<leader>gg', ':Git<CR>', opts)
             map('n', '<leader>gd', ':Gvdiffsplit<CR>', opts)
         end,
+        cmd = 'Git',
+        keys = { '<leader>gg', '<leader>gd' }
     },
     {
         'lewis6991/gitsigns.nvim',
@@ -25,9 +27,10 @@ return {
                 opts
             )
         end,
+        event = { 'BufReadPre', 'BufNewFile' }
     },
     {
         'sindrets/diffview.nvim',
-        event = 'VeryLazy'
+        cmd = 'DiffviewOpen',
     },
 }

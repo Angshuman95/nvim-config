@@ -28,4 +28,5 @@ return {
             indent = { highlight = highlight, char = '│' },
         })
     end,
+    event = { 'BufReadPre', 'BufNewFile' },
 }

@@ -7,4 +7,5 @@ return {
     config = function()
         require('barbecue').setup()
     end,
+    event = { 'BufReadPre', 'BufNewFile' }
 }

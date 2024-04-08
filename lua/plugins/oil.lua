@@ -1,7 +1,7 @@
 return {
     'stevearc/oil.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    event = 'VeryLazy',
+    cmd = 'Oil',
     config = function()
         require('oil').setup({
             columns = {
@@ -29,10 +29,13 @@ return {
             },
             use_default_keymaps = false,
         })
-        vim.keymap.set('n', '\\', ':Oil<CR>', {
-            noremap = true,
-            silent = true,
-            desc = 'Open parent directory',
-        })
     end,
+    keys = {
+        {
+            'n',
+            '\\',
+            ':Oil<CR>',
+            { noremap = true, silent = true, desc = 'Open parent directory' },
+        },
+    },
 }

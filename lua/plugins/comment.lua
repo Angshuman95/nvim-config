@@ -26,6 +26,7 @@ return {
                 end,
             })
         end,
+        event = { 'BufReadPre', 'BufNewFile' }
     },
     {
         'terrortylor/nvim-comment',
@@ -36,6 +37,7 @@ return {
             vim.keymap.set('n', '<leader>//', ':CommentToggle<CR>')
             vim.keymap.set('v', '<leader>/', ':CommentToggle<CR>')
         end,
+        event = { 'BufReadPre', 'BufNewFile' }
     },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
@@ -43,5 +45,6 @@ return {
             require('ts_context_commentstring').setup()
             vim.g.skip_ts_context_commentstring_module = true
         end,
+        event = { 'BufReadPre', 'BufNewFile' }
     },
 }

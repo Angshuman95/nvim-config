@@ -43,4 +43,5 @@ return {
             { silent = true, noremap = true }
         )
     end,
+    cmd = 'TroubleToggle',
 }

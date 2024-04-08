@@ -45,4 +45,5 @@ return {
             lualine_z = { 'progress' },
         },
     },
+    event = { 'VimEnter' }
 }

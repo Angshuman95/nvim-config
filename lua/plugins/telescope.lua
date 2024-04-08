@@ -5,6 +5,8 @@ return {
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
+        cmd = 'Telescope',
+        keys = { '<leader>f' },
         config = function()
             require('telescope').setup({
                 defaults = {
@@ -57,5 +59,6 @@ return {
             )
         end,
         dependencies = { 'nvim-telescope/telescope.nvim' },
+        keys = { '<leader>lt' },
     },
 }

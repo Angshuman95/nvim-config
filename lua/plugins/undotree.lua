@@ -8,4 +8,5 @@ return {
             { noremap = true, silent = true }
         )
     end,
+    cmd = { 'UndotreeToggle', 'UndotreeShow' },
 }
