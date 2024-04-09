@@ -53,12 +53,12 @@ return {
             require('telescope-tabs').setup()
             map(
                 'n',
-                '<leader>lt',
+                '<leader>t',
                 ':lua require("telescope-tabs").list_tabs()<CR>',
                 opts
             )
         end,
         dependencies = { 'nvim-telescope/telescope.nvim' },
-        keys = { '<leader>lt' },
+        keys = { '<leader>t' },
     },
 }
