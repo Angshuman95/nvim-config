@@ -277,7 +277,7 @@ return {
     },
     {
         'kevinhwang91/nvim-bqf',
-        event = 'QuickFixCmdPost',
+        config = true,
     },
     {
         'dgagn/diagflow.nvim',

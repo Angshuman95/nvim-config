@@ -30,5 +30,5 @@ return {
             use_default_keymaps = false,
         })
     end,
-    keys = { { '\\', ':Oil<CR>' } },
+    keys = { { '\\', ':Oil<CR>', noremap = true, silent = true } },
 }

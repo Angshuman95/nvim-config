@@ -59,5 +59,12 @@ return {
         })
     end,
     cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
-    keys = { { '<leader>e', '<cmd>NvimTreeToggle<CR>' } },
+    keys = {
+        {
+            '<leader>e',
+            '<cmd>NvimTreeToggle<CR>',
+            noremap = true,
+            silent = true,
+        },
+    },
 }

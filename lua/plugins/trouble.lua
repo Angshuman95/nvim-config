@@ -5,13 +5,6 @@ return {
         require('trouble').setup({
             mode = 'document_diagnostics',
         })
-        -- Lua
-        vim.keymap.set(
-            'n',
-            '<leader>w',
-            '<cmd>TroubleToggle<cr>',
-            { silent = true, noremap = true }
-        )
         vim.keymap.set(
             'n',
             '<leader>ww',
@@ -44,4 +37,12 @@ return {
         )
     end,
     cmd = 'TroubleToggle',
+    keys = {
+        {
+            '<leader>w',
+            '<cmd>TroubleToggle<cr>',
+            silent = true,
+            noremap = true,
+        },
+    },
 }

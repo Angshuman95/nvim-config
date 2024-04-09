@@ -4,12 +4,21 @@ local map = vim.keymap.set
 return {
     {
         'tpope/vim-fugitive',
-        config = function()
-            map('n', '<leader>gg', ':Git<CR>', opts)
-            map('n', '<leader>gd', ':Gvdiffsplit<CR>', opts)
-        end,
         cmd = 'Git',
-        keys = { '<leader>gg', '<leader>gd' }
+        keys = {
+            {
+                '<leader>gg',
+                ':Git<CR>',
+                noremap = true,
+                silent = true
+            },
+            {
+                '<leader>gd',
+                ':Gvdiffsplit<CR>',
+                noremap = true,
+                silent = true
+            },
+        },
     },
     {
         'lewis6991/gitsigns.nvim',
@@ -27,7 +36,7 @@ return {
                 opts
             )
         end,
-        event = { 'BufReadPre', 'BufNewFile' }
+        event = { 'BufReadPre', 'BufNewFile' },
     },
     {
         'sindrets/diffview.nvim',

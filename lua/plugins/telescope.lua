@@ -6,7 +6,14 @@ return {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
         cmd = 'Telescope',
-        keys = { '<leader>f' },
+        keys = {
+            {
+                '<leader>f',
+                ':Telescope find_files<CR>',
+                silent = true,
+                noremap = true,
+            },
+        },
         config = function()
             require('telescope').setup({
                 defaults = {
@@ -19,7 +26,6 @@ return {
                 },
             })
 
-            map('n', '<leader>f', ':Telescope find_files<CR>', opts)
             map('n', '<leader>b', ':Telescope buffers<CR>', opts)
             map(
                 'n',
@@ -51,14 +57,13 @@ return {
         config = function()
             require('telescope').load_extension('telescope-tabs')
             require('telescope-tabs').setup()
-            map(
-                'n',
-                '<leader>t',
-                ':lua require("telescope-tabs").list_tabs()<CR>',
-                opts
-            )
         end,
         dependencies = { 'nvim-telescope/telescope.nvim' },
-        keys = { '<leader>t' },
+        keys = {
+            '<leader>t',
+            ':lua require("telescope-tabs").list_tabs()<CR>',
+            silent = true,
+            noremap = true,
+        },
     },
 }
