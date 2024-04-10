@@ -1,7 +1,11 @@
 return {
     'kevinhwang91/nvim-ufo',
     dependencies = 'kevinhwang91/promise-async',
-    event = { 'BufReadPre', 'BufNewFile' },
+    cmd = 'UfoEnable',
+    keys = {
+        { 'zR', '<cmd>lua require("ufo").openAllFolds()<CR>' },
+        { 'zM', '<cmd>lua require("ufo").closeAllFolds()<CR>' },
+    },
     config = function()
         local ufo = require('ufo')
 
@@ -9,10 +13,6 @@ return {
         vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
         vim.o.foldlevelstart = 99
         vim.o.foldenable = true
-
-        -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-        vim.keymap.set('n', 'zR', ufo.openAllFolds)
-        vim.keymap.set('n', 'zM', ufo.closeAllFolds)
 
         -- Use lsp by default
         local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
