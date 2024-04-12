@@ -37,7 +37,7 @@ return {
 
             configs.setup({
                 ensure_installed = 'all',
-                ignore_install = { '' },
+                ignore_install = { 'org' },
                 highlight = {
                     enable = true,
                     disable = { '' },
