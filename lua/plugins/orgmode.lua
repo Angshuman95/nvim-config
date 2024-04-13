@@ -1,11 +1,20 @@
 return {
     'nvim-orgmode/orgmode',
     ft = { 'org' },
+    dependencies = {
+        {
+            'akinsho/org-bullets.nvim',
+            config = true,
+        },
+        {
+            'lukas-reineke/headlines.nvim',
+            dependencies = 'nvim-treesitter/nvim-treesitter',
+            config = true,
+        },
+    },
     config = function()
-        -- Setup orgmode
         require('orgmode').setup({
-            org_agenda_files = '~/orgfiles/**/*',
-            org_default_notes_file = '~/orgfiles/refile.org',
+            org_agenda_files = '~/Documents/org-notes/**/*',
         })
     end,
 }
