@@ -14,6 +14,14 @@ return {
     },
     config = function()
         require('orgmode').setup({
+            org_todo_keywords = {
+                'TODO(t)',
+                'NEXT(n)',
+                'PROG(p)',
+                'INTR(i)',
+                '|',
+                'DONE(d)',
+            },
             org_agenda_files = '~/Documents/org-notes/**/*',
         })
     end,

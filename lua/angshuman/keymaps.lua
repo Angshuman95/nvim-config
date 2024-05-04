@@ -30,6 +30,9 @@ map('n', 'mdd', '"+dd', opt_noremap)
 map('n', 'zp', '"+p', no_opt)
 map('n', 'zP', '"+P', no_opt)
 
+-- Saving
+map('c', 'W', 'w', opt_noremap)
+
 -- Tabs
 map('n', '<leader>ta', ':$tabnew<CR>', opt_noremap)
 map('n', '<leader>t5', ':tabnew %<CR>', opt_noremap)
