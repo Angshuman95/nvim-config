@@ -12,12 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 --Remap space as leader key
-vim.keymap.set(
-    '',
-    '<Space>',
-    '<Nop>',
-    { noremap = true, silent = true }
-)
+vim.keymap.set('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
