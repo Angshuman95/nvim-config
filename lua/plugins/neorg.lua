@@ -26,6 +26,7 @@ return {
                     },
                 },
                 ['core.export'] = {},
+                ['core.ui.calendar'] = {},
                 ['core.integrations.nvim-cmp'] = {},
                 ['core.integrations.telescope'] = {},
             },
