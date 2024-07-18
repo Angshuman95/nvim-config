@@ -46,7 +46,7 @@ return {
             {
                 '<leader>/',
                 ':CommentToggle<CR>',
-                'v',
+                mode = 'v',
                 silent = true,
                 noremap = true,
             },
