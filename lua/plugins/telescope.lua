@@ -13,6 +13,18 @@ return {
                 silent = true,
                 noremap = true,
             },
+            {
+                '<leader>b',
+                ':Telescope buffers<CR>',
+                silent = true,
+                noremap = true,
+            },
+            {
+                '<leader>st',
+                ':Telescope live_grep<CR>',
+                silent = true,
+                noremap = true,
+            },
         },
         config = function()
             require('telescope').setup({
@@ -26,7 +38,6 @@ return {
                 },
             })
 
-            map('n', '<leader>b', ':Telescope buffers<CR>', opts)
             map(
                 'n',
                 '<leader>sd',
@@ -41,7 +52,6 @@ return {
                 opts
             )
             map('n', '<leader>sr', ':Telescope oldfiles<CR>', opts)
-            map('n', '<leader>st', ':Telescope live_grep<CR>', opts)
             map('n', '<leader>ss', ':Telescope lsp_document_symbols<CR>', opts)
             map('n', '<leader>sm', ':Telescope marks<CR>', opts)
             map(
