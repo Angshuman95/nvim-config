@@ -23,8 +23,11 @@ local map = vim.keymap.set
 --[[ map('n', '<C-l>', '<C-w>l', opts) ]]
 
 -- Clipboard
-map('n', 'mc', '"+y', opt_noremap)
-map('n', 'mcc', '"+yy', opt_noremap)
+-- Yank and move the cursor to the end of yanked text.
+map('n', 'y', 'y`]', opt_noremap)
+map('n', 'yy', 'yy`]', opt_noremap)
+map('n', 'mc', '"+y`]', opt_noremap)
+map('n', 'mcc', '"+yy`]', opt_noremap)
 map('n', 'md', '"+d', opt_noremap)
 map('n', 'mdd', '"+dd', opt_noremap)
 map('n', 'zp', '"+p', no_opt)
@@ -74,7 +77,9 @@ map('n', '<Esc><Esc>', ':nohlsearch<CR>', opts)
 
 -- Visual --
 -- Clipboard
-map('v', 'mc', '"+y', no_opt)
+-- Yank and move the cursor to the end of yanked text.
+map('v', 'y', 'y`]', opt_noremap)
+map('v', 'mc', '"+y`]', opt_noremap)
 map('v', 'md', '"+d', no_opt)
 
 -- Stay in indent mode
