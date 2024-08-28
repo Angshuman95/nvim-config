@@ -4,6 +4,7 @@ return {
     config = function()
         require('smartcolumn').setup({
             colorcolumn = { '80', '120' },
+            disabled_filetypes = { "help", "text" },
         })
     end,
 }
