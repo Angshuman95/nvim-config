@@ -134,7 +134,7 @@ return {
                     'powershell_es',
                     'pyright',
                     'rust_analyzer',
-                    'tsserver',
+                    'ts_ls',
                 },
                 handlers = {
                     default_setup,
