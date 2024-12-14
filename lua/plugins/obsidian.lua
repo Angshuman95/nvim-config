@@ -11,12 +11,16 @@ return {
         workspaces = {
             {
                 name = 'personal-notes',
-                path = '~/Documents/personal-notes',
+                path = '~/Developer/10-19-Learning/10-Notes/10_00-Personal-Notes/personal-notes',
             },
+            {
+                name = 'office-notes',
+                path = '~/Developer/10-19-Learning/10-Notes/10_01-Office-Notes/Notes-And-Files/10-19-Learning/10-Notes/10_00-Office-Notes'
+            }
         },
-        notes_subdir = 'Notes',
+        notes_subdir = 'notes',
         daily_notes = {
-            folder = 'Journal',
+            folder = 'journals',
             date_format = '%Y-%m-%d',
             alias_format = '%B %-d, %Y',
             default_tags = { 'daily-notes' },
@@ -27,7 +31,7 @@ return {
             min_chars = 2,
         },
         templates = {
-            folder = 'Templates',
+            folder = 'templates',
             date_format = '%Y-%m-%d',
             time_format = '%H:%M',
             substitutions = {},
