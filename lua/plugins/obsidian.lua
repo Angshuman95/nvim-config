@@ -11,7 +11,7 @@ return {
         workspaces = {
             {
                 name = 'personal-notes',
-                path = '~/Developer/10-19-Learning/10-Notes/10_00-Personal-Notes/personal-notes',
+                path = '~/Developer/notes_and_files/10-19-Learning/10-Notes/10_00-Personal-Notes/personal-notes',
             },
             {
                 name = 'office-notes',
