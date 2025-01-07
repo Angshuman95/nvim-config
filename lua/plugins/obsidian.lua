@@ -15,8 +15,8 @@ return {
             },
             {
                 name = 'office-notes',
-                path = '~/Developer/10-19-Learning/10-Notes/10_01-Office-Notes/Notes-And-Files/10-19-Learning/10-Notes/10_00-Office-Notes'
-            }
+                path = '~/Developer/notes_and_files/10-19-Learning/10-Notes/10_01-Office-Notes/Notes-And-Files/10-19-Learning/10-Notes/10_00-Office-Notes',
+            },
         },
         notes_subdir = 'notes',
         daily_notes = {
@@ -36,6 +36,6 @@ return {
             time_format = '%H:%M',
             substitutions = {},
         },
-        ui = { enable = false } -- using markdown.nvim
+        ui = { enable = false }, -- using markdown.nvim
     },
 }
