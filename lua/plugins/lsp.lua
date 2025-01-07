@@ -96,18 +96,6 @@ return {
                         '<cmd>lua vim.diagnostic.setloclist()<CR>',
                         opts
                     )
-                    map(
-                        'v',
-                        '<leader>lf',
-                        ':lua vim.lsp.buf.range_formatting()<CR>',
-                        opts
-                    )
-                    map(
-                        'n',
-                        '<leader>lf',
-                        ':lua vim.lsp.buf.format()<CR>',
-                        opts
-                    )
                 end,
             })
             local lsp_capabilities =
@@ -125,7 +113,6 @@ return {
                     'clangd',
                     'cssls',
                     'emmet_ls',
-                    'eslint',
                     'jdtls',
                     'jsonls',
                     'html',
@@ -172,40 +159,5 @@ return {
         'dgagn/diagflow.nvim',
         event = 'LspAttach',
         config = true,
-    },
-    {
-        'nvimtools/none-ls.nvim',
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            local null_ls = require('null-ls')
-            local formatting = null_ls.builtins.formatting
-            local diagnostics = null_ls.builtins.diagnostics
-            null_ls.setup({
-                debug = false,
-                sources = {
-                    formatting.clang_format.with({
-                        filetypes = {
-                            'c',
-                            'cpp',
-                            'cuda',
-                            'proto',
-                        },
-                    }),
-                    formatting.csharpier,
-                    formatting.prettier.with({
-                        extra_args = { '--single-quote', '--jsx-single-quote' },
-                    }),
-                    formatting.stylua,
-                    formatting.isort,
-                    formatting.black.with({ extra_args = { '--fast' } }),
-
-                    diagnostics.cppcheck,
-                    diagnostics.pylint,
-                    diagnostics.write_good.with({
-                        filetypes = { 'markdown', 'text' },
-                    }),
-                },
-            })
-        end,
     },
 }
