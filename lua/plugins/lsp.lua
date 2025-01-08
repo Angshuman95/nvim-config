@@ -28,7 +28,7 @@ return {
                 callback = function(event)
                     local map = vim.keymap.set
                     local opts =
-                        { buffer = event.buf, silent = true, noremap = true }
+                    { buffer = event.buf, silent = true, noremap = true }
                     map(
                         'n',
                         'gD',
@@ -96,6 +96,18 @@ return {
                         '<cmd>lua vim.diagnostic.setloclist()<CR>',
                         opts
                     )
+                    map(
+                        'v',
+                        '<leader>lf',
+                        ':lua vim.lsp.buf.range_formatting()<CR>',
+                        opts
+                    )
+                    map(
+                        'n',
+                        '<leader>lf',
+                        ':lua vim.lsp.buf.format()<CR>',
+                        opts
+                    )
                 end,
             })
             local lsp_capabilities =
@@ -113,6 +125,7 @@ return {
                     'clangd',
                     'cssls',
                     'emmet_ls',
+                    'eslint',
                     'jdtls',
                     'jsonls',
                     'html',
@@ -159,5 +172,64 @@ return {
         'dgagn/diagflow.nvim',
         event = 'LspAttach',
         config = true,
+    },
+    {
+        'nvimtools/none-ls.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
+        config = function()
+            local null_ls = require('null-ls')
+            local formatting = null_ls.builtins.formatting
+            local diagnostics = null_ls.builtins.diagnostics
+
+            local prettierOpts = {
+                command = vim.fn.has('win32')
+                    and vim.loop.os_homedir() .. '/AppData/Roaming/npm/prettier.cmd'
+                    or 'prettier',
+                extra_args = { '--single-quote', '--jsx-single-quote' },
+            }
+
+            -- Create an augroup for formatting
+            local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+            null_ls.setup({
+                debug = false,
+                sources = {
+                    formatting.clang_format.with({
+                        filetypes = {
+                            'c',
+                            'cpp',
+                        },
+                    }),
+                    formatting.csharpier,
+                    formatting.prettier.with(prettierOpts),
+                    formatting.stylua,
+                    formatting.isort,
+                    formatting.black.with({ extra_args = { '--fast' } }),
+
+                    -- Diagnostics sources
+                    diagnostics.cppcheck,
+                    diagnostics.pylint,
+                    diagnostics.write_good.with({
+                        filetypes = { 'markdown', 'text' },
+                    }),
+                },
+                -- Configure format on save
+                on_attach = function(client, bufnr)
+                    if client.supports_method('textDocument/formatting') then
+                        vim.api.nvim_clear_autocmds({
+                            group = augroup,
+                            buffer = bufnr,
+                        })
+                        vim.api.nvim_create_autocmd('BufWritePre', {
+                            group = augroup,
+                            buffer = bufnr,
+                            callback = function()
+                                vim.lsp.buf.format({ bufnr = bufnr })
+                            end,
+                        })
+                    end
+                end,
+            })
+        end,
     },
 }
