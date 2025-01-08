@@ -37,13 +37,13 @@ function CodeRunner()
         vim.api.nvim_set_keymap(
             'n',
             '<leader>b',
-            ':!clear; clang++ -g -Wall -Wextra %<CR>',
+            ':!clear; clang++ -g %<CR>',
             {}
         )
         vim.api.nvim_set_keymap(
             'n',
             '<leader>r',
-            ':!clear; clang++ -g -Wall -Wextra %;  if [ -f a.out ]; then time ./a.out; fi <CR>',
+            ':!clear; clang++ -g %;  if [ -f a.out ]; then time ./a.out; fi <CR>',
             {}
         )
     end
