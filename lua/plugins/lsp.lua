@@ -28,7 +28,7 @@ return {
                 callback = function(event)
                     local map = vim.keymap.set
                     local opts =
-                    { buffer = event.buf, silent = true, noremap = true }
+                        { buffer = event.buf, silent = true, noremap = true }
                     map(
                         'n',
                         'gD',
@@ -180,12 +180,34 @@ return {
             local null_ls = require('null-ls')
             local formatting = null_ls.builtins.formatting
             local diagnostics = null_ls.builtins.diagnostics
+            local command
+
+            if vim.fn.has('win32') == 1 then
+                command = vim.loop.os_homedir()
+                    .. '/AppData/Roaming/npm/prettier.cmd'
+            else
+                command = 'prettier'
+            end
 
             local prettierOpts = {
-                command = vim.fn.has('win32')
-                    and vim.loop.os_homedir() .. '/AppData/Roaming/npm/prettier.cmd'
-                    or 'prettier',
+                command = command,
                 extra_args = { '--single-quote', '--jsx-single-quote' },
+                filetypes = {
+                    'javascript',
+                    'javascriptreact',
+                    'typescript',
+                    'typescriptreact',
+                    'vue',
+                    'css',
+                    'scss',
+                    'less',
+                    'html',
+                    'json',
+                    'jsonc',
+                    'yaml',
+                    'markdown',
+                    'markdown.mdx',
+                },
             }
 
             -- Create an augroup for formatting
@@ -194,6 +216,7 @@ return {
             null_ls.setup({
                 debug = false,
                 sources = {
+                    -- formatting sources
                     formatting.clang_format.with({
                         filetypes = {
                             'c',
@@ -209,9 +232,7 @@ return {
                     -- Diagnostics sources
                     diagnostics.cppcheck,
                     diagnostics.pylint,
-                    diagnostics.write_good.with({
-                        filetypes = { 'markdown', 'text' },
-                    }),
+                    diagnostics.markdownlint,
                 },
                 -- Configure format on save
                 on_attach = function(client, bufnr)
