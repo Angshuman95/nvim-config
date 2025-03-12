@@ -31,7 +31,8 @@ local options = {
     viewoptions = 'folds,cursor,curdir,slash,unix',
     sessionoptions = 'curdir,help,tabpages,winsize',
     wildignorecase = true,
-    wildignore = '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**',
+    wildignore =
+    '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**',
     backup = true,
     writebackup = true,
     undofile = true,
@@ -106,3 +107,10 @@ if vim.g.neovide then
     vim.g.neovide_floating_blur_amount_x = 2.0
     vim.g.neovide_floating_blur_amount_y = 2.0
 end
+
+-- kulala requirements
+vim.filetype.add({
+    extension = {
+        ['http'] = 'http',
+    },
+})
