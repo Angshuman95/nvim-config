@@ -19,7 +19,7 @@ return {
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
-            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'saghen/blink.cmp' },
             { 'williamboman/mason-lspconfig.nvim' },
         },
         config = function()
@@ -60,12 +60,7 @@ return {
                         '<cmd>lua vim.lsp.buf.signature_help()<CR>',
                         opts
                     )
-                    map(
-                        'n',
-                        '<leader>rn',
-                        '<cmd>lua vim.lsp.buf.rename()<CR>',
-                        opts
-                    )
+                    map('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
                     map(
                         'n',
                         'gr',
@@ -74,7 +69,7 @@ return {
                     )
                     map(
                         'n',
-                        '<leader>ca',
+                        'gca',
                         '<cmd>lua vim.lsp.buf.code_action()<CR>',
                         opts
                     )
@@ -110,8 +105,7 @@ return {
                     )
                 end,
             })
-            local lsp_capabilities =
-                require('cmp_nvim_lsp').default_capabilities()
+            local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
 
             local default_setup = function(server)
                 require('lspconfig')[server].setup({
