@@ -166,6 +166,9 @@ return {
         'dgagn/diagflow.nvim',
         event = 'LspAttach',
         config = true,
+        opts = {
+            toggle_event = { 'InsertEnter' },
+        },
     },
     {
         'nvimtools/none-ls.nvim',

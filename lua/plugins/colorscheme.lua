@@ -13,6 +13,7 @@ return {
             integrations = {
                 leap = true,
                 lsp_trouble = true,
+                blink_cmp = true,
             },
             indent_blankline = {
                 enabled = true,
@@ -53,8 +54,8 @@ return {
 
             -- Plugins Config --
             diagnostics = {
-                darker = true, -- darker colors for diagnostic
-                undercurl = true, -- use undercurl instead of underline for diagnostics
+                darker = true,     -- darker colors for diagnostic
+                undercurl = true,  -- use undercurl instead of underline for diagnostics
                 background = true, -- use background color for virtual text
             },
         },
