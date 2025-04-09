@@ -4,5 +4,5 @@ return {
         require('colorizer').setup()
     end,
     opts = { '*' },
-    cmd = 'ColorizerToggle'
+    cmd = 'ColorizerToggle',
 }

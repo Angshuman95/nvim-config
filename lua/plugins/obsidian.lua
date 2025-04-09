@@ -1,10 +1,9 @@
 return {
-    'epwalsh/obsidian.nvim',
-    version = '*', -- recommended, use latest release instead of latest commit
+    'obsidian-nvim/obsidian.nvim',
+    version = '*',
     lazy = true,
     ft = 'markdown',
     dependencies = {
-        -- Required.
         'nvim-lua/plenary.nvim',
     },
     opts = {
@@ -26,6 +25,10 @@ return {
             default_tags = { 'daily-notes' },
             template = nil,
         },
+        completion = {
+            blink = true,
+            min_chars = 2,
+        },
         templates = {
             folder = 'templates',
             date_format = '%Y-%m-%d',
@@ -33,5 +36,8 @@ return {
             substitutions = {},
         },
         ui = { enable = false }, -- using markdown.nvim
+        picker = {
+            name = 'fzf-lua',
+        },
     },
 }
