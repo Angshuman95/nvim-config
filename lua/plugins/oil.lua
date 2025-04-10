@@ -28,7 +28,11 @@ return {
                 ['g.'] = 'actions.toggle_hidden',
             },
             use_default_keymaps = false,
+            float = {
+                max_width = 0.8,
+                max_height = 0.8,
+            },
         })
     end,
-    keys = { { '\\', ':Oil<CR>', noremap = true, silent = true } },
+    keys = { { '\\', ':Oil --float<CR>', noremap = true, silent = true } },
 }
