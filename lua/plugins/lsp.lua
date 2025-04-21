@@ -28,7 +28,7 @@ return {
                 callback = function(event)
                     local map = vim.keymap.set
                     local opts =
-                        { buffer = event.buf, silent = true, noremap = true }
+                    { buffer = event.buf, silent = true, noremap = true }
                     map(
                         'n',
                         'gD',
@@ -120,6 +120,7 @@ return {
                     'cssls',
                     'emmet_ls',
                     'eslint',
+                    'gopls',
                     'jdtls',
                     'jsonls',
                     'html',
