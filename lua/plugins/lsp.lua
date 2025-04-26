@@ -50,7 +50,7 @@ return {
                     )
                     map(
                         'n',
-                        'gi',
+                        'gri', -- default
                         '<cmd>lua vim.lsp.buf.implementation()<CR>',
                         opts
                     )
@@ -60,16 +60,16 @@ return {
                         '<cmd>lua vim.lsp.buf.signature_help()<CR>',
                         opts
                     )
-                    map('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+                    map('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts) --default
                     map(
                         'n',
-                        'gr',
+                        'grr', -- default
                         '<cmd>lua vim.lsp.buf.references()<CR>',
                         opts
                     )
                     map(
                         'n',
-                        'gca',
+                        'gra', -- default
                         '<cmd>lua vim.lsp.buf.code_action()<CR>',
                         opts
                     )
