@@ -58,20 +58,14 @@ return {
             noremap = true,
         },
         {
-            '<leader>sm',
-            ':FzfLua marks<CR>',
-            silent = true,
-            noremap = true,
-        },
-        {
             '<leader>sS',
             ':FzfLua lsp_workspace_symbols<CR>',
             silent = true,
             noremap = true,
         },
         {
-            '<leader>sD',
-            ':FzfLua lsp_workspace_diagnostics<CR>',
+            '<leader>sm',
+            ':FzfLua marks<CR>',
             silent = true,
             noremap = true,
         },
