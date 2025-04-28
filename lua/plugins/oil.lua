@@ -34,5 +34,5 @@ return {
             },
         })
     end,
-    keys = { { '\\', ':Oil --float<CR>', noremap = true, silent = true } },
+    keys = { { '\\', ':Oil<CR>', noremap = true, silent = true } },
 }
