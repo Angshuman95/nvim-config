@@ -6,6 +6,11 @@ local no_opt = {}
 -- Shorten function name
 local map = vim.keymap.set
 
+--Remap space as leader key
+map('', '<Space>', '<Nop>', opts)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- Modes
 --   normal_mode = 'n',
 --   insert_mode = 'i',
