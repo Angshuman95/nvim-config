@@ -60,9 +60,9 @@ map('n', '<C-A-h>', ':vertical resize -2<CR>', opts)
 map('n', '<C-A-l>', ':vertical resize +2<CR>', opts)
 
 -- Navigate buffers
-map('n', '<leader>n', ':bnext<CR>', opts)
-map('n', '<leader>p', ':bprevious<CR>', opts)
-map('n', '<leader>d', ':bdelete<CR>', opts)
+map('n', '<leader>bn', ':bnext<CR>', opts)
+map('n', '<leader>bp', ':bprevious<CR>', opts)
+map('n', '<leader>bd', ':bdelete<CR>', opts)
 
 -- Move text up and down
 map('n', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
