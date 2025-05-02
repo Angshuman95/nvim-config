@@ -42,7 +42,7 @@ map('n', 'zP', '"+P', no_opt)
 map('c', 'W', 'w', opt_noremap)
 
 -- Tabs
-map('n', '<leader>ta', ':$tabnew<CR>', opt_noremap)
+map('n', '<leader>ta', ':tabnew<CR>', opt_noremap)
 map('n', '<leader>t5', ':tabnew %<CR>', opt_noremap)
 map('n', '<leader>tc', ':tabclose<CR>', opt_noremap)
 map('n', '<leader>to', ':tabonly<CR>', opt_noremap)
