@@ -172,6 +172,17 @@ return {
         },
     },
     {
+        'rmagatti/goto-preview',
+        dependencies = { 'rmagatti/logger.nvim' },
+        event = 'LspAttach',
+        opts = {
+            default_mappings = true,
+            references = {
+                provider = 'default',
+            },
+        },
+    },
+    {
         'nvimtools/none-ls.nvim',
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
