@@ -9,6 +9,7 @@ return {
         statuscolumn = { enabled = true },
         terminal = { enabled = true, win = { style = 'terminal' } },
         scratch = { enabled = true },
+        scroll = { enabled = true },
     },
     keys = {
         {
