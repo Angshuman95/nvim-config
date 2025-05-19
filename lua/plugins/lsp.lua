@@ -11,7 +11,14 @@ end
 return {
     {
         'williamboman/mason.nvim',
-        config = true,
+        config = function()
+            require('mason').setup({
+                registries = {
+                    'github:mason-org/mason-registry',
+                    'github:Crashdummyy/mason-registry',
+                },
+            })
+        end,
         cmd = 'Mason',
     },
     {
@@ -125,7 +132,6 @@ return {
                     'jsonls',
                     'html',
                     'lua_ls',
-                    'omnisharp',
                     'powershell_es',
                     'pyright',
                     'rust_analyzer',

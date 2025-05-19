@@ -14,10 +14,7 @@ return {
                 leap = true,
                 lsp_trouble = true,
                 blink_cmp = true,
-            },
-            indent_blankline = {
-                enabled = true,
-                colored_indent_levels = true,
+                snacks = { enabled = true },
             },
         },
     },

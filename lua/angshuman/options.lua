@@ -7,7 +7,7 @@ os_name = vim.loop.os_uname().sysname
 
 if os_name == 'Windows_NT' then
     shell = 'pwsh.exe'
-    vim.cmd([[set guifont=FiraCode\ NF:h11]])
+    vim.cmd([[set guifont=FiraCode\ Nerd\ Font\ Mono:h10]])
 elseif os_name == 'Darwin' then
     shell = 'zsh'
     vim.cmd([[set guifont=FiraCode\ Nerd\ Font:h15]])
@@ -103,7 +103,7 @@ end
 
 -- Neovide Settings
 if vim.g.neovide then
-    vim.g.neovide_transparency = 0.80
+    vim.g.neovide_opacity = 0.90
     vim.g.neovide_floating_blur_amount_x = 2.0
     vim.g.neovide_floating_blur_amount_y = 2.0
 end
