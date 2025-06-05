@@ -5,22 +5,23 @@ return {
     config = function()
         local catppuccin_ok, catppuccin_palettes =
             pcall(require, 'catppuccin.palettes')
-        local mocha = {}
         local theme = {}
 
         if catppuccin_ok then
-            mocha = catppuccin_palettes.get_palette('mocha')
+            local palette_name = vim.o.background == 'dark' and 'mocha'
+                or 'latte'
+            local palette = catppuccin_palettes.get_palette(palette_name)
             theme = {
                 fill = {
-                    fg = mocha.subtext0,
-                    bg = mocha.base,
+                    fg = palette.subtext0,
+                    bg = palette.base,
                     style = 'italic',
                 },
-                head = { fg = mocha.crust, bg = mocha.pink },
-                current_tab = { fg = mocha.crust, bg = mocha.mauve },
-                tab = { fg = mocha.subtext1, bg = mocha.mantle },
-                win = { fg = mocha.subtext1, bg = mocha.mantle },
-                tail = { fg = mocha.subtext1, bg = mocha.mantle },
+                head = { fg = palette.crust, bg = palette.pink },
+                current_tab = { fg = palette.crust, bg = palette.mauve },
+                tab = { fg = palette.subtext1, bg = palette.mantle },
+                win = { fg = palette.subtext1, bg = palette.mantle },
+                tail = { fg = palette.subtext1, bg = palette.mantle },
             }
         else
             theme = {
