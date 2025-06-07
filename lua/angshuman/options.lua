@@ -10,7 +10,7 @@ if os_name == 'Windows_NT' then
     vim.cmd([[set guifont=FiraCode\ Nerd\ Font\ Mono:h10]])
 elseif os_name == 'Darwin' then
     shell = 'zsh'
-    vim.cmd([[set guifont=FiraCode\ Nerd\ Font:h15]])
+    vim.cmd([[set guifont=FiraCode\ Nerd\ Font:h13]])
 else
     shell = 'fish'
     vim.cmd([[set guifont=Fira\ Code:h10]])
@@ -31,7 +31,8 @@ local options = {
     viewoptions = 'folds,cursor,curdir,slash,unix',
     sessionoptions = 'curdir,help,tabpages,winsize',
     wildignorecase = true,
-    wildignore = '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**',
+    wildignore =
+    '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**',
     backup = true,
     writebackup = true,
     undofile = true,

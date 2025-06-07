@@ -3,7 +3,6 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-        explorer = { enabled = true },
         picker = { enabled = true },
         indent = { enabled = true },
         statuscolumn = { enabled = true },
@@ -12,14 +11,6 @@ return {
         scroll = { enabled = true },
     },
     keys = {
-        {
-            '<leader>e',
-            function()
-                Snacks.explorer()
-            end,
-            desc = 'File Explorer',
-            silent = true,
-        },
         {
             '<leader>f',
             function()
