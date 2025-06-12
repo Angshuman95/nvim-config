@@ -83,6 +83,13 @@ return {
             silent = true,
         },
         {
+            '<leader>td',
+            function()
+                Snacks.picker.todo_comments()
+            end,
+            silent = true,
+        },
+        {
             '<leader>.',
             function()
                 Snacks.scratch()
