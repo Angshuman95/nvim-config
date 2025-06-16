@@ -14,7 +14,6 @@ return {
                 leap = true,
                 lsp_trouble = true,
                 blink_cmp = true,
-                snacks = { enabled = true },
             },
         },
     },
