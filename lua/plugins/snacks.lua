@@ -6,6 +6,7 @@ return {
         bigfile = { enabled = true },
         picker = { enabled = true },
         indent = { enabled = true },
+        lazygit = { enabled = true },
         statuscolumn = { enabled = true },
         terminal = { enabled = true, win = { style = 'terminal' } },
         scratch = { enabled = true },
@@ -87,6 +88,13 @@ return {
             '<leader>td',
             function()
                 Snacks.picker.todo_comments()
+            end,
+            silent = true,
+        },
+        {
+            '<leader>gl',
+            function()
+                Snacks.lazygit()
             end,
             silent = true,
         },
