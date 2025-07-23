@@ -236,6 +236,7 @@ return {
                         filetypes = {
                             'c',
                             'cpp',
+                            'java',
                         },
                     }),
                     formatting.csharpier,
