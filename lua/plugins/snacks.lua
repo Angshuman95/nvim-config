@@ -5,21 +5,12 @@ return {
     opts = {
         bigfile = { enabled = true },
         picker = { enabled = true },
-        indent = { enabled = true },
         lazygit = { enabled = true },
         statuscolumn = { enabled = true },
         terminal = { enabled = true, win = { style = 'terminal' } },
-        scratch = { enabled = true },
         scroll = { enabled = true },
     },
     keys = {
-        {
-            '<leader>f',
-            function()
-                Snacks.picker.files()
-            end,
-            silent = true,
-        },
         {
             '<leader>b',
             function()
