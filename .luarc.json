@@ -2,7 +2,8 @@
   "runtime.version": "LuaJIT",
   "runtime.path": [
     "lua/?.lua",
-    "lua/?/init.lua"
+    "lua/?/init.lua",
+    "after/?/?.lua"
   ],
   "diagnostics.globals": [
     "vim",
