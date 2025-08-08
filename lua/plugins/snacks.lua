@@ -4,11 +4,11 @@ return {
     lazy = false,
     opts = {
         bigfile = { enabled = true },
-        picker = { enabled = true },
         lazygit = { enabled = true },
+        picker = { enabled = true },
         statuscolumn = { enabled = true },
-        terminal = { enabled = true, win = { style = 'terminal' } },
         scroll = { enabled = true },
+        terminal = { enabled = true, win = { style = 'terminal' } },
     },
     keys = {
         {
