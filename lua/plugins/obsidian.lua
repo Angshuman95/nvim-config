@@ -1,7 +1,6 @@
 return {
     'obsidian-nvim/obsidian.nvim',
     version = '*',
-    lazy = true,
     ft = 'markdown',
     dependencies = {
         'nvim-lua/plenary.nvim',
@@ -40,5 +39,6 @@ return {
         picker = {
             name = 'snacks.pick',
         },
+        legacy_commands = false,
     },
 }
