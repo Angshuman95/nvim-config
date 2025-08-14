@@ -4,8 +4,7 @@ local function add_custom_lsp_settings(server_name, opts)
     if not status_ok then
         return {}
     end
-    opts = vim.tbl_deep_extend('force', opts, custom_settings)
-    return opts
+    return vim.tbl_deep_extend('force', opts, custom_settings)
 end
 
 return {
@@ -36,80 +35,74 @@ return {
                     local map = vim.keymap.set
                     local opts =
                     { buffer = event.buf, silent = true, noremap = true }
-                    map(
-                        'n',
-                        'gD',
-                        '<cmd>lua vim.lsp.buf.declaration()<CR>',
-                        opts
-                    )
-                    map(
-                        'n',
-                        'gd',
-                        '<cmd>lua vim.lsp.buf.definition()<CR>',
-                        opts
-                    )
-                    map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-                    map(
-                        'n',
-                        '<leader>k',
-                        '<cmd>lua vim.diagnostic.open_float()<CR>',
-                        opts
-                    )
-                    map(
-                        'n',
-                        'gri', -- default
-                        '<cmd>lua vim.lsp.buf.implementation()<CR>',
-                        opts
-                    )
-                    map(
-                        'n',
-                        'gk',
-                        '<cmd>lua vim.lsp.buf.signature_help()<CR>',
-                        opts
-                    )
-                    map('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts) --default
-                    map(
-                        'n',
-                        'grr', -- default
-                        '<cmd>lua vim.lsp.buf.references()<CR>',
-                        opts
-                    )
-                    map(
-                        'n',
-                        'gra', -- default
-                        '<cmd>lua vim.lsp.buf.code_action()<CR>',
-                        opts
-                    )
-                    map(
-                        'n',
-                        '[d',
-                        '<cmd>lua vim.diagnostic.goto_prev()<CR>',
-                        opts
-                    )
-                    map(
-                        'n',
-                        ']d',
-                        '<cmd>lua vim.diagnostic.goto_next()<CR>',
-                        opts
-                    )
-                    map(
-                        'n',
-                        '<leader>q',
-                        '<cmd>lua vim.diagnostic.setloclist()<CR>',
-                        opts
-                    )
-                    map(
-                        'v',
-                        '<leader>lf',
-                        ':lua vim.lsp.buf.range_formatting()<CR>',
-                        opts
-                    )
-                    map(
-                        'n',
-                        '<leader>lf',
-                        ':lua vim.lsp.buf.format()<CR>',
-                        opts
-                    )
+                    local mappings = {
+                        n = {
+                            {
+                                'gD',
+                                '<cmd>lua vim.lsp.buf.declaration()<CR>',
+                            },
+                            {
+                                'gd',
+                                '<cmd>lua vim.lsp.buf.definition()<CR>',
+                            },
+                            {
+                                'K',
+                                '<cmd>lua vim.lsp.buf.hover()<CR>',
+                            },
+                            {
+                                '<leader>k',
+                                '<cmd>lua vim.diagnostic.open_float()<CR>',
+                            },
+                            {
+                                'gri',
+                                '<cmd>lua vim.lsp.buf.implementation()<CR>',
+                            },
+                            {
+                                'gk',
+                                '<cmd>lua vim.lsp.buf.signature_help()<CR>',
+                            },
+                            {
+                                'grn',
+                                '<cmd>lua vim.lsp.buf.rename()<CR>',
+                            },
+                            {
+                                'grr',
+                                '<cmd>lua vim.lsp.buf.references()<CR>',
+                            },
+                            {
+                                'gra',
+                                '<cmd>lua vim.lsp.buf.code_action()<CR>',
+                            },
+                            {
+                                '[d',
+                                '<cmd>lua vim.diagnostic.goto_prev()<CR>',
+                            },
+                            {
+                                ']d',
+                                '<cmd>lua vim.diagnostic.goto_next()<CR>',
+                            },
+                            {
+                                '<leader>q',
+                                '<cmd>lua vim.diagnostic.setloclist()<CR>',
+                            },
+                            {
+                                '<leader>lf',
+                                '<cmd>lua vim.lsp.buf.format()<CR>',
+                            },
+                        },
+                        v = {
+                            {
+                                '<leader>lf',
+                                '<cmd>lua vim.lsp.buf.range_formatting()<CR>',
+                            },
+                        },
+                    }
+
+                    for mode, binds in pairs(mappings) do
+                        for _, m in ipairs(binds) do
+                            map(mode, m[1], m[2], opts)
+                        end
+                    end
                 end,
             })
             local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -158,11 +151,6 @@ return {
                     end,
                 },
             })
-
-            vim.lsp.handlers['textDocument/publishDiagnostics'] =
-                vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                    virtual_text = false,
-                })
         end,
     },
     {

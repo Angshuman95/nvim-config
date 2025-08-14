@@ -1,7 +1,20 @@
 return {
     'obsidian-nvim/obsidian.nvim',
     version = '*',
-    ft = 'markdown',
+    event = function()
+        local cwd = vim.fn.getcwd()
+        local workspace_paths = {
+            'personal-notes',
+            '10_00-Office-Notes',
+        }
+
+        for _, path in ipairs(workspace_paths) do
+            if string.find(cwd, path, 1, true) then
+                return 'VeryLazy'
+            end
+        end
+        return nil
+    end,
     dependencies = {
         'nvim-lua/plenary.nvim',
     },

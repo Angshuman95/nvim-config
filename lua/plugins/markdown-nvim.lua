@@ -4,7 +4,7 @@ return {
         'nvim-treesitter/nvim-treesitter',
         'nvim-tree/nvim-web-devicons',
     },
-    ft = 'markdown',
+    ft = { 'markdown', 'codecompanion' },
     opts = {
         completions = { blink = { enabled = true } },
     },
