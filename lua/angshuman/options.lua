@@ -12,7 +12,7 @@ elseif os_name == 'Darwin' then
     shell = 'zsh'
     vim.cmd([[set guifont=FiraCode\ Nerd\ Font:h13]])
 else
-    shell = 'fish'
+    shell = 'zsh'
     vim.cmd([[set guifont=Fira\ Code:h10]])
 end
 

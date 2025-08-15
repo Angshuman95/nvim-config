@@ -132,6 +132,9 @@ return {
                 },
                 handlers = {
                     default_setup,
+                    jdtls = function()
+                        -- Do nothing, nvim-jdtls will handle the setup
+                    end,
                     clangd = function()
                         local opts = add_custom_lsp_settings('clangd', {})
                         require('lspconfig').clangd.setup(opts)

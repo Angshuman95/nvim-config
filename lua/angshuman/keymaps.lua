@@ -54,10 +54,10 @@ map('n', '<leader>tmp', ':-tabmove<CR>', opt_noremap)
 map('n', '<leader>tmn', ':+tabmove<CR>', opt_noremap)
 
 -- Resize with arrows
-map('n', '<C-A-k>', ':resize -2<CR>', opts)
-map('n', '<C-A-j>', ':resize +2<CR>', opts)
-map('n', '<C-A-h>', ':vertical resize -2<CR>', opts)
-map('n', '<C-A-l>', ':vertical resize +2<CR>', opts)
+map('n', '<C-S-k>', ':resize -2<CR>', opts)
+map('n', '<C-S-j>', ':resize +2<CR>', opts)
+map('n', '<C-S-h>', ':vertical resize -2<CR>', opts)
+map('n', '<C-S-l>', ':vertical resize +2<CR>', opts)
 
 -- Navigate buffers
 map('n', '<leader>bn', ':bnext<CR>', opts)
