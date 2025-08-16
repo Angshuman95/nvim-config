@@ -7,6 +7,14 @@ local function add_custom_lsp_settings(server_name, opts)
     return vim.tbl_deep_extend('force', opts, custom_settings)
 end
 
+_G.format_on_save_enabled = true
+
+local toggle_format_on_save = function()
+    _G.format_on_save_enabled = not _G.format_on_save_enabled
+    local status = _G.format_on_save_enabled and 'enabled' or 'disabled'
+    vim.notify('Format on save ' .. status, vim.log.levels.INFO)
+end
+
 return {
     {
         'williamboman/mason.nvim',
@@ -34,7 +42,7 @@ return {
                 callback = function(event)
                     local map = vim.keymap.set
                     local opts =
-                    { buffer = event.buf, silent = true, noremap = true }
+                        { buffer = event.buf, silent = true, noremap = true }
                     local mappings = {
                         n = {
                             {
@@ -88,6 +96,10 @@ return {
                             {
                                 '<leader>lf',
                                 '<cmd>lua vim.lsp.buf.format()<CR>',
+                            },
+                            {
+                                '<leader>lt',
+                                toggle_format_on_save,
                             },
                         },
                         v = {
@@ -252,7 +264,9 @@ return {
                             group = augroup,
                             buffer = bufnr,
                             callback = function()
-                                vim.lsp.buf.format({ bufnr = bufnr })
+                                if _G.format_on_save_enabled then
+                                    vim.lsp.buf.format({ bufnr = bufnr })
+                                end
                             end,
                         })
                     end
