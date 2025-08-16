@@ -1,7 +1,11 @@
 return {
     'dmtrKovalenko/fff.nvim',
     build = 'cargo build --release',
-    opts = {},
+    opts = {
+        layout = {
+            prompt_position = 'top',
+        },
+    },
     keys = {
         {
             '<leader>f',

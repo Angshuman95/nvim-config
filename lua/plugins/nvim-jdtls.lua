@@ -6,7 +6,7 @@ return {
 
         -- Find root of project
         local root_markers =
-        { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }
+            { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }
         local root_dir = require('jdtls.setup').find_root(root_markers)
 
         -- Eclipse jdtls location using nvim data directory
