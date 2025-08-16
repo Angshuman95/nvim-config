@@ -22,10 +22,13 @@ vim.g.maplocalleader = ' '
 -- Normal Mode
 -- Better window navigation
 -- Taken care by tmux
---[[ map('n', '<C-h>', '<C-w>h', opts) ]]
---[[ map('n', '<C-j>', '<C-w>j', opts) ]]
---[[ map('n', '<C-k>', '<C-w>k', opts) ]]
---[[ map('n', '<C-l>', '<C-w>l', opts) ]]
+-- map('n', '<C-h>', '<C-w>h', opts)
+-- map('n', '<C-j>', '<C-w>j', opts)
+-- map('n', '<C-k>', '<C-w>k', opts)
+-- map('n', '<C-l>', '<C-w>l', opts)
+
+-- Quick Save
+map('n', '<leader>w', ':w<CR>', opts)
 
 -- Clipboard
 -- Yank and move the cursor to the end of yanked text.
@@ -37,9 +40,6 @@ map('n', 'md', '"+d', opt_noremap)
 map('n', 'mdd', '"+dd', opt_noremap)
 map('n', 'zp', '"+p', no_opt)
 map('n', 'zP', '"+P', no_opt)
-
--- Saving
-map('c', 'W', 'w', opt_noremap)
 
 -- Tabs
 map('n', '<leader>ta', ':tabnew<CR>', opt_noremap)
@@ -64,12 +64,21 @@ map('n', '<leader>bn', ':bnext<CR>', opts)
 map('n', '<leader>bp', ':bprevious<CR>', opts)
 map('n', '<leader>bd', ':bdelete<CR>', opts)
 
--- Move text up and down
-map('n', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
-map('n', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
-
 -- Go To end of line
 map('n', '-', 'g_', opts)
+
+-- Better indenting
+map('n', '<', '<<', opts)
+map('n', '>', '>>', opts)
+
+-- Center screen when jumping
+map('n', 'n', 'nzzzv', opts)
+map('n', 'N', 'Nzzzv', opts)
+map('n', '<C-d>', '<C-d>zz', opts)
+map('n', '<C-u>', '<C-u>zz', opts)
+
+-- Select all
+map('n', '<C-a>', 'ggVG', opts)
 
 -- Others
 map('n', '<C-n>', ':set invrelativenumber<CR>', opts)
@@ -92,16 +101,12 @@ map('v', '<', '<gv', opts)
 map('v', '>', '>gv', opts)
 
 -- Move text up and down
-map('v', '<A-j>', ':m .+1<CR>==', opts)
-map('v', '<A-k>', ':m .-2<CR>==', opts)
+map('v', 'J', ':m .+1<CR>==', opts)
+map('v', 'K', ':m .-2<CR>==', opts)
+
+-- Correct paste behavior in visual mode
 map('v', 'p', '"_dP', opts)
+map('v', 'P', '"_dP', opts)
 
 -- Go To end of line
 map('v', '-', 'g_', opts)
-
--- Visual Block --
--- Move text up and down
-map('x', 'J', ":move '>+1<CR>gv-gv", opts)
-map('x', 'K', ":move '<-2<CR>gv-gv", opts)
-map('x', '<A-j>', ":move '>+1<CR>gv-gv", opts)
-map('x', '<A-k>', ":move '<-2<CR>gv-gv", opts)
