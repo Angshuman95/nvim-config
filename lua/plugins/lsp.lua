@@ -42,7 +42,7 @@ return {
                 callback = function(event)
                     local map = vim.keymap.set
                     local opts =
-                        { buffer = event.buf, silent = true, noremap = true }
+                    { buffer = event.buf, silent = true, noremap = true }
                     local mappings = {
                         n = {
                             {
@@ -239,10 +239,12 @@ return {
                         filetypes = {
                             'c',
                             'cpp',
-                            'java',
                         },
                     }),
                     formatting.csharpier,
+                    formatting.google_java_format.with({
+                        extra_args = { '--aosp' },
+                    }),
                     formatting.prettier.with(prettierOpts),
                     formatting.stylua,
                     formatting.isort,
