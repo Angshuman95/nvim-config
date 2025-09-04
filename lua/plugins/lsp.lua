@@ -7,12 +7,22 @@ local function add_custom_lsp_settings(server_name, opts)
     return vim.tbl_deep_extend('force', opts, custom_settings)
 end
 
-_G.format_on_save_enabled = true
+_G.format_on_save_enabled = false
+_G.virtual_text_enabled = false
 
 local toggle_format_on_save = function()
     _G.format_on_save_enabled = not _G.format_on_save_enabled
     local status = _G.format_on_save_enabled and 'enabled' or 'disabled'
     vim.notify('Format on save ' .. status, vim.log.levels.INFO)
+end
+
+local toggle_virtual_text = function()
+    _G.virtual_text_enabled = not _G.virtual_text_enabled
+    vim.diagnostic.config({
+        virtual_text = _G.virtual_text_enabled,
+    })
+    local status = _G.virtual_text_enabled and 'enabled' or 'disabled'
+    vim.notify('Virtual text ' .. status, vim.log.levels.INFO)
 end
 
 return {
@@ -37,12 +47,19 @@ return {
             { 'williamboman/mason-lspconfig.nvim' },
         },
         config = function()
+            vim.diagnostic.config({
+                virtual_text = _G.virtual_text_enabled,
+                signs = true,
+                underline = true,
+                update_in_insert = false,
+                severity_sort = true,
+            })
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
                 callback = function(event)
                     local map = vim.keymap.set
                     local opts =
-                    { buffer = event.buf, silent = true, noremap = true }
+                        { buffer = event.buf, silent = true, noremap = true }
                     local mappings = {
                         n = {
                             {
@@ -101,6 +118,10 @@ return {
                                 '<leader>lt',
                                 toggle_format_on_save,
                             },
+                            {
+                                '<leader>lv',
+                                toggle_virtual_text,
+                            },
                         },
                         v = {
                             {
@@ -117,6 +138,23 @@ return {
                     end
                 end,
             })
+
+            vim.api.nvim_create_user_command(
+                'ToggleVirtualText',
+                toggle_virtual_text,
+                {
+                    desc = 'Toggle LSP virtual text diagnostics',
+                }
+            )
+
+            vim.api.nvim_create_user_command(
+                'ToggleAutoFormatOnSave',
+                toggle_format_on_save,
+                {
+                    desc = 'Toggle auto format on save',
+                }
+            )
+
             local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
 
             local default_setup = function(server)
@@ -171,14 +209,6 @@ return {
     {
         'kevinhwang91/nvim-bqf',
         config = true,
-    },
-    {
-        'dgagn/diagflow.nvim',
-        event = 'LspAttach',
-        config = true,
-        opts = {
-            toggle_event = { 'InsertEnter' },
-        },
     },
     {
         'rmagatti/goto-preview',
