@@ -223,6 +223,9 @@ return {
     },
     {
         'nvimtools/none-ls.nvim',
+        dependencies = {
+            "nvimtools/none-ls-extras.nvim",
+        },
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             local null_ls = require('null-ls')
@@ -282,7 +285,7 @@ return {
 
                     -- Diagnostics sources
                     diagnostics.cppcheck,
-                    diagnostics.pylint,
+                    require("none-ls.diagnostics.flake8"),
                     diagnostics.markdownlint,
                 },
                 -- Configure format on save
