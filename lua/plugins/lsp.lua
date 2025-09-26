@@ -176,7 +176,7 @@ return {
                     'html',
                     'lua_ls',
                     'powershell_es',
-                    'pyright',
+                    'basedpyright',
                     'rust_analyzer',
                     'ts_ls',
                 },
@@ -285,7 +285,7 @@ return {
 
                     -- Diagnostics sources
                     diagnostics.cppcheck,
-                    require("none-ls.diagnostics.flake8"),
+                    require("none-ls.diagnostics.ruff"),
                     diagnostics.markdownlint,
                 },
                 -- Configure format on save
