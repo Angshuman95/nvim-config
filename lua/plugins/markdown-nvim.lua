@@ -6,6 +6,6 @@ return {
     },
     ft = { 'markdown', 'codecompanion' },
     opts = {
-        completions = { blink = { enabled = true } },
+        completions = { lsp = { enabled = true } },
     },
 }
