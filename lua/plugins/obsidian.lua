@@ -1,6 +1,5 @@
 return {
     'obsidian-nvim/obsidian.nvim',
-    version = '*',
     event = function()
         local cwd = vim.fn.getcwd()
         local workspace_paths = {
