@@ -9,14 +9,29 @@ api.nvim_create_autocmd('TextYankPost', {
 
 -- Remember Folds
 local fold_grp = api.nvim_create_augroup('remember_folds', { clear = true })
+
 api.nvim_create_autocmd('BufWinLeave', {
     pattern = '*.*',
-    command = 'mkview',
+    callback = function()
+        local filepath = vim.fn.expand('%:p')
+        -- Skip mkview if filepath is too long (will cause E190 error)
+        if #filepath > 150 then
+            return
+        end
+        vim.cmd('silent! mkview')
+    end,
     group = fold_grp,
 })
+
 api.nvim_create_autocmd('BufWinEnter', {
     pattern = '*.*',
-    command = 'silent! loadview',
+    callback = function()
+        local filepath = vim.fn.expand('%:p')
+        if #filepath > 150 then
+            return
+        end
+        vim.cmd('silent! loadview')
+    end,
     group = fold_grp,
 })
 
