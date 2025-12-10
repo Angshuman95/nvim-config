@@ -10,11 +10,7 @@ return {
                 conditionals = { 'italic' },
                 types = { 'bold' },
             },
-            integrations = {
-                leap = true,
-                lsp_trouble = true,
-                blink_cmp = true,
-            },
+            auto_integrations = true,
         },
     },
     {
