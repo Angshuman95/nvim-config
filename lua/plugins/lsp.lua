@@ -78,16 +78,7 @@ return {
                         vim.diagnostic.jump({ count = 1, float = true })
                     end, opts)
                     map('n', '<leader>q', vim.diagnostic.setloclist, opts)
-                    map('n', '<leader>lf', function()
-                        vim.lsp.buf.format()
-                    end, opts)
-                    map('n', '<leader>lt', toggle_format_on_save, opts)
                     map('n', '<leader>lv', toggle_virtual_text, opts)
-
-                    -- Visual mode mapping - format selection
-                    map('v', '<leader>lf', function()
-                        vim.lsp.buf.format()
-                    end, opts)
                 end,
             })
 
@@ -175,86 +166,5 @@ return {
                 provider = 'default',
             },
         },
-    },
-    {
-        'nvimtools/none-ls.nvim',
-        dependencies = {
-            'nvimtools/none-ls-extras.nvim',
-        },
-        event = { 'BufReadPre', 'BufNewFile' },
-        config = function()
-            local null_ls = require('null-ls')
-            local formatting = null_ls.builtins.formatting
-            local diagnostics = null_ls.builtins.diagnostics
-
-            local prettier_command = vim.fn.has('win32') == 1
-                    and vim.fn.stdpath('data') .. '/mason/bin/prettier.cmd'
-                or 'prettier'
-
-            local prettier_opts = {
-                command = prettier_command,
-                extra_args = { '--single-quote', '--jsx-single-quote' },
-                filetypes = {
-                    'javascript',
-                    'javascriptreact',
-                    'typescript',
-                    'typescriptreact',
-                    'vue',
-                    'css',
-                    'scss',
-                    'less',
-                    'html',
-                    'json',
-                    'jsonc',
-                    'yaml',
-                    'markdown',
-                    'markdown.mdx',
-                },
-            }
-
-            local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
-            null_ls.setup({
-                debug = false,
-                sources = {
-                    formatting.clang_format.with({
-                        filetypes = { 'c', 'cpp' },
-                    }),
-                    formatting.csharpier,
-                    formatting.google_java_format.with({
-                        extra_args = { '--aosp' },
-                    }),
-                    formatting.prettier.with(prettier_opts),
-                    formatting.stylua,
-                    formatting.isort,
-                    formatting.black.with({ extra_args = { '--fast' } }),
-                    diagnostics.cppcheck,
-                    require('none-ls.diagnostics.ruff'),
-                    diagnostics.markdownlint,
-                },
-                on_attach = function(client, bufnr)
-                    if client.supports_method('textDocument/formatting') then
-                        vim.api.nvim_clear_autocmds({
-                            group = augroup,
-                            buffer = bufnr,
-                        })
-                        vim.api.nvim_create_autocmd('BufWritePre', {
-                            group = augroup,
-                            buffer = bufnr,
-                            callback = function()
-                                if _G.format_on_save_enabled then
-                                    vim.schedule(function()
-                                        vim.lsp.buf.format({
-                                            bufnr = bufnr,
-                                            timeout_ms = 2000,
-                                        })
-                                    end)
-                                end
-                            end,
-                        })
-                    end
-                end,
-            })
-        end,
     },
 }
