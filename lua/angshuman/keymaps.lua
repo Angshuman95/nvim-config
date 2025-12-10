@@ -76,6 +76,12 @@ map('n', 'N', 'Nzzzv', opts)
 map('n', '<C-d>', '<C-d>zz', opts)
 map('n', '<C-u>', '<C-u>zz', opts)
 
+-- search/replace in whole file
+map('n', '<leader>se', ':%s/')
+
+-- replace word under cursor
+map('n', '<leader>sw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 -- Select all
 map('n', '<C-a>', 'ggVG', opts)
 
@@ -83,12 +89,12 @@ map('n', '<C-a>', 'ggVG', opts)
 map('n', '<C-n>', '<cmd>set invrelativenumber<CR>', opts)
 map('n', '<Esc><Esc>', '<cmd>nohlsearch<CR>', opts)
 
--- Insert --
+-- Insert Mode
 -- Press jk fast to exit insert mode
 -- Using better Escape
 --[[ map('i', 'jk', '<ESC>', opts) ]]
 
--- Visual --
+-- Visual Mode
 -- Clipboard
 -- Yank and move the cursor to the end of yanked text.
 map('v', 'y', 'y`]', opt_noremap)
@@ -109,3 +115,6 @@ map('v', 'P', '"_dP', opts)
 
 -- Go To end of line
 map('v', '-', 'g_', opts)
+
+-- search/replace in selection
+map('v', '<leader>se', ':s/')
