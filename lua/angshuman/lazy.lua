@@ -14,8 +14,15 @@ vim.opt.rtp:prepend(lazypath)
 vim.keymap.set(
     'n',
     '<leader>ls',
-    ':Lazy sync<CR>',
+    '<cmd>Lazy sync<CR>',
     { noremap = true, silent = true }
 )
 
-return require('lazy').setup('plugins')
+local plugins = 'plugins'
+
+return require('lazy').setup(plugins, {
+    change_detection = { notify = false },
+    rocks = {
+        enabled = false,
+    },
+})

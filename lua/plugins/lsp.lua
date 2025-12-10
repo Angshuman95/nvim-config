@@ -2,7 +2,7 @@ local function add_custom_lsp_settings(server_name, opts)
     local status_ok, custom_settings =
         pcall(require, 'angshuman.lsp-custom-settings.' .. server_name)
     if not status_ok then
-        return {}
+        return opts
     end
     return vim.tbl_deep_extend('force', opts, custom_settings)
 end
@@ -54,105 +54,53 @@ return {
                 update_in_insert = false,
                 severity_sort = true,
             })
+
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
                 callback = function(event)
                     local map = vim.keymap.set
-                    local opts =
-                        { buffer = event.buf, silent = true, noremap = true }
-                    local mappings = {
-                        n = {
-                            {
-                                'gD',
-                                '<cmd>lua vim.lsp.buf.declaration()<CR>',
-                            },
-                            {
-                                'gd',
-                                '<cmd>lua vim.lsp.buf.definition()<CR>',
-                            },
-                            {
-                                'K',
-                                '<cmd>lua vim.lsp.buf.hover()<CR>',
-                            },
-                            {
-                                '<leader>k',
-                                '<cmd>lua vim.diagnostic.open_float()<CR>',
-                            },
-                            {
-                                'gri',
-                                '<cmd>lua vim.lsp.buf.implementation()<CR>',
-                            },
-                            {
-                                'gk',
-                                '<cmd>lua vim.lsp.buf.signature_help()<CR>',
-                            },
-                            {
-                                'grn',
-                                '<cmd>lua vim.lsp.buf.rename()<CR>',
-                            },
-                            {
-                                'grr',
-                                '<cmd>lua vim.lsp.buf.references()<CR>',
-                            },
-                            {
-                                'gra',
-                                '<cmd>lua vim.lsp.buf.code_action()<CR>',
-                            },
-                            {
-                                '[d',
-                                '<cmd>lua vim.diagnostic.goto_prev()<CR>',
-                            },
-                            {
-                                ']d',
-                                '<cmd>lua vim.diagnostic.goto_next()<CR>',
-                            },
-                            {
-                                '<leader>q',
-                                '<cmd>lua vim.diagnostic.setloclist()<CR>',
-                            },
-                            {
-                                '<leader>lf',
-                                '<cmd>lua vim.lsp.buf.format()<CR>',
-                            },
-                            {
-                                '<leader>lt',
-                                toggle_format_on_save,
-                            },
-                            {
-                                '<leader>lv',
-                                toggle_virtual_text,
-                            },
-                        },
-                        v = {
-                            {
-                                '<leader>lf',
-                                '<cmd>lua vim.lsp.buf.range_formatting()<CR>',
-                            },
-                        },
-                    }
+                    local opts = { buffer = event.buf, silent = true }
 
-                    for mode, binds in pairs(mappings) do
-                        for _, m in ipairs(binds) do
-                            map(mode, m[1], m[2], opts)
-                        end
-                    end
+                    -- Normal mode mappings
+                    map('n', 'gD', vim.lsp.buf.declaration, opts)
+                    map('n', 'gd', vim.lsp.buf.definition, opts)
+                    map('n', 'K', vim.lsp.buf.hover, opts)
+                    map('n', '<leader>k', vim.diagnostic.open_float, opts)
+                    map('n', 'gri', vim.lsp.buf.implementation, opts)
+                    map('n', 'gk', vim.lsp.buf.signature_help, opts)
+                    map('n', 'grn', vim.lsp.buf.rename, opts)
+                    map('n', 'grr', vim.lsp.buf.references, opts)
+                    map('n', 'gra', vim.lsp.buf.code_action, opts)
+                    map('n', '[d', function()
+                        vim.diagnostic.jump({ count = -1, float = true })
+                    end, opts)
+                    map('n', ']d', function()
+                        vim.diagnostic.jump({ count = 1, float = true })
+                    end, opts)
+                    map('n', '<leader>q', vim.diagnostic.setloclist, opts)
+                    map('n', '<leader>lf', function()
+                        vim.lsp.buf.format()
+                    end, opts)
+                    map('n', '<leader>lt', toggle_format_on_save, opts)
+                    map('n', '<leader>lv', toggle_virtual_text, opts)
+
+                    -- Visual mode mapping - format selection
+                    map('v', '<leader>lf', function()
+                        vim.lsp.buf.format()
+                    end, opts)
                 end,
             })
 
             vim.api.nvim_create_user_command(
                 'ToggleVirtualText',
                 toggle_virtual_text,
-                {
-                    desc = 'Toggle LSP virtual text diagnostics',
-                }
+                { desc = 'Toggle LSP virtual text diagnostics' }
             )
 
             vim.api.nvim_create_user_command(
                 'ToggleAutoFormatOnSave',
                 toggle_format_on_save,
-                {
-                    desc = 'Toggle auto format on save',
-                }
+                { desc = 'Toggle auto format on save' }
             )
 
             local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -186,20 +134,27 @@ return {
                         -- Do nothing, nvim-jdtls will handle the setup
                     end,
                     clangd = function()
-                        local opts = add_custom_lsp_settings('clangd', {})
+                        local opts = add_custom_lsp_settings('clangd', {
+                            capabilities = lsp_capabilities,
+                        })
                         require('lspconfig').clangd.setup(opts)
                     end,
                     jsonls = function()
-                        local opts = add_custom_lsp_settings('jsonls', {})
+                        local opts = add_custom_lsp_settings('jsonls', {
+                            capabilities = lsp_capabilities,
+                        })
                         require('lspconfig').jsonls.setup(opts)
                     end,
                     lua_ls = function()
-                        local opts = add_custom_lsp_settings('lua_ls', {})
+                        local opts = add_custom_lsp_settings('lua_ls', {
+                            capabilities = lsp_capabilities,
+                        })
                         require('lspconfig').lua_ls.setup(opts)
                     end,
                     rust_analyzer = function()
-                        local opts =
-                            add_custom_lsp_settings('rust_analyzer', {})
+                        local opts = add_custom_lsp_settings('rust_analyzer', {
+                            capabilities = lsp_capabilities,
+                        })
                         require('lspconfig').rust_analyzer.setup(opts)
                     end,
                 },
@@ -224,24 +179,20 @@ return {
     {
         'nvimtools/none-ls.nvim',
         dependencies = {
-            "nvimtools/none-ls-extras.nvim",
+            'nvimtools/none-ls-extras.nvim',
         },
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             local null_ls = require('null-ls')
             local formatting = null_ls.builtins.formatting
             local diagnostics = null_ls.builtins.diagnostics
-            local command
 
-            if vim.fn.has('win32') == 1 then
-                command = vim.loop.os_homedir()
-                    .. '/AppData/Roaming/npm/prettier.cmd'
-            else
-                command = 'prettier'
-            end
+            local prettier_command = vim.fn.has('win32') == 1
+                    and vim.fn.stdpath('data') .. '/mason/bin/prettier.cmd'
+                or 'prettier'
 
-            local prettierOpts = {
-                command = command,
+            local prettier_opts = {
+                command = prettier_command,
                 extra_args = { '--single-quote', '--jsx-single-quote' },
                 filetypes = {
                     'javascript',
@@ -261,34 +212,26 @@ return {
                 },
             }
 
-            -- Create an augroup for formatting
             local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
             null_ls.setup({
                 debug = false,
                 sources = {
-                    -- formatting sources
                     formatting.clang_format.with({
-                        filetypes = {
-                            'c',
-                            'cpp',
-                        },
+                        filetypes = { 'c', 'cpp' },
                     }),
                     formatting.csharpier,
                     formatting.google_java_format.with({
                         extra_args = { '--aosp' },
                     }),
-                    formatting.prettier.with(prettierOpts),
+                    formatting.prettier.with(prettier_opts),
                     formatting.stylua,
                     formatting.isort,
                     formatting.black.with({ extra_args = { '--fast' } }),
-
-                    -- Diagnostics sources
                     diagnostics.cppcheck,
-                    require("none-ls.diagnostics.ruff"),
+                    require('none-ls.diagnostics.ruff'),
                     diagnostics.markdownlint,
                 },
-                -- Configure format on save
                 on_attach = function(client, bufnr)
                     if client.supports_method('textDocument/formatting') then
                         vim.api.nvim_clear_autocmds({
@@ -300,7 +243,12 @@ return {
                             buffer = bufnr,
                             callback = function()
                                 if _G.format_on_save_enabled then
-                                    vim.lsp.buf.format({ bufnr = bufnr })
+                                    vim.schedule(function()
+                                        vim.lsp.buf.format({
+                                            bufnr = bufnr,
+                                            timeout_ms = 2000,
+                                        })
+                                    end)
                                 end
                             end,
                         })

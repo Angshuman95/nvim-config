@@ -38,14 +38,14 @@ return {
         keys = {
             {
                 '<leader>//',
-                ':CommentToggle<CR>',
+                '<cmd>CommentToggle<CR>',
                 'n',
                 silent = true,
                 noremap = true,
             },
             {
                 '<leader>/',
-                ':CommentToggle<CR>',
+                '<cmd>CommentToggle<CR>',
                 mode = 'v',
                 silent = true,
                 noremap = true,

@@ -21,7 +21,7 @@ return {
         keys = {
             {
                 '<leader>e',
-                ':Neotree<CR>',
+                '<cmd>Neotree<CR>',
                 silent = true,
             },
         },

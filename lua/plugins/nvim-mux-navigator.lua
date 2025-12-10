@@ -10,10 +10,10 @@ return {
         local opts = { noremap = true, silent = true }
         local keymap = vim.keymap.set
 
-        keymap({ 'n', 't' }, '<C-h>', ':NavigatorLeft<cr>', opts)
-        keymap({ 'n', 't' }, '<C-j>', ':NavigatorDown<cr>', opts)
-        keymap({ 'n', 't' }, '<C-k>', ':NavigatorUp<cr>', opts)
-        keymap({ 'n', 't' }, '<C-l>', ':NavigatorRight<cr>', opts)
+        keymap({ 'n', 't' }, '<C-h>', '<cmd>NavigatorLeft<cr>', opts)
+        keymap({ 'n', 't' }, '<C-j>', '<cmd>NavigatorDown<cr>', opts)
+        keymap({ 'n', 't' }, '<C-k>', '<cmd>NavigatorUp<cr>', opts)
+        keymap({ 'n', 't' }, '<C-l>', '<cmd>NavigatorRight<cr>', opts)
     end,
     event = 'VimEnter',
 }

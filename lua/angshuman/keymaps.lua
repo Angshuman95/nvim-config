@@ -1,7 +1,6 @@
+-- Keymap options
 local opts = { noremap = true, silent = true }
-
 local opt_noremap = { noremap = true }
-local no_opt = {}
 
 -- Shorten function name
 local map = vim.keymap.set
@@ -28,7 +27,7 @@ vim.g.maplocalleader = ' '
 -- map('n', '<C-l>', '<C-w>l', opts)
 
 -- Quick Save
-map('n', '<leader>w', ':w<CR>', opts)
+map('n', '<leader>w', '<cmd>w<CR>', opts)
 
 -- Clipboard
 -- Yank and move the cursor to the end of yanked text.
@@ -38,31 +37,31 @@ map('n', 'mc', '"+y`]', opt_noremap)
 map('n', 'mcc', '"+yy`]', opt_noremap)
 map('n', 'md', '"+d', opt_noremap)
 map('n', 'mdd', '"+dd', opt_noremap)
-map('n', 'zp', '"+p', no_opt)
-map('n', 'zP', '"+P', no_opt)
+map('n', 'zp', '"+p', opt_noremap)
+map('n', 'zP', '"+P', opt_noremap)
 
 -- Tabs
-map('n', '<leader>ta', ':tabnew<CR>', opt_noremap)
-map('n', '<leader>t5', ':tabnew %<CR>', opt_noremap)
-map('n', '<leader>tc', ':tabclose<CR>', opt_noremap)
-map('n', '<leader>to', ':tabonly<CR>', opt_noremap)
-map('n', '<leader>tn', ':tabn<CR>', opt_noremap)
-map('n', '<leader>tp', ':tabp<CR>', opt_noremap)
+map('n', '<leader>ta', '<cmd>tabnew<CR>', opt_noremap)
+map('n', '<leader>t5', '<cmd>tabnew %<CR>', opt_noremap)
+map('n', '<leader>tc', '<cmd>tabclose<CR>', opt_noremap)
+map('n', '<leader>to', '<cmd>tabonly<CR>', opt_noremap)
+map('n', '<leader>tn', '<cmd>tabn<CR>', opt_noremap)
+map('n', '<leader>tp', '<cmd>tabp<CR>', opt_noremap)
 -- move current tab to previous position
-map('n', '<leader>tmp', ':-tabmove<CR>', opt_noremap)
+map('n', '<leader>tmp', '<cmd>-tabmove<CR>', opt_noremap)
 -- move current tab to next position
-map('n', '<leader>tmn', ':+tabmove<CR>', opt_noremap)
+map('n', '<leader>tmn', '<cmd>+tabmove<CR>', opt_noremap)
 
 -- Resize with arrows
-map('n', '<C-S-k>', ':resize -2<CR>', opts)
-map('n', '<C-S-j>', ':resize +2<CR>', opts)
-map('n', '<C-S-h>', ':vertical resize -2<CR>', opts)
-map('n', '<C-S-l>', ':vertical resize +2<CR>', opts)
+map('n', '<C-S-k>', '<cmd>resize -2<CR>', opts)
+map('n', '<C-S-j>', '<cmd>resize +2<CR>', opts)
+map('n', '<C-S-h>', '<cmd>vertical resize -2<CR>', opts)
+map('n', '<C-S-l>', '<cmd>vertical resize +2<CR>', opts)
 
 -- Navigate buffers
-map('n', '<leader>bn', ':bnext<CR>', opts)
-map('n', '<leader>bp', ':bprevious<CR>', opts)
-map('n', '<leader>bd', ':bdelete<CR>', opts)
+map('n', '<leader>bn', '<cmd>bnext<CR>', opts)
+map('n', '<leader>bp', '<cmd>bprevious<CR>', opts)
+map('n', '<leader>bd', '<cmd>bdelete<CR>', opts)
 
 -- Go To end of line
 map('n', '-', 'g_', opts)
@@ -81,8 +80,8 @@ map('n', '<C-u>', '<C-u>zz', opts)
 map('n', '<C-a>', 'ggVG', opts)
 
 -- Others
-map('n', '<C-n>', ':set invrelativenumber<CR>', opts)
-map('n', '<Esc><Esc>', ':nohlsearch<CR>', opts)
+map('n', '<C-n>', '<cmd>set invrelativenumber<CR>', opts)
+map('n', '<Esc><Esc>', '<cmd>nohlsearch<CR>', opts)
 
 -- Insert --
 -- Press jk fast to exit insert mode
@@ -94,15 +93,15 @@ map('n', '<Esc><Esc>', ':nohlsearch<CR>', opts)
 -- Yank and move the cursor to the end of yanked text.
 map('v', 'y', 'y`]', opt_noremap)
 map('v', 'mc', '"+y`]', opt_noremap)
-map('v', 'md', '"+d', no_opt)
+map('v', 'md', '"+d', opt_noremap)
 
 -- Stay in indent mode
 map('v', '<', '<gv', opts)
 map('v', '>', '>gv', opts)
 
 -- Move text up and down
-map('v', 'J', ':m .+1<CR>==', opts)
-map('v', 'K', ':m .-2<CR>==', opts)
+map('v', 'J', '<cmd>m .+1<CR>==', opts)
+map('v', 'K', '<cmd>m .-2<CR>==', opts)
 
 -- Correct paste behavior in visual mode
 map('v', 'p', '"_dP', opts)

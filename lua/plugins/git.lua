@@ -8,13 +8,13 @@ return {
         keys = {
             {
                 '<leader>gg',
-                ':Git<CR>',
+                '<cmd>Git<CR>',
                 noremap = true,
                 silent = true
             },
             {
                 '<leader>gd',
-                ':Gvdiffsplit<CR>',
+                '<cmd>Gvdiffsplit<CR>',
                 noremap = true,
                 silent = true
             },
@@ -24,15 +24,15 @@ return {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup()
-            map('n', '<leader>gj', ':Gitsigns next_hunk<CR>', opts)
-            map('n', '<leader>gk', ':Gitsigns prev_hunk<CR>', opts)
-            map('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', opts)
-            map('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', opts)
-            map('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', opts)
+            map('n', '<leader>gj', '<cmd>Gitsigns next_hunk<CR>', opts)
+            map('n', '<leader>gk', '<cmd>Gitsigns prev_hunk<CR>', opts)
+            map('n', '<leader>gr', '<cmd>Gitsigns reset_hunk<CR>', opts)
+            map('n', '<leader>gs', '<cmd>Gitsigns stage_hunk<CR>', opts)
+            map('n', '<leader>gu', '<cmd>Gitsigns undo_stage_hunk<CR>', opts)
             map(
                 'n',
                 '<leader>gb',
-                ':Gitsigns toggle_current_line_blame<CR>',
+                '<cmd>Gitsigns toggle_current_line_blame<CR>',
                 opts
             )
         end,

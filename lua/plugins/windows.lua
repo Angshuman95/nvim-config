@@ -4,7 +4,7 @@ return {
         'anuvyklack/middleclass',
         'anuvyklack/animation.nvim',
     },
-    keys = { { "<leader>m", "<cmd>WindowsMaximize<cr>", desc = "Zoom" } },
+    keys = { { '<leader>m', '<cmd>WindowsMaximize<cr>', desc = 'Zoom' } },
     config = function()
         vim.o.winwidth = 10
         vim.o.winminwidth = 10
