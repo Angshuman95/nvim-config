@@ -3,21 +3,18 @@ local map = vim.keymap.set
 
 return {
     {
-        'tpope/vim-fugitive',
-        cmd = 'Git',
+        'NeogitOrg/neogit',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'sindrets/diffview.nvim',
+            'folke/snacks.nvim',
+        },
+        config = function()
+            require('neogit').setup()
+        end,
+        cmd = "Neogit",
         keys = {
-            {
-                '<leader>gg',
-                '<cmd>Git<CR>',
-                noremap = true,
-                silent = true
-            },
-            {
-                '<leader>gd',
-                '<cmd>Gvdiffsplit<CR>',
-                noremap = true,
-                silent = true
-            },
+            { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Neogit' },
         },
     },
     {
