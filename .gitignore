@@ -1,5 +1,2 @@
-packer_compiled.lua
 .pat
 *nvim.log
-lazy-lock.json
-package-lock.json
