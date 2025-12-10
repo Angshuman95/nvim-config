@@ -27,7 +27,7 @@ end
 
 return {
     {
-        'williamboman/mason.nvim',
+        'mason-org/mason.nvim',
         config = function()
             require('mason').setup({
                 registries = {
@@ -44,7 +44,7 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             { 'saghen/blink.cmp' },
-            { 'williamboman/mason-lspconfig.nvim' },
+            { 'mason-org/mason-lspconfig.nvim' },
         },
         config = function()
             vim.diagnostic.config({
