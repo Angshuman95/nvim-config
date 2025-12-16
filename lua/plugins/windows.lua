@@ -4,7 +4,20 @@ return {
         'anuvyklack/middleclass',
         'anuvyklack/animation.nvim',
     },
-    keys = { { '<leader>m', '<cmd>WindowsMaximize<CR>', desc = 'Zoom' } },
+    keys = {
+        { '<C-w>m', '<cmd>WindowsMaximize<CR>', desc = 'Zoom' },
+        { '<C-w>=', '<cmd>WindowsEqualize<CR>', desc = 'Reset Zoom' },
+        {
+            '<C-w>_',
+            '<cmd>WindowsMaximizeVertically<CR>',
+            desc = 'Maximize Vertically',
+        },
+        {
+            '<C-w>|',
+            '<cmd>WindowsMaximizeHorizontally<CR>',
+            desc = 'Maximize Horizontally',
+        },
+    },
     config = function()
         vim.o.winwidth = 10
         vim.o.winminwidth = 10
