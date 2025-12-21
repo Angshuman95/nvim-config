@@ -7,7 +7,6 @@ return {
         lazygit = { enabled = true },
         picker = { enabled = true },
         statuscolumn = { enabled = true },
-        scroll = { enabled = true },
         terminal = { enabled = true, win = { style = 'terminal' } },
     },
     keys = {

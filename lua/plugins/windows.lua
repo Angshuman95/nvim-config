@@ -2,11 +2,9 @@ return {
     'anuvyklack/windows.nvim',
     dependencies = {
         'anuvyklack/middleclass',
-        'anuvyklack/animation.nvim',
     },
     keys = {
         { '<C-w>m', '<cmd>WindowsMaximize<CR>', desc = 'Zoom' },
-        { '<C-w>=', '<cmd>WindowsEqualize<CR>', desc = 'Reset Zoom' },
         {
             '<C-w>_',
             '<cmd>WindowsMaximizeVertically<CR>',
