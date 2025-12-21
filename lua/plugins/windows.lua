@@ -6,6 +6,14 @@ return {
     keys = {
         { '<C-w>m', '<cmd>WindowsMaximize<CR>', desc = 'Zoom' },
         {
+            '<C-w>=',
+            function()
+                vim.cmd('WindowsEqualize')
+                vim.cmd('WindowsDisableAutowidth')
+            end,
+            desc = 'Zoom',
+        },
+        {
             '<C-w>_',
             '<cmd>WindowsMaximizeVertically<CR>',
             desc = 'Maximize Vertically',
