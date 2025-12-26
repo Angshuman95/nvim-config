@@ -4,14 +4,21 @@ return {
         'anuvyklack/middleclass',
     },
     keys = {
-        { '<C-w>m', '<cmd>WindowsMaximize<CR>', desc = 'Zoom' },
         {
-            '<C-w>=',
+            '<C-w>m',
+            function()
+                vim.cmd('WindowsMaximize')
+                vim.cmd('WindowsEnableAutowidth')
+            end,
+            desc = 'Zoom',
+        },
+        {
+            '<C-w>e',
             function()
                 vim.cmd('WindowsEqualize')
                 vim.cmd('WindowsDisableAutowidth')
             end,
-            desc = 'Zoom',
+            desc = 'Equalize',
         },
         {
             '<C-w>_',
