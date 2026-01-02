@@ -20,13 +20,16 @@ return {
     opts = {
         workspaces = {
             {
-                name = 'personal-notes',
+                name = 'mac-notes',
                 path = '~/Developer/notes_and_files/10-19-Learning/10-Notes/10_00-Personal-Notes/personal-notes',
             },
             {
                 name = 'office-notes',
-                path =
-                '~/Developer/notes_and_files/10-19-Learning/10-Notes/10_01-Office-Notes/Notes-And-Files/10-19-Learning/10-Notes/10_00-Office-Notes',
+                path = '~/Developer/notes_and_files/10-19-Learning/10-Notes/10_01-Office-Notes/Notes-And-Files/10-19-Learning/10-Notes/10_00-Office-Notes',
+            },
+            {
+                name = 'arch-notes',
+                path = '~/Developer/10-19-notes/personal-notes',
             },
         },
         notes_subdir = 'notes',
