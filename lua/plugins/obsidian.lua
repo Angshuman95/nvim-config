@@ -29,7 +29,7 @@ return {
             },
             {
                 name = 'arch-notes',
-                path = '~/Developer/10-19-notes/personal-notes',
+                path = '~/Developer/10-19-learning/10-notes/personal-notes',
             },
         },
         notes_subdir = 'notes',
