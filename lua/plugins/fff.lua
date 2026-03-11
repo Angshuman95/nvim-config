@@ -1,7 +1,10 @@
 return {
     'dmtrKovalenko/fff.nvim',
-    build = 'cargo build --release',
+    build = function()
+        require('fff.download').download_or_build_binary()
+    end,
     opts = {
+        prompt = ' ',
         layout = {
             prompt_position = 'top',
         },
@@ -12,7 +15,14 @@ return {
             function()
                 require('fff').find_files()
             end,
-            desc = 'Open file picker',
+            desc = 'FFFind files',
         },
+        {
+            '<leader>lg',
+            function()
+                require('fff').live_grep()
+            end,
+            desc = 'LiFFFe grep',
+        }
     },
 }

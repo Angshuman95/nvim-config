@@ -18,13 +18,6 @@ return {
             silent = true,
         },
         {
-            '<leader>st',
-            function()
-                Snacks.picker.grep()
-            end,
-            silent = true,
-        },
-        {
             '<leader>sD',
             function()
                 Snacks.picker.diagnostics()
