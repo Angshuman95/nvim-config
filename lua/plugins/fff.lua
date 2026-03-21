@@ -23,6 +23,13 @@ return {
                 require('fff').live_grep()
             end,
             desc = 'LiFFFe grep',
-        }
+        },
+        {
+            '<leader>sc',
+            function()
+                require('fff').live_grep({ query = vim.fn.expand('<cword>') })
+            end,
+            desc = 'Search current word',
+        },
     },
 }
