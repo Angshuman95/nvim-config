@@ -4,7 +4,7 @@ return {
         build = function()
             require('nvim-treesitter').update()
         end,
-        event = { 'BufReadPre', 'BufNewFile' },
+        branch = 'main',
         dependencies = {
             'nvim-treesitter/nvim-treesitter-context',
             'hiphish/rainbow-delimiters.nvim',
