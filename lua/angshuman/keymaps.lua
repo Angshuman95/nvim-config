@@ -82,9 +82,6 @@ map('n', '<leader>se', ':%s/')
 -- replace word under cursor
 map('n', '<leader>sw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Select all
-map('n', '<C-a>', 'ggVG', opts)
-
 -- Others
 map('n', '<C-n>', '<cmd>set invrelativenumber<CR>', opts)
 map('n', '<Esc><Esc>', '<cmd>nohlsearch<CR>', opts)
