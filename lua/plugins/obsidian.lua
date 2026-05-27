@@ -33,17 +33,19 @@ return {
             },
         },
         notes_subdir = 'notes',
+        new_notes_location = 'current_dir',
+        note_id_func = function(title)
+            if title ~= nil then
+                return title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+            end
+            return tostring(os.time())
+        end,
         daily_notes = {
             folder = 'journals',
-            date_format = '%Y-%m-%d',
-            alias_format = '%B %-d, %Y',
+            date_format = '%Y/%m-%B/%Y-%m-%d-daily-note',
+            alias_format = nil,
             default_tags = { 'daily-notes' },
-            template = nil,
-        },
-        completion = {
-            nvim_cmp = false,
-            blink = true,
-            min_chars = 2,
+            template = 'daily-note.md',
         },
         templates = {
             folder = 'templates',
