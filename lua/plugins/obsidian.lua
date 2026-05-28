@@ -50,7 +50,7 @@ return {
         templates = {
             folder = 'templates',
             date_format = '%Y-%m-%d',
-            time_format = '%H:%M',
+            time_format = '%H:%M:%S',
             substitutions = {},
         },
         ui = { enable = false }, -- using markdown.nvim
