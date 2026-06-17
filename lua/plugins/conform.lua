@@ -71,11 +71,6 @@ return {
                 black = {
                     args = { '--fast', '--quiet', '-' },
                 },
-                csharpier = {
-                    command = 'dotnet-csharpier',
-                    args = { '--write-stdout' },
-                    stdin = true,
-                },
             },
 
             format_on_save = function(_)
