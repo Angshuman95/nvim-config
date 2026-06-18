@@ -20,9 +20,7 @@ return {
         { '<leader>A', mode = 'n', desc = 'Swap previous parameter' },
     },
     config = function()
-        local textobjects = require('nvim-treesitter-textobjects')
-
-        textobjects.setup({
+        require('nvim-treesitter-textobjects').setup({
             select = {
                 enable = true,
                 lookahead = true,
@@ -36,95 +34,66 @@ return {
             },
         })
 
-        -- Select keymaps (executed dynamically after plugin loads)
+        local ts_select = require('nvim-treesitter-textobjects.select')
+        local ts_move = require('nvim-treesitter-textobjects.move')
+        local ts_swap = require('nvim-treesitter-textobjects.swap')
+
+        -- Select keymaps
         for _, mode in ipairs({ 'x', 'o' }) do
             vim.keymap.set(mode, 'aa', function()
-                textobjects.select.select_textobject(
-                    '@parameter.outer',
-                    'textobjects'
-                )
+                ts_select.select_textobject('@parameter.outer', 'textobjects')
             end)
             vim.keymap.set(mode, 'ia', function()
-                textobjects.select.select_textobject(
-                    '@parameter.inner',
-                    'textobjects'
-                )
+                ts_select.select_textobject('@parameter.inner', 'textobjects')
             end)
             vim.keymap.set(mode, 'af', function()
-                textobjects.select.select_textobject(
-                    '@function.outer',
-                    'textobjects'
-                )
+                ts_select.select_textobject('@function.outer', 'textobjects')
             end)
             vim.keymap.set(mode, 'if', function()
-                textobjects.select.select_textobject(
-                    '@function.inner',
-                    'textobjects'
-                )
+                ts_select.select_textobject('@function.inner', 'textobjects')
             end)
             vim.keymap.set(mode, 'ac', function()
-                textobjects.select.select_textobject(
-                    '@class.outer',
-                    'textobjects'
-                )
+                ts_select.select_textobject('@class.outer', 'textobjects')
             end)
             vim.keymap.set(mode, 'ic', function()
-                textobjects.select.select_textobject(
-                    '@class.inner',
-                    'textobjects'
-                )
+                ts_select.select_textobject('@class.inner', 'textobjects')
             end)
         end
 
-        -- Move keymaps (executed dynamically after plugin loads)
+        -- Move keymaps
         for _, mode in ipairs({ 'n', 'x', 'o' }) do
             vim.keymap.set(mode, ']m', function()
-                textobjects.move.goto_next_start(
-                    '@function.outer',
-                    'textobjects'
-                )
+                ts_move.goto_next_start('@function.outer', 'textobjects')
             end)
             vim.keymap.set(mode, ']]', function()
-                textobjects.move.goto_next_start('@class.outer', 'textobjects')
+                ts_move.goto_next_start('@class.outer', 'textobjects')
             end)
             vim.keymap.set(mode, ']M', function()
-                textobjects.move.goto_next_end('@function.outer', 'textobjects')
+                ts_move.goto_next_end('@function.outer', 'textobjects')
             end)
             vim.keymap.set(mode, '][', function()
-                textobjects.move.goto_next_end('@class.outer', 'textobjects')
+                ts_move.goto_next_end('@class.outer', 'textobjects')
             end)
             vim.keymap.set(mode, '[m', function()
-                textobjects.move.goto_previous_start(
-                    '@function.outer',
-                    'textobjects'
-                )
+                ts_move.goto_previous_start('@function.outer', 'textobjects')
             end)
             vim.keymap.set(mode, '[[', function()
-                textobjects.move.goto_previous_start(
-                    '@class.outer',
-                    'textobjects'
-                )
+                ts_move.goto_previous_start('@class.outer', 'textobjects')
             end)
             vim.keymap.set(mode, '[M', function()
-                textobjects.move.goto_previous_end(
-                    '@function.outer',
-                    'textobjects'
-                )
+                ts_move.goto_previous_end('@function.outer', 'textobjects')
             end)
             vim.keymap.set(mode, '[]', function()
-                textobjects.move.goto_previous_end(
-                    '@class.outer',
-                    'textobjects'
-                )
+                ts_move.goto_previous_end('@class.outer', 'textobjects')
             end)
         end
 
-        -- Swap keymaps (executed dynamically after plugin loads)
+        -- Swap keymaps
         vim.keymap.set('n', '<leader>a', function()
-            textobjects.swap.swap_next('@parameter.inner')
+            ts_swap.swap_next('@parameter.inner')
         end)
         vim.keymap.set('n', '<leader>A', function()
-            textobjects.swap.swap_previous('@parameter.inner')
+            ts_swap.swap_previous('@parameter.inner')
         end)
     end,
 }

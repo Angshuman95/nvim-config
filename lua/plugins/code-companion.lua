@@ -1,5 +1,9 @@
 return {
     'olimorris/codecompanion.nvim',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'ravitemer/codecompanion-history.nvim',
+    },
     cmd = {
         'CodeCompanion',
         'CodeCompanionChat',
@@ -14,17 +18,19 @@ return {
                     model = 'claude-sonnet-4.6',
                 },
             },
-        },
-        memory = {
-            opts = {
-                chat = {
-                    enabled = true,
+            inline = {
+                adapter = {
+                    name = 'copilot',
+                    model = 'claude-sonnet-4.6',
                 },
             },
         },
-    },
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-        'nvim-treesitter/nvim-treesitter',
+        extensions = {
+            history = {
+                opts = {
+                    picker = 'snacks',
+                },
+            },
+        },
     },
 }
