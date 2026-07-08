@@ -14,7 +14,6 @@ return {
         {
             '<leader>sr',
             '<cmd>GrugFar<CR>',
-
             silent = true,
         },
     },
