@@ -18,6 +18,13 @@ return {
             silent = true,
         },
         {
+            '<leader>sp',
+            function()
+                Snacks.picker()
+            end,
+            silent = true,
+        },
+        {
             '<leader>sD',
             function()
                 Snacks.picker.diagnostics()
@@ -40,34 +47,6 @@ return {
             silent = true,
         },
         {
-            '<leader>sS',
-            function()
-                Snacks.picker.lsp_workspace_symbols()
-            end,
-            silent = true,
-        },
-        {
-            '<leader>sm',
-            function()
-                Snacks.picker.marks()
-            end,
-            silent = true,
-        },
-        {
-            '<leader>sj',
-            function()
-                Snacks.picker.jumps()
-            end,
-            silent = true,
-        },
-        {
-            '<leader>sq',
-            function()
-                Snacks.picker.qflist()
-            end,
-            silent = true,
-        },
-        {
             '<leader>td',
             function()
                 Snacks.picker.todo_comments()
@@ -78,13 +57,6 @@ return {
             '<leader>gl',
             function()
                 Snacks.lazygit()
-            end,
-            silent = true,
-        },
-        {
-            '<leader>.',
-            function()
-                Snacks.scratch()
             end,
             silent = true,
         },
