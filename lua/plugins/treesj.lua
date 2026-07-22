@@ -2,25 +2,11 @@ return {
     'Wansmer/treesj',
     keys = {
         {
-            '<leader>gm',
+            '<leader>j',
             function()
                 require('treesj').toggle()
             end,
             desc = 'Toggle block (Treesj)',
-        },
-        {
-            '<leader>gs',
-            function()
-                require('treesj').split()
-            end,
-            desc = 'Split block (Treesj)',
-        },
-        {
-            '<leader>gj',
-            function()
-                require('treesj').join()
-            end,
-            desc = 'Join block (Treesj)',
         },
     },
     opts = {
