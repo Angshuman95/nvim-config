@@ -27,7 +27,7 @@ return {
         {
             '<leader>sc',
             function()
-                require('fff').live_grep({ query = vim.fn.expand('<cword>') })
+                require('fff').live_grep_under_cursor()
             end,
             desc = 'Search current word',
         },
