@@ -1,4 +1,5 @@
 _G.virtual_text_enabled = false
+_G.virtual_lines_enabled = true
 
 local toggle_virtual_text = function()
     _G.virtual_text_enabled = not _G.virtual_text_enabled
@@ -7,6 +8,16 @@ local toggle_virtual_text = function()
     })
     local status = _G.virtual_text_enabled and 'enabled' or 'disabled'
     vim.notify('Virtual text ' .. status, vim.log.levels.INFO)
+end
+
+local toggle_virtual_lines = function()
+    _G.virtual_lines_enabled = not _G.virtual_lines_enabled
+    vim.diagnostic.config({
+        virtual_lines = _G.virtual_lines_enabled and { current_line = true }
+            or false,
+    })
+    local status = _G.virtual_lines_enabled and 'enabled' or 'disabled'
+    vim.notify('Virtual lines ' .. status, vim.log.levels.INFO)
 end
 
 return {
@@ -32,7 +43,6 @@ return {
                 ensure_installed = {
                     'black',
                     'clang-format',
-                    'cppcheck',
                     'csharpier',
                     'google-java-format',
                     'isort',
@@ -57,10 +67,16 @@ return {
         config = function()
             vim.diagnostic.config({
                 virtual_text = _G.virtual_text_enabled,
+                virtual_lines = _G.virtual_lines_enabled and {
+                    current_line = true,
+                } or false,
                 signs = true,
                 underline = true,
                 update_in_insert = false,
                 severity_sort = true,
+                float = {
+                    source = true,
+                },
             })
 
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -86,7 +102,8 @@ return {
                         vim.diagnostic.jump({ count = 1, float = true })
                     end, opts)
                     map('n', '<leader>q', vim.diagnostic.setloclist, opts)
-                    map('n', '<leader>lv', toggle_virtual_text, opts)
+                    map('n', '<leader>lv', toggle_virtual_lines, opts)
+                    map('n', '<leader>lV', toggle_virtual_text, opts)
                 end,
             })
 
@@ -94,6 +111,12 @@ return {
                 'ToggleVirtualText',
                 toggle_virtual_text,
                 { desc = 'Toggle LSP virtual text diagnostics' }
+            )
+
+            vim.api.nvim_create_user_command(
+                'ToggleVirtualLines',
+                toggle_virtual_lines,
+                { desc = 'Toggle LSP virtual line diagnostics' }
             )
 
             -- Apply blink.cmp completion capabilities to every LSP server.
