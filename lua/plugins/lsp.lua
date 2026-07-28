@@ -1,12 +1,3 @@
-local function add_custom_lsp_settings(server_name, opts)
-    local status_ok, custom_settings =
-        pcall(require, 'angshuman.lsp-custom-settings.' .. server_name)
-    if not status_ok then
-        return opts
-    end
-    return vim.tbl_deep_extend('force', opts, custom_settings)
-end
-
 _G.format_on_save_enabled = false
 _G.virtual_text_enabled = false
 
@@ -45,6 +36,7 @@ return {
         dependencies = {
             { 'saghen/blink.cmp' },
             { 'mason-org/mason-lspconfig.nvim' },
+            { 'b0o/SchemaStore.nvim' },
         },
         config = function()
             vim.diagnostic.config({
@@ -94,13 +86,10 @@ return {
                 { desc = 'Toggle auto format on save' }
             )
 
-            local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
-
-            local default_setup = function(server)
-                require('lspconfig')[server].setup({
-                    capabilities = lsp_capabilities,
-                })
-            end
+            -- Apply blink.cmp completion capabilities to every LSP server.
+            vim.lsp.config('*', {
+                capabilities = require('blink.cmp').get_lsp_capabilities(),
+            })
 
             require('mason-lspconfig').setup({
                 ensure_installed = {
@@ -119,36 +108,9 @@ return {
                     'rust_analyzer',
                     'ts_ls',
                 },
-                handlers = {
-                    default_setup,
-                    jdtls = function()
-                        -- Do nothing, nvim-jdtls will handle the setup
-                    end,
-                    clangd = function()
-                        local opts = add_custom_lsp_settings('clangd', {
-                            capabilities = lsp_capabilities,
-                        })
-                        require('lspconfig').clangd.setup(opts)
-                    end,
-                    jsonls = function()
-                        local opts = add_custom_lsp_settings('jsonls', {
-                            capabilities = lsp_capabilities,
-                        })
-                        require('lspconfig').jsonls.setup(opts)
-                    end,
-                    lua_ls = function()
-                        local opts = add_custom_lsp_settings('lua_ls', {
-                            capabilities = lsp_capabilities,
-                        })
-                        require('lspconfig').lua_ls.setup(opts)
-                    end,
-                    rust_analyzer = function()
-                        local opts = add_custom_lsp_settings('rust_analyzer', {
-                            capabilities = lsp_capabilities,
-                        })
-                        require('lspconfig').rust_analyzer.setup(opts)
-                    end,
-                },
+                -- Exclude jdtls: nvim-jdtls handles its setup and enabling it
+                -- here would attach a second, conflicting client.
+                automatic_enable = { exclude = { 'jdtls' } },
             })
         end,
     },
