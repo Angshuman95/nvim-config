@@ -23,6 +23,29 @@ return {
         cmd = 'Mason',
     },
     {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        dependencies = { 'mason-org/mason.nvim' },
+        event = { 'BufReadPre', 'BufNewFile' },
+        config = function()
+            require('mason-tool-installer').setup({
+                -- Formatters/linters used by conform.nvim and nvim-lint.
+                ensure_installed = {
+                    'black',
+                    'clang-format',
+                    'cppcheck',
+                    'csharpier',
+                    'google-java-format',
+                    'isort',
+                    'markdownlint',
+                    'prettier',
+                    'ruff',
+                    'stylua',
+                },
+                run_on_start = true,
+            })
+        end,
+    },
+    {
         'neovim/nvim-lspconfig',
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
         event = { 'BufReadPre', 'BufNewFile' },
