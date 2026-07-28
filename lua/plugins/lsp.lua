@@ -93,7 +93,9 @@ return {
                     'powershell_es',
                     'basedpyright',
                     'rust_analyzer',
+                    'taplo',
                     'ts_ls',
+                    'yamlls',
                 },
                 -- Exclude jdtls: nvim-jdtls handles its setup and enabling it
                 -- here would attach a second, conflicting client.
