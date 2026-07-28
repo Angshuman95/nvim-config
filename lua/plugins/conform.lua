@@ -80,7 +80,7 @@ return {
 
                 return {
                     timeout_ms = 2000,
-                    lsp_fallback = true,
+                    lsp_format = 'fallback',
                 }
             end,
         })
@@ -92,9 +92,15 @@ return {
             { silent = true }
         )
 
+        vim.api.nvim_create_user_command(
+            'ToggleAutoFormatOnSave',
+            toggle_format_on_save,
+            { desc = 'Toggle auto format on save' }
+        )
+
         vim.keymap.set({ 'n', 'v' }, '<leader>lf', function()
             conform.format({
-                lsp_fallback = true,
+                lsp_format = 'fallback',
                 async = false,
                 timeout_ms = 2000,
             })

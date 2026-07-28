@@ -3,7 +3,7 @@ local api = vim.api
 -- Highlight on yank
 local yank_grp = api.nvim_create_augroup('yank_highlight', { clear = true })
 api.nvim_create_autocmd('TextYankPost', {
-    command = "silent! lua vim.highlight.on_yank{higroup='IncSearch', timeout=300}",
+    command = "silent! lua vim.hl.on_yank{higroup='IncSearch', timeout=300}",
     group = yank_grp,
 })
 

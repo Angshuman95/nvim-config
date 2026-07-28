@@ -1,11 +1,4 @@
-_G.format_on_save_enabled = false
 _G.virtual_text_enabled = false
-
-local toggle_format_on_save = function()
-    _G.format_on_save_enabled = not _G.format_on_save_enabled
-    local status = _G.format_on_save_enabled and 'enabled' or 'disabled'
-    vim.notify('Format on save ' .. status, vim.log.levels.INFO)
-end
 
 local toggle_virtual_text = function()
     _G.virtual_text_enabled = not _G.virtual_text_enabled
@@ -78,12 +71,6 @@ return {
                 'ToggleVirtualText',
                 toggle_virtual_text,
                 { desc = 'Toggle LSP virtual text diagnostics' }
-            )
-
-            vim.api.nvim_create_user_command(
-                'ToggleAutoFormatOnSave',
-                toggle_format_on_save,
-                { desc = 'Toggle auto format on save' }
             )
 
             -- Apply blink.cmp completion capabilities to every LSP server.
