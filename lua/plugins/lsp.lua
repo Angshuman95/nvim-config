@@ -1,5 +1,5 @@
 _G.virtual_text_enabled = false
-_G.virtual_lines_enabled = true
+_G.virtual_lines_enabled = false
 
 local toggle_virtual_text = function()
     _G.virtual_text_enabled = not _G.virtual_text_enabled
