@@ -160,7 +160,7 @@ return {
             preview_win_opts = {
                 cursorline = true,
                 number = true,
-                wrap = false,
+                wrap = true,
             },
             border = { enable = true, top_char = '―', bottom_char = '―' },
         },
