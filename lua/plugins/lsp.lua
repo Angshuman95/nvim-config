@@ -154,13 +154,36 @@ return {
         config = true,
     },
     {
-        'rmagatti/goto-preview',
-        dependencies = { 'rmagatti/logger.nvim' },
-        event = 'LspAttach',
+        'dnlhc/glance.nvim',
+        cmd = 'Glance',
         opts = {
-            default_mappings = true,
-            references = {
-                provider = 'default',
+            preview_win_opts = {
+                cursorline = true,
+                number = true,
+                wrap = false,
+            },
+            border = { enable = true, top_char = '―', bottom_char = '―' },
+        },
+        keys = {
+            {
+                'gpd',
+                '<cmd>Glance definitions<CR>',
+                desc = 'Preview definitions',
+            },
+            {
+                'gpr',
+                '<cmd>Glance references<CR>',
+                desc = 'Preview references',
+            },
+            {
+                'gpi',
+                '<cmd>Glance implementations<CR>',
+                desc = 'Preview implementations',
+            },
+            {
+                'gpt',
+                '<cmd>Glance type_definitions<CR>',
+                desc = 'Preview type definitions',
             },
         },
     },
