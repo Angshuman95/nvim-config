@@ -39,7 +39,6 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             require('mason-tool-installer').setup({
-                -- Formatters/linters used by conform.nvim and nvim-lint.
                 ensure_installed = {
                     'black',
                     'clang-format',
@@ -88,36 +87,15 @@ return {
                     -- Normal mode mappings
                     map('n', 'gD', vim.lsp.buf.declaration, opts)
                     map('n', 'gd', vim.lsp.buf.definition, opts)
-                    map('n', 'K', vim.lsp.buf.hover, opts)
                     map('n', '<leader>k', vim.diagnostic.open_float, opts)
-                    map('n', 'gri', vim.lsp.buf.implementation, opts)
                     map('n', 'gk', vim.lsp.buf.signature_help, opts)
-                    map('n', 'grn', vim.lsp.buf.rename, opts)
-                    map('n', 'grr', vim.lsp.buf.references, opts)
-                    map('n', 'gra', vim.lsp.buf.code_action, opts)
-                    map('n', '[d', function()
-                        vim.diagnostic.jump({ count = -1, float = true })
-                    end, opts)
-                    map('n', ']d', function()
-                        vim.diagnostic.jump({ count = 1, float = true })
-                    end, opts)
                     map('n', '<leader>q', vim.diagnostic.setloclist, opts)
+
+                    -- Diagnostics toggles
                     map('n', '<leader>lv', toggle_virtual_lines, opts)
                     map('n', '<leader>lV', toggle_virtual_text, opts)
                 end,
             })
-
-            vim.api.nvim_create_user_command(
-                'ToggleVirtualText',
-                toggle_virtual_text,
-                { desc = 'Toggle LSP virtual text diagnostics' }
-            )
-
-            vim.api.nvim_create_user_command(
-                'ToggleVirtualLines',
-                toggle_virtual_lines,
-                { desc = 'Toggle LSP virtual line diagnostics' }
-            )
 
             -- Apply blink.cmp completion capabilities to every LSP server.
             vim.lsp.config('*', {
@@ -143,9 +121,26 @@ return {
                     'ts_ls',
                     'yamlls',
                 },
-                -- Exclude jdtls: nvim-jdtls handles its setup and enabling it
-                -- here would attach a second, conflicting client.
-                automatic_enable = { exclude = { 'jdtls' } },
+                handlers = {
+                    -- Default handler for all servers
+                    function(server_name)
+                        local config = {}
+                        local ok, custom_config =
+                            pcall(require, 'lsp.' .. server_name)
+                        if ok then
+                            config = vim.tbl_deep_extend(
+                                'force',
+                                config,
+                                custom_config
+                            )
+                        end
+                        require('lspconfig')[server_name].setup(config)
+                    end,
+
+                    -- Exclude jdtls: bypasses the default handler above
+                    -- so nvim-jdtls can take over without conflict.
+                    jdtls = function() end,
+                },
             })
         end,
     },
