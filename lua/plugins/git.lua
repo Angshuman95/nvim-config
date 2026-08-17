@@ -18,7 +18,7 @@ return {
                 opts
             )
         end,
-        event = { 'BufReadPre', 'BufNewFile' },
+        event = 'VeryLazy',
     },
     {
         'sindrets/diffview.nvim',

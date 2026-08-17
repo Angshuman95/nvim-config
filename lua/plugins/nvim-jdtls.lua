@@ -1,5 +1,6 @@
 return {
     'mfussenegger/nvim-jdtls',
+    ft = 'java',
     config = function()
         local jdtls = require('jdtls')
 
@@ -137,11 +138,13 @@ return {
             jdtls.start_or_attach(config)
         end
 
+        setup_jdtls()
+
         -- Create an autocommand group for JDTLS
         local jdtls_augroup =
             vim.api.nvim_create_augroup('JDTLS', { clear = true })
 
-        -- Only start JDTLS for real Java files with proper conditions
+        -- Only start JDTLS for subsequent real Java files with proper conditions
         vim.api.nvim_create_autocmd('FileType', {
             group = jdtls_augroup,
             pattern = 'java',

@@ -36,7 +36,7 @@ return {
     {
         'WhoIsSethDaniel/mason-tool-installer.nvim',
         dependencies = { 'mason-org/mason.nvim' },
-        event = { 'BufReadPre', 'BufNewFile' },
+        cmd = { 'MasonToolsInstall', 'MasonToolsUpdate' },
         config = function()
             require('mason-tool-installer').setup({
                 ensure_installed = {

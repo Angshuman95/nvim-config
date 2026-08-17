@@ -1,3 +1,19 @@
+-- Disable built-ins
+local builtins = {
+    'gzip',
+    'matchit',
+    'matchparen',
+    'netrwPlugin',
+    'tarPlugin',
+    'tohtml',
+    'tutor',
+    'zipPlugin',
+}
+
+for _, plugin in ipairs(builtins) do
+    vim.g['loaded_' .. plugin] = 1
+end
+
 local cache_dir = vim.fn.stdpath('cache') .. '/'
 
 -- Ensure cache directories exist
@@ -20,6 +36,7 @@ local os_name = vim.uv.os_uname().sysname
 if os_name == 'Windows_NT' then
     shell = 'pwsh.exe'
     guifont = 'FiraCode_Nerd_Font_Mono:h10'
+    vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
 elseif os_name == 'Darwin' then
     shell = 'zsh'
     guifont = 'FiraCode_Nerd_Font:h13'

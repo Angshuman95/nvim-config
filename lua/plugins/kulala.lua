@@ -1,98 +1,62 @@
 return {
     'mistweaverco/kulala.nvim',
-    ft = { 'http' },
-    config = function()
-        require('kulala').setup({
-            winbar = true,
-        })
+    ft = 'http',
 
+    init = function()
         vim.api.nvim_create_autocmd('FileType', {
             pattern = 'http',
             callback = function(ev)
-                vim.keymap.set(
-                    'n',
+                local function map(key, cmd, desc)
+                    vim.keymap.set('n', key, cmd, {
+                        buffer = ev.buf,
+                        noremap = true,
+                        silent = true,
+                        desc = desc,
+                    })
+                end
+
+                map(
                     '<CR>',
                     "<cmd>lua require('kulala').run()<CR>",
-                    {
-                        buffer = ev.buf,
-                        noremap = true,
-                        silent = true,
-                        desc = 'Execute the request',
-                    }
+                    'Execute the request'
                 )
-
-                vim.keymap.set(
-                    'n',
+                map(
                     '[',
                     "<cmd>lua require('kulala').jump_prev()<CR>",
-                    {
-                        buffer = ev.buf,
-                        noremap = true,
-                        silent = true,
-                        desc = 'Jump to previous request',
-                    }
+                    'Jump to previous request'
                 )
-
-                vim.keymap.set(
-                    'n',
+                map(
                     ']',
                     "<cmd>lua require('kulala').jump_next()<CR>",
-                    {
-                        buffer = ev.buf,
-                        noremap = true,
-                        silent = true,
-                        desc = 'Jump to next request',
-                    }
+                    'Jump to next request'
                 )
-
-                vim.keymap.set(
-                    'n',
+                map(
                     '<leader>i',
                     "<cmd>lua require('kulala').inspect()<CR>",
-                    {
-                        buffer = ev.buf,
-                        noremap = true,
-                        silent = true,
-                        desc = 'Inspect current request',
-                    }
+                    'Inspect current request'
                 )
-
-                vim.keymap.set(
-                    'n',
+                map(
                     '<leader>t',
                     "<cmd>lua require('kulala').toggle_view()<CR>",
-                    {
-                        buffer = ev.buf,
-                        noremap = true,
-                        silent = true,
-                        desc = 'Toggle view',
-                    }
+                    'Toggle view'
                 )
-
-                vim.keymap.set(
-                    'n',
+                map(
                     '<leader>co',
                     "<cmd>lua require('kulala').copy()<CR>",
-                    {
-                        buffer = ev.buf,
-                        noremap = true,
-                        silent = true,
-                        desc = 'Copy current request as curl',
-                    }
+                    'Copy current request as curl'
                 )
-
-                vim.keymap.set(
-                    'n',
+                map(
                     '<leader>ci',
                     "<cmd>lua require('kulala').from_curl()<CR>",
-                    {
-                        buffer = ev.buf,
-                        noremap = true,
-                        silent = true,
-                        desc = 'Paste curl from clipboard as http request',
-                    }
+                    'Paste curl from clipboard as http request'
                 )
             end,
+        })
+    end,
+
+    config = function()
+        require('kulala').setup({
+            winbar = true,
         })
     end,
 }
