@@ -73,13 +73,12 @@ return {
                 },
             },
 
-            format_on_save = function(_)
+            format_after_save = function(_)
                 if not _G.format_on_save_enabled then
                     return
                 end
 
                 return {
-                    timeout_ms = 2000,
                     lsp_format = 'fallback',
                 }
             end,
@@ -101,8 +100,7 @@ return {
         vim.keymap.set({ 'n', 'v' }, '<leader>lf', function()
             conform.format({
                 lsp_format = 'fallback',
-                async = false,
-                timeout_ms = 2000,
+                async = true,
             })
         end, { desc = 'Format file or range', silent = true })
     end,
