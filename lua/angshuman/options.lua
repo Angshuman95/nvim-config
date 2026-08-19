@@ -37,6 +37,12 @@ if os_name == 'Windows_NT' then
     shell = 'pwsh.exe'
     guifont = 'FiraCode_Nerd_Font_Mono:h10'
     vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
+    vim.o.shellcmdflag =
+        '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+    vim.o.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+    vim.o.shellpipe = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
+    vim.o.shellquote = ''
+    vim.o.shellxquote = ''
 elseif os_name == 'Darwin' then
     shell = 'zsh'
     guifont = 'FiraCode_Nerd_Font:h13'
