@@ -56,7 +56,7 @@ return {
         else
             adapter_config = {
                 name = 'copilot',
-                model = 'claude-sonnet-4.6',
+                model = 'claude-opus-4.8',
             }
         end
 
