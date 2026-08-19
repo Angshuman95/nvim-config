@@ -51,6 +51,9 @@ return {
 
                 -- Python
                 python = { 'isort', 'black' },
+
+                -- Go
+                go = { 'golines' },
             },
 
             formatters = {
@@ -70,6 +73,9 @@ return {
                 },
                 black = {
                     args = { '--fast', '--quiet', '-' },
+                },
+                golines = {
+                    args = { '--max-len=100', '--base-formatter=gofumpt' },
                 },
             },
 

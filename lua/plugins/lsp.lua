@@ -43,6 +43,8 @@ return {
                     'black',
                     'clang-format',
                     'csharpier',
+                    'gofumpt',
+                    'golines',
                     'google-java-format',
                     'isort',
                     'markdownlint',
@@ -94,6 +96,45 @@ return {
                     -- Diagnostics toggles
                     map('n', '<leader>lv', toggle_virtual_lines, opts)
                     map('n', '<leader>lV', toggle_virtual_text, opts)
+                end,
+            })
+
+            -- Organize Go imports via gopls on save
+            vim.api.nvim_create_autocmd('BufWritePre', {
+                pattern = '*.go',
+                callback = function(args)
+                    if not _G.format_on_save_enabled then
+                        return
+                    end
+                    local clients = vim.lsp.get_clients({
+                        bufnr = args.buf,
+                        name = 'gopls',
+                    })
+                    if #clients == 0 then
+                        return
+                    end
+
+                    local params = vim.lsp.util.make_range_params(0, 'utf-8')
+                    params = vim.tbl_deep_extend('force', params, {
+                        context = { only = { 'source.organizeImports' } },
+                    })
+
+                    local result = vim.lsp.buf_request_sync(
+                        args.buf,
+                        'textDocument/codeAction',
+                        params,
+                        1000
+                    )
+                    for _, res in pairs(result or {}) do
+                        for _, action in pairs(res.result or {}) do
+                            if action.edit then
+                                vim.lsp.util.apply_workspace_edit(
+                                    action.edit,
+                                    'utf-8'
+                                )
+                            end
+                        end
+                    end
                 end,
             })
 
