@@ -22,5 +22,19 @@ return {
                 end,
             }
         )
+
+        vim.api.nvim_create_autocmd(
+            { 'BufEnter', 'BufWritePost', 'InsertLeave' },
+            {
+                group = lint_augroup,
+                pattern = {
+                    '*/.github/workflows/*.yml',
+                    '*/.github/workflows/*.yaml',
+                },
+                callback = function()
+                    lint.try_lint('actionlint')
+                end,
+            }
+        )
     end,
 }

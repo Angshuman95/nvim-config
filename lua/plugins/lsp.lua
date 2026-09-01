@@ -40,6 +40,7 @@ return {
         config = function()
             require('mason-tool-installer').setup({
                 ensure_installed = {
+                    'actionlint',
                     'black',
                     'clang-format',
                     'csharpier',
