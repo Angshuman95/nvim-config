@@ -156,6 +156,7 @@ return {
                     'jsonls',
                     'html',
                     'lua_ls',
+                    'marksman',
                     'powershell_es',
                     'basedpyright',
                     'rust_analyzer',

@@ -1,15 +1,11 @@
+local vault = require('angshuman.shared').vault
+
 return {
     'obsidian-nvim/obsidian.nvim',
     event = function()
         local cwd = vim.fn.getcwd()
-        local workspace_paths = {
-            'personal-notes',
-        }
-
-        for _, path in ipairs(workspace_paths) do
-            if string.find(cwd, path, 1, true) then
-                return 'VeryLazy'
-            end
+        if string.find(cwd, vault.marker, 1, true) then
+            return 'VeryLazy'
         end
         return nil
     end,
@@ -20,8 +16,8 @@ return {
         require('obsidian').setup({
             workspaces = {
                 {
-                    name = 'arch-notes',
-                    path = '~/Developer/10-19-learning/10-notes/personal-notes',
+                    name = vault.name,
+                    path = vault.path,
                 },
             },
             notes_subdir = 'notes',
