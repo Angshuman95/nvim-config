@@ -1,15 +1,19 @@
 local M = {}
 
+local ok, overrides = pcall(require, 'angshuman.local')
+if not ok then
+    overrides = {}
+end
+
 -- Obsidian vault location.
 --   Consumed by:
 --     * lua/plugins/obsidian.lua
 --     * lsp/marksman.lua
+local vault_ov = overrides.vault or {}
 M.vault = {
-    path = vim.fs.normalize(
-        '~/Developer/10-19-learning/10-notes/personal-notes'
-    ),
-    name = 'arch-notes',
-    marker = 'personal-notes',
+    path = vim.fs.normalize(vault_ov.path),
+    name = vault_ov.name,
+    marker = vault_ov.marker,
 }
 
 --- True when `fname` is the vault root or any file/dir inside it.

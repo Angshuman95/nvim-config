@@ -1,0 +1,7 @@
+return {
+    vault = {
+        path = 'Absolute path to the Obsidian vault with forward slashes',
+        name   = 'workspace name',
+        marker = 'basename used as lazy-load trigger',
+    },
+}
