@@ -1,6 +1,8 @@
 _G.virtual_text_enabled = false
 _G.virtual_lines_enabled = false
 
+local state = require('angshuman.shared').state
+
 local toggle_virtual_text = function()
     _G.virtual_text_enabled = not _G.virtual_text_enabled
     vim.diagnostic.config({
@@ -104,7 +106,7 @@ return {
             vim.api.nvim_create_autocmd('BufWritePre', {
                 pattern = '*.go',
                 callback = function(args)
-                    if not _G.format_on_save_enabled then
+                    if not state.format_on_save then
                         return
                     end
                     local clients = vim.lsp.get_clients({

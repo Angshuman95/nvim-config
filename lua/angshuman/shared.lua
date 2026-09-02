@@ -21,4 +21,11 @@ function M.vault.contains(fname)
         or path:sub(1, #M.vault.path + 1) == M.vault.path .. '/'
 end
 
+--   M.state.format_on_save  toggled in lua/plugins/conform.lua, also read by
+--                           the Go organize-imports autocmd in
+--                           lua/plugins/lsp.lua.
+M.state = {
+    format_on_save = false,
+}
+
 return M

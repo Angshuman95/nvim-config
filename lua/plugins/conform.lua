@@ -1,8 +1,8 @@
-_G.format_on_save_enabled = false
+local state = require('angshuman.shared').state
 
 local toggle_format_on_save = function()
-    _G.format_on_save_enabled = not _G.format_on_save_enabled
-    local status = _G.format_on_save_enabled and 'enabled' or 'disabled'
+    state.format_on_save = not state.format_on_save
+    local status = state.format_on_save and 'enabled' or 'disabled'
     vim.notify('Format on save ' .. status, vim.log.levels.INFO)
 end
 
@@ -80,7 +80,7 @@ return {
             },
 
             format_after_save = function(_)
-                if not _G.format_on_save_enabled then
+                if not state.format_on_save then
                     return
                 end
 
