@@ -1,11 +1,11 @@
-local vault = require('angshuman.shared').vault
+local shared = require('angshuman.shared')
 
 return {
     root_dir = function(bufnr, on_dir)
         local fname = vim.api.nvim_buf_get_name(bufnr)
 
-        -- Block inside the Obsidian vault: obsidian.nvim owns it.
-        if vault.contains(fname) then
+        -- Block inside any Obsidian vault: obsidian.nvim owns it.
+        if shared.vault_contains(fname) then
             return
         end
 

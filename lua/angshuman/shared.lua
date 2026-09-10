@@ -5,24 +5,43 @@ if not ok then
     overrides = {}
 end
 
--- Obsidian vault location.
+-- Obsidian vault locations.
 --   Consumed by:
 --     * lua/plugins/obsidian.lua
 --     * lsp/marksman.lua
-local vault_ov = overrides.vault or {}
-M.vault = {
-    path = vim.fs.normalize(vault_ov.path),
-    name = vault_ov.name,
-    marker = vault_ov.marker,
-}
+local vaults_ov = overrides.vaults or {}
+M.vaults = {}
+for _, v in ipairs(vaults_ov) do
+    table.insert(M.vaults, {
+        path = vim.fs.normalize(v.path),
+        name = v.name,
+        marker = v.marker,
+    })
+end
 
---- True when `fname` is the vault root or any file/dir inside it.
+--- True when `fname` is the root of, or a file/dir inside, any vault.
 ---@param fname string
 ---@return boolean
-function M.vault.contains(fname)
+function M.vault_contains(fname)
     local path = vim.fs.normalize(fname)
-    return path == M.vault.path
-        or path:sub(1, #M.vault.path + 1) == M.vault.path .. '/'
+    for _, v in ipairs(M.vaults) do
+        if path == v.path or path:sub(1, #v.path + 1) == v.path .. '/' then
+            return true
+        end
+    end
+    return false
+end
+
+--- True when `fname` (e.g. cwd) matches any vault marker.
+---@param fname string
+---@return boolean
+function M.vault_marker_match(fname)
+    for _, v in ipairs(M.vaults) do
+        if v.marker and string.find(fname, v.marker, 1, true) then
+            return true
+        end
+    end
+    return false
 end
 
 --   M.state.format_on_save  toggled in lua/plugins/conform.lua, also read by

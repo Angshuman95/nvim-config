@@ -1,10 +1,9 @@
-local vault = require('angshuman.shared').vault
+local shared = require('angshuman.shared')
 
 return {
     'obsidian-nvim/obsidian.nvim',
     event = function()
-        local cwd = vim.fn.getcwd()
-        if string.find(cwd, vault.marker, 1, true) then
+        if shared.vault_marker_match(vim.fn.getcwd()) then
             return 'VeryLazy'
         end
         return nil
@@ -14,12 +13,12 @@ return {
     },
     config = function()
         require('obsidian').setup({
-            workspaces = {
-                {
-                    name = vault.name,
-                    path = vault.path,
-                },
-            },
+            workspaces = vim.tbl_map(function(v)
+                return {
+                    name = v.name,
+                    path = v.path,
+                }
+            end, shared.vaults),
             notes_subdir = 'notes',
             new_notes_location = 'current_dir',
             note_id_func = function(title)
