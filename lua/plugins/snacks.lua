@@ -8,6 +8,7 @@ return {
         picker = { enabled = true },
         statuscolumn = { enabled = true },
         terminal = { enabled = true, win = { style = 'terminal' } },
+        zen = { enabled = true },
     },
     keys = {
         {
@@ -64,6 +65,13 @@ return {
             '<c-\\>',
             function()
                 Snacks.terminal()
+            end,
+            silent = true,
+        },
+        {
+            '<leader>z',
+            function()
+                Snacks.zen()
             end,
             silent = true,
         },
