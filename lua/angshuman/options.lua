@@ -35,7 +35,7 @@ local os_name = vim.uv.os_uname().sysname
 
 if os_name == 'Windows_NT' then
     shell = 'pwsh.exe'
-    guifont = 'FiraCode_Nerd_Font_Mono:h10'
+    guifont = 'IosCusSemi Nerd Font:h10'
     vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
     vim.o.shellcmdflag =
         '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
@@ -150,4 +150,13 @@ if vim.g.neovide then
     vim.g.neovide_opacity = 0.90
     vim.g.neovide_floating_blur_amount_x = 2.0
     vim.g.neovide_floating_blur_amount_y = 2.0
+    vim.g.neovide_floating_shadow = true
+
+    -- Zoom in/out
+    local function change_scale(delta)
+        vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor or 1.0) + delta
+    end
+    vim.keymap.set('n', '<C-=>', function() change_scale(0.1) end)
+    vim.keymap.set('n', '<C-->', function() change_scale(-0.1) end)
+    vim.keymap.set('n', '<C-0>', function() vim.g.neovide_scale_factor = 1.0 end)
 end
